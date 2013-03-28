@@ -27,12 +27,12 @@ public class AccountController {
 
 	public int login(String username, String password) {
 		InputStream is = null;
-		String result = "wa";
+		String result = "";
 
-		// get the message from the message text box
 		String name = username;  
 		String pass = password;
-
+		
+		
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost("http://10.0.2.2/SRTdroid/");
 		try {
@@ -43,11 +43,9 @@ public class AccountController {
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
 			is = entity.getContent();
-		} catch (ClientProtocolException e) {
-			Log.e("Error", e.getMessage());
-		} catch (IOException e) {
-			Log.e("Error", e.getMessage());
 		}
+		catch (ClientProtocolException e) {} 
+		catch (IOException e) {}
 
 		//convert response to string
 		try{
@@ -65,7 +63,6 @@ public class AccountController {
 
 		
 		int ret = 0;
-		Log.e("LOG", result);
 		//parse json data
 		try{
 			JSONArray jArray = new JSONArray(result);
