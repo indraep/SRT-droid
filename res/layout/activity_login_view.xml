@@ -4,10 +4,9 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/id1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="user name:" />
+        android:text="username:" />
 
     <EditText
         android:id="@+id/user_name"
@@ -15,7 +14,6 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/id2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="password:" />
@@ -25,14 +23,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword" />
-
-    <Spinner
-        android:id="@+id/role_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:entries="@array/role_arrays"
-        android:prompt="@string/role_prompt" />
 
     <Button
         android:text="Login"
