@@ -34,7 +34,7 @@ public class AccountController {
 		
 		
 		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost("http://10.0.2.2/SRTdroid/");
+		HttpPost httppost = new HttpPost("http://10.0.2.2/SRTdroid/login.php");
 		try {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
 			nameValuePairs.add(new BasicNameValuePair("username", name));
