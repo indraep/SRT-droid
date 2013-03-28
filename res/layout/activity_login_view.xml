@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/id1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="user name:" />
+
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/id2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="password:" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword" />
+
+    <Spinner
+        android:id="@+id/role_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:entries="@array/role_arrays"
+        android:prompt="@string/role_prompt" />
+
+    <Button
+        android:text="Login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:onClick="login" />
+</LinearLayout>

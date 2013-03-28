@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SRT-droid</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="role_prompt">Peran</string>
+	<string-array name="role_arrays">
+        <item>Direktur</item>
+        <item>Pelayan</item>
+        <item>Koki</item>
+        <item>Kasir</item>
+    </string-array>
+    
+</resources>
