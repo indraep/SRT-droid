@@ -73,7 +73,7 @@ public class AccountController {
 				ret.setNama(json_data.getString("nama"));
 				ret.setUsername(json_data.getString("username"));
 				ret.setPassword(json_data.getString("password"));
-				ret.setPeran(Integer.parseInt(json_data.getString("peran")) - 2);
+				ret.setPeran(Integer.parseInt(json_data.getString("peran")));
 			}
 			
 

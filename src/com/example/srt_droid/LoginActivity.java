@@ -7,12 +7,13 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.srt_droid.Controller.AccountController;
 
 public class LoginActivity extends Activity {
 	Spinner roleSpinner;
-	EditText userName, password;
+	EditText username, password;
 
 	AccountController accountController = new AccountController();
 
@@ -21,7 +22,7 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_view);
 
-		userName = (EditText) findViewById(R.id.user_name);
+		username = (EditText) findViewById(R.id.user_name);
 		password = (EditText) findViewById(R.id.password);
 	}
 
@@ -34,10 +35,15 @@ public class LoginActivity extends Activity {
 	}
 
 	public void login(View v) {
-		Utilities.user = accountController.login(userName.getText().toString(), password.getText().toString());
+		Utilities.user = accountController.login(username.getText().toString(), password.getText().toString());
+		// login successfully
 		if (Utilities.user.getPeran() > 0) {
 			Intent intent = new Intent(getApplicationContext(), PilihPeranActivity.class);
 			startActivity(intent);
+		}
+		else {
+			Toast.makeText(getBaseContext(), "Periksa kembali username dan password anda!", Toast.LENGTH_LONG).show();
+			password.setText("");
 		}
 	}
 }
