@@ -26,7 +26,7 @@ import android.util.Log;
 
 public class AccountController {
 	
-	public void hapus(User user) {
+	public boolean hapus(User user) {
 		InputStream is = null;
 		String result = "";
 
@@ -42,6 +42,21 @@ public class AccountController {
 		}
 		catch (ClientProtocolException e) {} 
 		catch (IOException e) {}
+		
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			is.close();
+			result=sb.toString();
+		}catch(Exception e){
+			Log.e("log_tag", "Error converting result " + e.toString());
+		}
+		
+		return result.charAt(0) == 't' ? true : false;
 	}
 
 	public User login(String username, String password) {

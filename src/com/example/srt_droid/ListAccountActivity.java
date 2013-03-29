@@ -80,7 +80,11 @@ public class ListAccountActivity extends Activity {
 	    builder.setPositiveButton("Ya", new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				accountController.hapus(user);
+				if (accountController.hapus(user)) {
+					Toast.makeText(ListAccountActivity.this, "Account berhasil dihapus!", Toast.LENGTH_LONG).show();
+					startActivity(new Intent(ListAccountActivity.this, ListAccountActivity.class));
+					finish();
+				}
 			}
 		});
 	    builder.setNegativeButton("Tidak", null);
