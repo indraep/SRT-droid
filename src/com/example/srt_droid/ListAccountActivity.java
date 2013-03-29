@@ -3,12 +3,9 @@ package com.example.srt_droid;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.srt_droid.Controller.AccountController;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.provider.ContactsContract.Contacts.Data;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -16,10 +13,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.srt_droid.Controller.AccountController;
 
 public class ListAccountActivity extends Activity {
 
@@ -49,6 +47,10 @@ public class ListAccountActivity extends Activity {
 				Toast.makeText(ListAccountActivity.this, m_data.get(position).toString(), 2000).show();
 			}
 		});
+	}
+	
+	public void tambahAccount(View v) {
+		Toast.makeText(this, "Tambah Account", 2000).show();
 	}
 
 	@Override
