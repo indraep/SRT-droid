@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,7 +17,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -40,7 +43,48 @@ public class ListAccountActivity extends Activity {
 
 	void init() {
 		list = (ListView)findViewById(R.id.listview);
+		list.setOnItemLongClickListener(new OnItemLongClickListener() {
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
+                showDialog(ListAccountActivity.this, "", "Apa yang ingin anda lakukan terhadap account ini?", m_data.get(pos));
+            	return true;
+            }
+        });
 		new ListAccountAsync(getApplicationContext()).execute();
+	}
+	
+	public void showDialog(Activity activity, String title, CharSequence message, final User user) {
+	    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+	    if (title != null)
+	        builder.setTitle(title);
+	    builder.setMessage(message);
+	    builder.setPositiveButton("Hapus", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				showConfirmDialog(ListAccountActivity.this, "", "Apakah anda yakin?", user);
+			}
+		});
+	    builder.setNegativeButton("Ubah", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Toast.makeText(ListAccountActivity.this, "Ubah " + user, 1000).show();
+			}
+		});
+	    builder.show();
+	}
+	
+	public void showConfirmDialog(Activity activity, String title, CharSequence message, final User user) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+	    if (title != null)
+	        builder.setTitle(title);
+	    builder.setMessage(message);
+	    builder.setPositiveButton("Ya", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				accountController.hapus(user);
+			}
+		});
+	    builder.setNegativeButton("Tidak", null);
+	    builder.show();
 	}
 
 	public void tambahAccount(View v) {
@@ -80,14 +124,7 @@ public class ListAccountActivity extends Activity {
 			Dialog.dismiss();
 			
 			m_adapter = new UserAdapter(ListAccountActivity.this, R.layout.list_account_row, m_data);
-			list.setAdapter(m_adapter);
-
-			list.setOnItemClickListener(new OnItemClickListener() {
-				@Override
-				public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
-					Toast.makeText(ListAccountActivity.this, m_data.get(position).toString(), 2000).show();
-				}
-			});
+			list.setAdapter(m_adapter); 
 		}
 
 		@Override

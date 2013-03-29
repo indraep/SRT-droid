@@ -25,6 +25,25 @@ import com.example.srt_droid.User;
 import android.util.Log;
 
 public class AccountController {
+	
+	public void hapus(User user) {
+		InputStream is = null;
+		String result = "";
+
+
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost("http://192.168.0.101/SRTdroid/hapus_account.php");
+		try {
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+			nameValuePairs.add(new BasicNameValuePair("username", user.getUsername()));
+			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+		}
+		catch (ClientProtocolException e) {} 
+		catch (IOException e) {}
+	}
 
 	public User login(String username, String password) {
 		InputStream is = null;
