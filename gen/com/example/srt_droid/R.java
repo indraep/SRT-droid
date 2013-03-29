@@ -27,11 +27,10 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f090009;
-        public static final int hargae=0x7f090008;
+        public static final int action_settings=0x7f090008;
+        public static final int harga=0x7f090007;
         public static final int listview=0x7f090001;
         public static final int nama=0x7f090005;
-        public static final int namae=0x7f090007;
         public static final int password=0x7f090003;
         public static final int peran=0x7f090004;
         public static final int title=0x7f090000;
