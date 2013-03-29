@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -43,7 +44,7 @@ public class ListAccountActivity extends Activity {
 	}
 
 	public void tambahAccount(View v) {
-		Toast.makeText(this, "Tambah Account", 2000).show();
+		startActivity(new Intent(this, BuatAccountActivity.class));
 	}
 
 	@Override
