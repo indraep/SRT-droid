@@ -1,8 +1,12 @@
 package com.example.srt_droid;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -35,31 +39,68 @@ public class LoginActivity extends Activity {
 	}
 
 	public void login(View v) {
-		Utilities.user = accountController.login(username.getText().toString(), password.getText().toString());
-		// login successfully
-		if (Utilities.user.getPeran() == 1) {
-			Intent intent = new Intent(getApplicationContext(), PemilikRestoranActivity.class);
-			startActivity(intent);
+		new LoginAsync(getApplicationContext()).execute();
+	}
+	
+	public class LoginAsync extends AsyncTask<String, Integer, String> {
+		private ProgressDialog Dialog = new ProgressDialog(LoginActivity.this);
+		private Context mContext;
+
+        public LoginAsync(Context context) {
+            mContext = context;
+        }
+		
+		@Override
+		protected void onPreExecute() {
+			Dialog.setMessage("Verifikasi username dan password");  
+            Dialog.setTitle("Login...");
+            Dialog.show();
 		}
-		else if (Utilities.user.getPeran() == 2) {
-			Intent intent = new Intent(getApplicationContext(), PelayanActivity.class);
-			startActivity(intent);
+
+		@Override
+		protected String doInBackground(String... params) {
+			Utilities.user = accountController.login(username.getText().toString(), password.getText().toString());
+			Log.e("username", username.getText().toString());
+			Log.e("password", password.getText().toString());
+			Log.e("user", Utilities.user.toString());
+			
+			publishProgress();
+			return "";
 		}
-		else if (Utilities.user.getPeran() == 4) {
-			Intent intent = new Intent(getApplicationContext(), KokiActivity.class);
-			startActivity(intent);
+
+		@Override
+		protected void onProgressUpdate(Integer... values) {
+			Dialog.dismiss();
+			
+			if (Utilities.user.getPeran() == 1) {
+				Intent intent = new Intent(LoginActivity.this, PemilikRestoranActivity.class);
+				startActivity(intent);
+			}
+			else if (Utilities.user.getPeran() == 2) {
+				Intent intent = new Intent(LoginActivity.this, PelayanActivity.class);
+				startActivity(intent);
+			}
+			else if (Utilities.user.getPeran() == 4) {
+				Intent intent = new Intent(LoginActivity.this, KokiActivity.class);
+				startActivity(intent);
+			}
+			else if (Utilities.user.getPeran() == 8) {
+				Intent intent = new Intent(LoginActivity.this, KasirActivity.class);
+				startActivity(intent);
+			}
+			else if (Utilities.user.getPeran() > 0) {
+				Intent intent = new Intent(LoginActivity.this, PilihPeranActivity.class);
+				startActivity(intent);
+			}
+			else {
+				password.setText("");
+				Toast.makeText(LoginActivity.this, "Invalid username atau password!", Toast.LENGTH_LONG).show();
+			}
 		}
-		else if (Utilities.user.getPeran() == 8) {
-			Intent intent = new Intent(getApplicationContext(), KasirActivity.class);
-			startActivity(intent);
+
+		@Override
+		protected void onPostExecute(String result) {
 		}
-		else if (Utilities.user.getPeran() > 0) {
-			Intent intent = new Intent(getApplicationContext(), PilihPeranActivity.class);
-			startActivity(intent);
-		}
-		else {
-			Toast.makeText(getBaseContext(), "Periksa kembali username dan password anda!", Toast.LENGTH_LONG).show();
-			password.setText("");
-		}
+
 	}
 }
