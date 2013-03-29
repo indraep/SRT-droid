@@ -17,13 +17,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/title" />
     </LinearLayout>
-    
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Buat Pesanan"
-        android:onClick="buatPesanan" />
-    
+
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

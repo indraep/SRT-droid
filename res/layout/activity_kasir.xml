@@ -9,25 +9,19 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:orientation="vertical"
-        android:gravity="right" >
+        android:gravity="right"
+        android:orientation="vertical" >
 
         <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/title" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
-    
+
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Buat Pesanan"
-        android:onClick="buatPesanan" />
-    
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Lihat Pesanan"
-        android:onClick="lihatPesanan" />
+        android:onClick="lihatPesanan"
+        android:text="Lihat Pesanan" />
 
 </LinearLayout>

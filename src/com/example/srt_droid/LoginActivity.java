@@ -25,7 +25,7 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_view);
-		
+		startActivity(new Intent(this, ListMenuActivity.class));
 		username = (EditText) findViewById(R.id.user_name);
 		password = (EditText) findViewById(R.id.password);
 	}
@@ -60,10 +60,6 @@ public class LoginActivity extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 			Utilities.user = accountController.login(username.getText().toString(), password.getText().toString());
-			Log.e("username", username.getText().toString());
-			Log.e("password", password.getText().toString());
-			Log.e("user", Utilities.user.toString());
-			
 			publishProgress();
 			return "";
 		}

@@ -1,6 +1,7 @@
 package com.example.srt_droid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -26,11 +27,13 @@ public class PemilikRestoranActivity extends Activity {
 	}
 	
 	public void lihatDaftarMenu(View v) {
-		
+		Intent intent = new Intent(getApplicationContext(), ListMenuActivity.class);
+		startActivity(intent);
 	}
 	
 	public void lihatDaftarAccount(View v) {
-		
+		Intent intent = new Intent(getApplicationContext(), ListAccountActivity.class);
+		startActivity(intent);
 	}
 	
 	@Override

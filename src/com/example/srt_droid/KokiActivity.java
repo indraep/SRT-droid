@@ -3,6 +3,7 @@ package com.example.srt_droid;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.widget.TextView;
 
 public class KokiActivity extends Activity {
@@ -20,6 +21,10 @@ public class KokiActivity extends Activity {
 	void init() {
 		title = (TextView)findViewById(R.id.title);
 		title.setText("Koki, " + Utilities.user.getNama());
+	}
+	
+	public void lihatPesanan(View v) {
+		
 	}
 
 	@Override

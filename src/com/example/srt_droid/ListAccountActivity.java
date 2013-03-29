@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,30 +27,21 @@ public class ListAccountActivity extends Activity {
 	List<String> model=new ArrayList<String>();
 	ArrayList<User> m_data = null;
 	UserAdapter m_adapter;
-	
+
 	AccountController accountController = new AccountController();
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list_account);
 		init();
 	}
-	
+
 	void init() {
 		list = (ListView)findViewById(R.id.listview);
-		m_data = accountController.getListOfAccount();
-		m_adapter = new UserAdapter(this, R.layout.list_account_row, m_data);
-		list.setAdapter(m_adapter);
-		
-		list.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
-				Toast.makeText(ListAccountActivity.this, m_data.get(position).toString(), 2000).show();
-			}
-		});
+		new ListAccountAsync(getApplicationContext()).execute();
 	}
-	
+
 	public void tambahAccount(View v) {
 		Toast.makeText(this, "Tambah Account", 2000).show();
 	}
@@ -58,6 +51,48 @@ public class ListAccountActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.list_account, menu);
 		return true;
+	}
+
+	public class ListAccountAsync extends AsyncTask<String, Integer, String> {
+		private ProgressDialog Dialog = new ProgressDialog(ListAccountActivity.this);
+		private Context mContext;
+
+		public ListAccountAsync(Context context) {
+			mContext = context;
+		}
+
+		@Override
+		protected void onPreExecute() {
+			Dialog.setTitle("Harap tunggu...");
+			Dialog.show();
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			m_data = accountController.getListOfAccount();
+			publishProgress();
+			return "";
+		}
+
+		@Override
+		protected void onProgressUpdate(Integer... values) {
+			Dialog.dismiss();
+			
+			m_adapter = new UserAdapter(ListAccountActivity.this, R.layout.list_account_row, m_data);
+			list.setAdapter(m_adapter);
+
+			list.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
+					Toast.makeText(ListAccountActivity.this, m_data.get(position).toString(), 2000).show();
+				}
+			});
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+		}
+
 	}
 
 }
@@ -84,7 +119,7 @@ class UserAdapter extends ArrayAdapter<User> {
 			if (tt != null) {
 				tt.setText("Name: " + o.getNama());
 			}
-			
+
 			tt = (TextView)v.findViewById(R.id.username);
 			if (tt != null) {
 				tt.setText("Username: " + o.getUsername());

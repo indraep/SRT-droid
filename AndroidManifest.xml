@@ -49,6 +49,10 @@
             android:name="com.example.srt_droid.ListAccountActivity"
             android:label="@string/title_activity_list_account" >
         </activity>
+        <activity
+            android:name="com.example.srt_droid.ListMenuActivity"
+            android:label="@string/title_activity_list_menu" >
+        </activity>
     </application>
 
 </manifest>

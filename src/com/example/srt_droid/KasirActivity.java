@@ -1,8 +1,9 @@
 package com.example.srt_droid;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.widget.TextView;
 
 public class KasirActivity extends Activity {
@@ -20,6 +21,10 @@ public class KasirActivity extends Activity {
 	void init() {
 		title = (TextView)findViewById(R.id.title);
 		title.setText("Kasir, " + Utilities.user.getNama());
+	}
+	
+	public void lihatPesanan(View v) {
+		
 	}
 	
 	@Override
