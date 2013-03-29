@@ -30,7 +30,6 @@ public class AccountController {
 		InputStream is = null;
 		String result = "";
 
-
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost("http://192.168.0.101/SRTdroid/hapus_account.php");
 		try {
