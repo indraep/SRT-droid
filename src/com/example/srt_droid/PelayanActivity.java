@@ -1,15 +1,34 @@
 package com.example.srt_droid;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class PelayanActivity extends Activity {
 
+	TextView title;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pelayan);
+		init();
+	}
+	
+	void init() {
+		title = (TextView)findViewById(R.id.title);
+		title.setText("Pelayan, " + Utilities.user.getNama());
+	}
+	
+	public void buatPesanan(View v) {
+		Toast.makeText(getBaseContext(), "Buat Pesanan", 2000).show();
+	}
+	
+	public void lihatPesanan(View v) {
+		Toast.makeText(getBaseContext(), "Lihat Pesanan", 2000).show();
 	}
 
 	@Override
@@ -18,5 +37,4 @@ public class PelayanActivity extends Activity {
 		getMenuInflater().inflate(R.menu.pelayan, menu);
 		return true;
 	}
-
 }

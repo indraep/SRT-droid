@@ -21,8 +21,7 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_view);
-		Intent intent = new Intent(getApplicationContext(), ListAccountActivity.class);
-		startActivity(intent);
+		
 		username = (EditText) findViewById(R.id.user_name);
 		password = (EditText) findViewById(R.id.password);
 	}
@@ -38,7 +37,23 @@ public class LoginActivity extends Activity {
 	public void login(View v) {
 		Utilities.user = accountController.login(username.getText().toString(), password.getText().toString());
 		// login successfully
-		if (Utilities.user.getPeran() > 0) {
+		if (Utilities.user.getPeran() == 1) {
+			Intent intent = new Intent(getApplicationContext(), PemilikRestoranActivity.class);
+			startActivity(intent);
+		}
+		else if (Utilities.user.getPeran() == 2) {
+			Intent intent = new Intent(getApplicationContext(), PelayanActivity.class);
+			startActivity(intent);
+		}
+		else if (Utilities.user.getPeran() == 4) {
+			Intent intent = new Intent(getApplicationContext(), KokiActivity.class);
+			startActivity(intent);
+		}
+		else if (Utilities.user.getPeran() == 8) {
+			Intent intent = new Intent(getApplicationContext(), KasirActivity.class);
+			startActivity(intent);
+		}
+		else if (Utilities.user.getPeran() > 0) {
 			Intent intent = new Intent(getApplicationContext(), PilihPeranActivity.class);
 			startActivity(intent);
 		}
