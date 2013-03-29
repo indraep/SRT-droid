@@ -5,7 +5,18 @@ public class User {
 	private String username;
 	private String password;
 	private int peran;
+	
+	public User() {
+		
+	}
 
+	public User(String nama, String username, String password, int peran) {
+		this.nama = nama;
+		this.username = username;
+		this.password = password;
+		this.peran = peran;
+	}
+	
 	public String getNama() {
 		return nama;
 	}
@@ -54,5 +65,9 @@ public class User {
 	
 	public void setPeran(int x) {
 		peran = x;
+	}
+	
+	public String toString() {
+		return "Nama = " + nama + " username = " + username;
 	}
 }

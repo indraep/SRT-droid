@@ -32,8 +32,8 @@ public class AccountController {
 
 		String name = username;  
 		String pass = password;
-		
-		
+
+
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost("http://10.0.2.2/SRTdroid/login.php");
 		try {
@@ -62,9 +62,9 @@ public class AccountController {
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
 
-		
+
 		User ret = new User();
-		
+
 		//parse json data
 		try{
 			JSONArray jArray = new JSONArray(result);
@@ -75,12 +75,60 @@ public class AccountController {
 				ret.setPassword(json_data.getString("password"));
 				ret.setPeran(Integer.parseInt(json_data.getString("peran")));
 			}
-			
+
 
 		}catch(JSONException e) {
 			Log.e("log_tag", "Error parsing data " + e.toString());
 		}
-		
+
+		return ret;
+	}
+
+	public ArrayList<User> getListOfAccount() {
+		ArrayList <User> ret = new ArrayList<User>();
+
+		InputStream is = null;
+		String result = "";
+
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost("http://10.0.2.2/SRTdroid/list_account.php");
+		try {
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+		}
+		catch (ClientProtocolException e) {} 
+		catch (IOException e) {}
+
+		//convert response to string
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			is.close();
+			result=sb.toString();
+		}catch(Exception e){
+			Log.e("log_tag", "Error converting result " + e.toString());
+		}
+
+		//parse json data
+		try{
+			JSONArray jArray = new JSONArray(result);
+			for(int i=0;i<jArray.length();i++){
+				JSONObject json_data = jArray.getJSONObject(i);
+				User user = new User(json_data.getString("nama"), json_data.getString("username"),
+						json_data.getString("password"), Integer.parseInt(json_data.getString("peran")));
+				Log.e("User", ""+user);
+			}
+
+
+		}catch(JSONException e) {
+			Log.e("log_tag", "Error parsing data " + e.toString());
+		}
+
 		return ret;
 	}
 }
