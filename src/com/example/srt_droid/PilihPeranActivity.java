@@ -49,7 +49,6 @@ public class PilihPeranActivity extends Activity {
 		}
 
 		startActivity(intent);
-		finish();
 	}
 
 	@Override
