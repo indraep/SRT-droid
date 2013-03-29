@@ -18,5 +18,6 @@
     <string name="title_activity_pelayan">PelayanActivity</string>
     <string name="title_activity_koki">KokiActivity</string>
     <string name="title_activity_kasir">KasirActivity</string>
+    <string name="title_activity_list_account">ListAccountActivity</string>
 
 </resources>

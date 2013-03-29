@@ -91,7 +91,7 @@ public class AccountController {
 		String result = "";
 
 		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost("http://10.0.2.2/SRTdroid/list_account.php");
+		HttpPost httppost = new HttpPost("http://192.168.0.101/SRTdroid/list_account.php");
 		try {
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
@@ -121,7 +121,7 @@ public class AccountController {
 				JSONObject json_data = jArray.getJSONObject(i);
 				User user = new User(json_data.getString("nama"), json_data.getString("username"),
 						json_data.getString("password"), Integer.parseInt(json_data.getString("peran")));
-				Log.e("User", ""+user);
+				ret.add(user);
 			}
 
 

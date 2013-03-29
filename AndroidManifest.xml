@@ -45,6 +45,10 @@
             android:name="com.example.srt_droid.KasirActivity"
             android:label="@string/title_activity_kasir" >
         </activity>
+        <activity
+            android:name="com.example.srt_droid.ListAccountActivity"
+            android:label="@string/title_activity_list_account" >
+        </activity>
     </application>
 
 </manifest>

@@ -21,7 +21,8 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_view);
-
+		Intent intent = new Intent(getApplicationContext(), ListAccountActivity.class);
+		startActivity(intent);
 		username = (EditText) findViewById(R.id.user_name);
 		password = (EditText) findViewById(R.id.password);
 	}
