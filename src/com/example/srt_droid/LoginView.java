@@ -34,9 +34,9 @@ public class LoginView extends Activity {
 	}
 
 	public void login(View v) {
-		int login = accountController.login(userName.getText().toString(), password.getText().toString());
-		if (login > 0) {
-			Intent intent = new Intent(this, PilihPeranActivity.class);
+		Utilities.user = accountController.login(userName.getText().toString(), password.getText().toString());
+		if (Utilities.user.getPeran() > 0) {
+			Intent intent = new Intent(getApplicationContext(), PilihPeranActivity.class);
 			startActivity(intent);
 		}
 	}

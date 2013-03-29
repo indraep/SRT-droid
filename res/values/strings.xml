@@ -14,5 +14,9 @@
     </string-array>
 
     <string name="title_activity_pilih_peran">PilihPeranActivity</string>
+    <string name="title_activity_pemilik_restoran">PemilikRestoranActivity</string>
+    <string name="title_activity_pelayan">PelayanActivity</string>
+    <string name="title_activity_koki">KokiActivity</string>
+    <string name="title_activity_kasir">KasirActivity</string>
 
 </resources>

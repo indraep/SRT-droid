@@ -29,6 +29,22 @@
             android:name="com.example.srt_droid.PilihPeranActivity"
             android:label="@string/title_activity_pilih_peran" >
         </activity>
+        <activity
+            android:name="com.example.srt_droid.PemilikRestoranActivity"
+            android:label="@string/title_activity_pemilik_restoran" >
+        </activity>
+        <activity
+            android:name="com.example.srt_droid.PelayanActivity"
+            android:label="@string/title_activity_pelayan" >
+        </activity>
+        <activity
+            android:name="com.example.srt_droid.KokiActivity"
+            android:label="@string/title_activity_koki" >
+        </activity>
+        <activity
+            android:name="com.example.srt_droid.KasirActivity"
+            android:label="@string/title_activity_kasir" >
+        </activity>
     </application>
 
 </manifest>
