@@ -21,5 +21,6 @@
     <string name="title_activity_list_account">ListAccountActivity</string>
     <string name="title_activity_list_menu">ListMenuActivity</string>
     <string name="title_activity_buat_account">BuatAccountActivity</string>
+    <string name="title_activity_ubah_account">UbahAccountActivity</string>
 
 </resources>

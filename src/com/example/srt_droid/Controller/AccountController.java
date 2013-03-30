@@ -26,17 +26,18 @@ import android.util.Log;
 
 public class AccountController {
 	
-	public String buat(String nama, String username, String password, int peran) {
+	public String buat(String nama, String username, String password, String alamat, int peran) {
 		InputStream is = null;
 		String result = "";
 
 		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost("http://192.168.0.101/SRTdroid/cek_username.php");
+		HttpPost httppost = new HttpPost("http://192.168.0.101/SRTdroid/buat_account.php");
 		try {
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(5);
 			nameValuePairs.add(new BasicNameValuePair("nama", nama));
 			nameValuePairs.add(new BasicNameValuePair("username", username));
 			nameValuePairs.add(new BasicNameValuePair("password", password));
+			nameValuePairs.add(new BasicNameValuePair("alamat", alamat));
 			nameValuePairs.add(new BasicNameValuePair("peran", "" + peran));
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = httpclient.execute(httppost);
@@ -192,7 +193,8 @@ public class AccountController {
 			for(int i=0;i<jArray.length();i++){
 				JSONObject json_data = jArray.getJSONObject(i);
 				User user = new User(json_data.getString("nama"), json_data.getString("username"),
-						json_data.getString("password"), Integer.parseInt(json_data.getString("peran")));
+						json_data.getString("password"), json_data.getString("alamat"), 
+						Integer.parseInt(json_data.getString("peran")));
 				ret.add(user);
 			}
 

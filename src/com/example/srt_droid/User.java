@@ -4,16 +4,18 @@ public class User {
 	private String nama;
 	private String username;
 	private String password;
+	private String alamat;
 	private int peran;
 	
 	public User() {
 		
 	}
 
-	public User(String nama, String username, String password, int peran) {
+	public User(String nama, String username, String password, String alamat, int peran) {
 		this.nama = nama;
 		this.username = username;
 		this.password = password;
+		this.alamat = alamat;
 		this.peran = peran;
 	}
 	
@@ -27,6 +29,10 @@ public class User {
 	
 	public String getPassword() {
 		return password;
+	}
+	
+	public String getAlamat() {
+		return alamat;
 	}
 	
 	public int getPeran() {
@@ -61,6 +67,10 @@ public class User {
 	
 	public void setPassword(String x) {
 		password = x;
+	}
+	
+	public void setAlamat(String x) {
+		alamat = x;
 	}
 	
 	public void setPeran(int x) {

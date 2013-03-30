@@ -15,7 +15,7 @@
             <TextView 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tambah Account" />
+                android:text="Ubah Account" />
 		</LinearLayout>
         
         <TextView
@@ -44,7 +44,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:id="@+id/password" />
+            android:id="@+id/passwordBaru" />
         
         <TextView
             android:layout_width="wrap_content"
@@ -58,13 +58,12 @@
         <TextView
             android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-            android:text="Alamat" />
+            android:text="Alamat:" />
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:id="@+id/alamat" />
-
 
         <TextView
             android:layout_width="wrap_content"
@@ -99,8 +98,8 @@
             <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Buat"
-                android:onClick="buat" />
+                android:text="Ubah"
+                android:onClick="ubah" />
 		</LinearLayout>
         
     </LinearLayout>

@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class BuatAccountActivity extends Activity {
 	
-	EditText nama, username, password, konfirmasiPassword;
+	EditText nama, username, password, konfirmasiPassword, alamat;
 	
 	AccountController accountController = new AccountController();
 	
@@ -33,11 +33,10 @@ public class BuatAccountActivity extends Activity {
 		username = (EditText)findViewById(R.id.username);
 		password = (EditText)findViewById(R.id.password);
 		konfirmasiPassword = (EditText)findViewById(R.id.konfirmasiPassword);
+		alamat = (EditText)findViewById(R.id.alamat);
 	}
 
 	public void buat(View v) {
-		Log.e("pass", password.getText().toString());
-		Log.e("konf pass", konfirmasiPassword.getText().toString());
 		int peran = 0;
 		for (int i = 0; i < 4; i++) {
 			CheckBox cb = (CheckBox) findViewById(peranId[i]);
@@ -59,7 +58,8 @@ public class BuatAccountActivity extends Activity {
 			return;
 		}
 		
-		String status = accountController.buat(nama.getText().toString(), username.getText().toString(), password.getText().toString(), peran);
+		String status = accountController.buat(nama.getText().toString(), username.getText().toString(), 
+				password.getText().toString(), alamat.getText().toString(), peran);
 		if (status.charAt(0) == 'U' || status.charAt(0) == 'G') {
 			Toast.makeText(this, status, Toast.LENGTH_LONG).show();
 		}

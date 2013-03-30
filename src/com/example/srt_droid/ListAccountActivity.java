@@ -66,7 +66,8 @@ public class ListAccountActivity extends Activity {
 	    builder.setNegativeButton("Ubah", new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				Toast.makeText(ListAccountActivity.this, "Ubah " + user, 1000).show();
+				Utilities.oldUser = user;
+				startActivity(new Intent(ListAccountActivity.this, UbahAccountActivity.class));
 			}
 		});
 	    builder.show();

@@ -57,6 +57,10 @@
             android:name="com.example.srt_droid.BuatAccountActivity"
             android:label="@string/title_activity_buat_account" >
         </activity>
+        <activity
+            android:name="com.example.srt_droid.UbahAccountActivity"
+            android:label="@string/title_activity_ubah_account" >
+        </activity>
     </application>
 
 </manifest>
