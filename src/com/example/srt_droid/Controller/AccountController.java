@@ -26,6 +26,47 @@ import android.util.Log;
 
 public class AccountController {
 	
+	public String ubah(User oldUser, String nama, String username, String password, String alamat, int peran) {
+		InputStream is = null;
+		String result = "";
+
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost("http://192.168.0.101/SRTdroid/ubah_account.php");
+		try {
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(6);
+			nameValuePairs.add(new BasicNameValuePair("usernameLama", oldUser.getUsername()));
+			nameValuePairs.add(new BasicNameValuePair("nama", nama));
+			nameValuePairs.add(new BasicNameValuePair("username", username));
+			nameValuePairs.add(new BasicNameValuePair("password", password));
+			nameValuePairs.add(new BasicNameValuePair("alamat", alamat));
+			nameValuePairs.add(new BasicNameValuePair("peran", "" + peran));
+			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+		}
+		catch (ClientProtocolException e) {} 
+		catch (IOException e) {}
+		
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			is.close();
+			result=sb.toString();
+		}catch(Exception e){
+			Log.e("log_tag", "Error converting result " + e.toString());
+		}
+
+		if (result.charAt(0) == '0')
+			return "Username baru yang anda masukkan sudah terpakai sebelumnya!";
+		
+		return result.charAt(0) == 't' ? "Account berhasil diubah!" : "Gagal mengubah account";
+	}
+	
 	public String buat(String nama, String username, String password, String alamat, int peran) {
 		InputStream is = null;
 		String result = "";
@@ -59,7 +100,7 @@ public class AccountController {
 		}catch(Exception e){
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
-		Log.e("result", result);
+		
 		if (result.charAt(0) == '0')
 			return "Username yang anda masukkan sudah terpakai sebelumnya!";
 		

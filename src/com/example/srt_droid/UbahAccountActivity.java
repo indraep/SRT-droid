@@ -1,6 +1,7 @@
 package com.example.srt_droid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -37,6 +38,9 @@ public class UbahAccountActivity extends Activity {
 		alamat = (EditText) findViewById(R.id.alamat);
 		alamat.setText(Utilities.oldUser.getAlamat());
 		
+		passwordBaru = (EditText) findViewById(R.id.passwordBaru);
+		konfirmasiPassword = (EditText) findViewById(R.id.konfirmasiPassword);
+		
 		for (int i = 0; i < 4; i++) {
 			if ((Utilities.oldUser.getPeran() & (1 << i)) > 0) {
 				CheckBox cb = (CheckBox) findViewById(peranId[i]);
@@ -46,7 +50,36 @@ public class UbahAccountActivity extends Activity {
 	}
 	
 	public void ubah(View v) {
-		Toast.makeText(getApplicationContext(), "Ubah", Toast.LENGTH_LONG).show();
+		int peran = 0;
+		for (int i = 0; i < 4; i++) {
+			CheckBox cb = (CheckBox) findViewById(peranId[i]);
+			if (cb.isChecked())
+				peran += Math.pow(2, i);
+		}
+		
+		if (nama.getText().length() == 0 || username.getText().length() == 0 || alamat.getText().length() == 0) {
+			Toast.makeText(this, "Harap lengkapi form!", Toast.LENGTH_LONG).show();
+			return;
+		}
+		else if (!((passwordBaru.getText().toString()).equals(konfirmasiPassword.getText().toString()))) {
+			Toast.makeText(this, "Cek kembali konfirmasi password anda!", Toast.LENGTH_LONG).show();
+			return;
+		}
+		else if (peran == 0) {
+			Toast.makeText(this, "Harap pilih sekurangnya satu peran!", Toast.LENGTH_LONG).show();
+			return;
+		}
+		
+		String status = accountController.ubah(Utilities.oldUser, nama.getText().toString(), username.getText().toString(), 
+				passwordBaru.getText().toString(), alamat.getText().toString(), peran);
+		if (status.charAt(0) == 'U' || status.charAt(0) == 'G') {
+			Toast.makeText(this, status, Toast.LENGTH_LONG).show();
+		}
+		else {
+			Toast.makeText(this, status, Toast.LENGTH_LONG).show();
+			startActivity(new Intent(this, ListAccountActivity.class));
+			finish();
+		}
 	}
 
 	@Override
