@@ -1,4 +1,4 @@
-package com.example.srt_droid;
+package com.example.srt_droid.Menu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.srt_droid.R;
+import com.example.srt_droid.Utilities;
 import com.example.srt_droid.Controller.MenuController;
+import com.example.srt_droid.R.id;
+import com.example.srt_droid.R.layout;
+import com.example.srt_droid.R.menu;
 
 public class ListMenuActivity extends Activity {
 
@@ -68,7 +73,8 @@ public class ListMenuActivity extends Activity {
 		builder.setNegativeButton("Ubah", new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-
+				Utilities.oldMenu = menu;
+				startActivity(new Intent(ListMenuActivity.this, UbahMenuActivity.class));
 			}
 		});
 		builder.show();
@@ -94,7 +100,7 @@ public class ListMenuActivity extends Activity {
 	}
 
 	public void tambahMenu(View v) {
-		Toast.makeText(getBaseContext(), "Tambah Menu", 2000).show();
+		startActivity(new Intent(this, BuatMenuActivity.class));
 	}
 
 	@Override
@@ -131,13 +137,6 @@ public class ListMenuActivity extends Activity {
 
 			m_adapter = new MenuAdapter(ListMenuActivity.this, R.layout.list_menu_row, m_data);
 			list.setAdapter(m_adapter);
-
-			list.setOnItemClickListener(new OnItemClickListener() {
-				@Override
-				public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
-					Toast.makeText(ListMenuActivity.this, m_data.get(position).toString(), 2000).show();
-				}
-			});
 		}
 
 		@Override

@@ -50,7 +50,7 @@
             android:label="@string/title_activity_list_account" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.ListMenuActivity"
+            android:name="com.example.srt_droid.Menu.ListMenuActivity"
             android:label="@string/title_activity_list_menu" >
         </activity>
         <activity
@@ -60,6 +60,14 @@
         <activity
             android:name="com.example.srt_droid.Account.UbahAccountActivity"
             android:label="@string/title_activity_ubah_account" >
+        </activity>
+        <activity
+            android:name="com.example.srt_droid.Menu.BuatMenuActivity"
+            android:label="@string/title_activity_buat_menu" >
+        </activity>
+        <activity
+            android:name="com.example.srt_droid.Menu.UbahMenuActivity"
+            android:label="@string/title_activity_ubah_menu" >
         </activity>
     </application>
 

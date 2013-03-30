@@ -1,4 +1,4 @@
-package com.example.srt_droid;
+package com.example.srt_droid.Menu;
 
 public class MenuResto {
 	private int id_kategori;
