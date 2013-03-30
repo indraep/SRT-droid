@@ -1,6 +1,8 @@
 package com.example.srt_droid;
 
+import com.example.srt_droid.Account.User;
+
 public class Utilities {
-	static User user;
-	static User oldUser;
+	public static User user;
+	public static User oldUser;
 }

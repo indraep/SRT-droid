@@ -46,7 +46,7 @@
             android:label="@string/title_activity_kasir" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.ListAccountActivity"
+            android:name="com.example.srt_droid.Account.ListAccountActivity"
             android:label="@string/title_activity_list_account" >
         </activity>
         <activity
@@ -54,11 +54,11 @@
             android:label="@string/title_activity_list_menu" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.BuatAccountActivity"
+            android:name="com.example.srt_droid.Account.BuatAccountActivity"
             android:label="@string/title_activity_buat_account" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.UbahAccountActivity"
+            android:name="com.example.srt_droid.Account.UbahAccountActivity"
             android:label="@string/title_activity_ubah_account" >
         </activity>
     </application>

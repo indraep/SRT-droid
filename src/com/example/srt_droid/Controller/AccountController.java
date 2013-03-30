@@ -20,7 +20,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.srt_droid.User;
+import com.example.srt_droid.Account.User;
+
 
 import android.util.Log;
 

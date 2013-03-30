@@ -3,25 +3,28 @@ package com.example.srt_droid;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.srt_droid.Controller.MenuController;
-import com.example.srt_droid.ListAccountActivity.ListAccountAsync;
-
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
+
+import com.example.srt_droid.Controller.MenuController;
 
 public class ListMenuActivity extends Activity {
 
@@ -41,7 +44,53 @@ public class ListMenuActivity extends Activity {
 
 	void init() {
 		list = (ListView)findViewById(R.id.listview);
+		list.setOnItemLongClickListener(new OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
+				showDialog(ListMenuActivity.this, "", "Apa yang ingin anda lakukan terhadap menu ini?", m_data.get(pos));
+				return true;
+			}
+		});
 		new ListMenuAsync(getApplicationContext()).execute();		
+	}
+
+	public void showDialog(Activity activity, String title, CharSequence message, final MenuResto menu) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+		if (title != null)
+			builder.setTitle(title);
+		builder.setMessage(message);
+		builder.setPositiveButton("Hapus", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				showConfirmDialog(ListMenuActivity.this, "", "Apakah anda yakin?", menu);
+			}
+		});
+		builder.setNegativeButton("Ubah", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+		builder.show();
+	}
+
+	public void showConfirmDialog(Activity activity, String title, CharSequence message, final MenuResto menu) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+		if (title != null)
+			builder.setTitle(title);
+		builder.setMessage(message);
+		builder.setPositiveButton("Ya", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				if (menuController.hapus(menu)) {
+					Toast.makeText(ListMenuActivity.this, "Menu berhasil dihapus!", Toast.LENGTH_LONG).show();
+					startActivity(new Intent(ListMenuActivity.this, ListMenuActivity.class));
+					finish();
+				}
+			}
+		});
+		builder.setNegativeButton("Tidak", null);
+		builder.show();
 	}
 
 	public void tambahMenu(View v) {
@@ -82,7 +131,7 @@ public class ListMenuActivity extends Activity {
 
 			m_adapter = new MenuAdapter(ListMenuActivity.this, R.layout.list_menu_row, m_data);
 			list.setAdapter(m_adapter);
-			
+
 			list.setOnItemClickListener(new OnItemClickListener() {
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
