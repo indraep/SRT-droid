@@ -3,23 +3,21 @@ package com.example.srt_droid.Pesanan;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.srt_droid.R;
-import com.example.srt_droid.Controller.MenuController;
-import com.example.srt_droid.Menu.ListMenuActivity;
-import com.example.srt_droid.Menu.MenuResto;
-import com.example.srt_droid.R.layout;
-import com.example.srt_droid.R.menu;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.srt_droid.R;
+import com.example.srt_droid.Controller.MenuController;
+import com.example.srt_droid.Menu.MenuResto;
 
 public class BuatPesananActivity extends Activity {
 	
@@ -43,6 +41,10 @@ public class BuatPesananActivity extends Activity {
 		m_data = menuController.getListOfMenu();
 		m_adapter = new BuatPesananAdapter(BuatPesananActivity.this, R.layout.list_buat_pesanan_row, m_data);
 		list.setAdapter(m_adapter);
+	}
+	
+	public void buatPesanan(View v) {
+		
 	}
 
 	@Override
@@ -68,7 +70,7 @@ class BuatPesananAdapter extends ArrayAdapter<MenuResto> {
 
 		if (v == null) {
 			LayoutInflater vi = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = vi.inflate(R.layout.list_menu_row, null);
+			v = vi.inflate(R.layout.list_buat_pesanan_row, null);
 		}
 		MenuResto o = items.get(position);
 		if (o != null) {
@@ -80,6 +82,11 @@ class BuatPesananAdapter extends ArrayAdapter<MenuResto> {
 			tt = (TextView)v.findViewById(R.id.harga);
 			if (tt != null) {
 				tt.setText("Harga: " + o.getHarga());
+			}
+			
+			EditText et = (EditText) v.findViewById(R.id.jumlah);
+			if (et != null) {
+				et.setText("0");
 			}
 		}
 		return v;
