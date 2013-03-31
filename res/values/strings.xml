@@ -24,5 +24,8 @@
     <string name="title_activity_ubah_account">UbahAccountActivity</string>
     <string name="title_activity_buat_menu">BuatMenuActivity</string>
     <string name="title_activity_ubah_menu">UbahMenuActivity</string>
+    <string name="title_activity_ubah_profile">UbahProfileActivity</string>
+    <string name="title_activity_lihat_sejarah_penjualan">LihatSejarahPenjualanActivity</string>
+    <string name="title_activity_buat_pesananan">BuatPesanananActivity</string>
 
 </resources>

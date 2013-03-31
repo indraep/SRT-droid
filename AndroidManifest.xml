@@ -69,6 +69,18 @@
             android:name="com.example.srt_droid.Menu.UbahMenuActivity"
             android:label="@string/title_activity_ubah_menu" >
         </activity>
+        <activity
+            android:name="com.example.srt_droid.UbahProfileActivity"
+            android:label="@string/title_activity_ubah_profile" >
+        </activity>
+        <activity
+            android:name="com.example.srt_droid.LihatSejarahPenjualanActivity"
+            android:label="@string/title_activity_lihat_sejarah_penjualan" >
+        </activity>
+        <activity
+            android:name="com.example.srt_droid.Pesanan.BuatPesananActivity"
+            android:label="@string/title_activity_buat_pesananan" >
+        </activity>
     </application>
 
 </manifest>

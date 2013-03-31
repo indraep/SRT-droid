@@ -34,4 +34,10 @@
         android:layout_height="wrap_content"
         android:text="Lihat Daftar Account"
         android:onClick="lihatDaftarAccount" />
+    
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Ubah Profile"
+        android:onClick="ubahProfile" />
 </LinearLayout>

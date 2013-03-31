@@ -20,6 +20,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.srt_droid.Utilities;
 import com.example.srt_droid.Account.User;
 
 
@@ -32,7 +33,7 @@ public class AccountController {
 		String result = "";
 
 		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost("http://192.168.0.101/SRTdroid/ubah_account.php");
+		HttpPost httppost = new HttpPost(Utilities.URL + "ubah_account.php");
 		try {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(6);
 			nameValuePairs.add(new BasicNameValuePair("usernameLama", oldUser.getUsername()));
@@ -73,7 +74,7 @@ public class AccountController {
 		String result = "";
 
 		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost("http://192.168.0.101/SRTdroid/buat_account.php");
+		HttpPost httppost = new HttpPost(Utilities.URL + "buat_account.php");
 		try {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(5);
 			nameValuePairs.add(new BasicNameValuePair("nama", nama));
@@ -113,7 +114,7 @@ public class AccountController {
 		String result = "";
 
 		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost("http://192.168.0.101/SRTdroid/hapus_account.php");
+		HttpPost httppost = new HttpPost(Utilities.URL + "hapus_account.php");
 		try {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 			nameValuePairs.add(new BasicNameValuePair("username", user.getUsername()));
@@ -150,7 +151,7 @@ public class AccountController {
 
 
 		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost("http://192.168.0.101/SRTdroid/login.php");
+		HttpPost httppost = new HttpPost(Utilities.URL + "login.php");
 		try {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
 			nameValuePairs.add(new BasicNameValuePair("username", name));

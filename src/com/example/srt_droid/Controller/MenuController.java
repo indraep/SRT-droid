@@ -22,6 +22,7 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
+import com.example.srt_droid.Utilities;
 import com.example.srt_droid.Account.User;
 import com.example.srt_droid.Menu.MenuResto;
 
@@ -32,7 +33,7 @@ public class MenuController {
 		String result = "";
 
 		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost("http://192.168.0.101/SRTdroid/hapus_menu.php");
+		HttpPost httppost = new HttpPost(Utilities.URL + "hapus_menu.php");
 		try {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
 			nameValuePairs.add(new BasicNameValuePair("id_kategori", "" + menu.getIdKategori()));
@@ -68,7 +69,7 @@ public class MenuController {
 		String result = "";
 
 		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost("http://192.168.0.101/SRTdroid/list_menu.php");
+		HttpPost httppost = new HttpPost(Utilities.URL + "list_menu.php");
 		try {
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();

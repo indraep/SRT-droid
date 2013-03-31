@@ -26,17 +26,19 @@ public class PemilikRestoranActivity extends Activity {
 	}
 
 	public void lihatSejarahPenjualan(View v) {
-		
+		startActivity(new Intent(getApplicationContext(), LihatSejarahPenjualanActivity.class));
 	}
 	
 	public void lihatDaftarMenu(View v) {
-		Intent intent = new Intent(getApplicationContext(), ListMenuActivity.class);
-		startActivity(intent);
+		startActivity(new Intent(getApplicationContext(), ListMenuActivity.class));
 	}
 	
 	public void lihatDaftarAccount(View v) {
-		Intent intent = new Intent(getApplicationContext(), ListAccountActivity.class);
-		startActivity(intent);
+		startActivity(new Intent(getApplicationContext(), ListAccountActivity.class));
+	}
+	
+	public void ubahProile(View v) {
+		startActivity(new Intent(getApplicationContext(), UbahProfileActivity.class));
 	}
 	
 	@Override

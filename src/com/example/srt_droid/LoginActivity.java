@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.srt_droid.Controller.AccountController;
+import com.example.srt_droid.Pesanan.BuatPesananActivity;
 
 public class LoginActivity extends Activity {
 	Spinner roleSpinner;
@@ -26,7 +27,7 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_view);
 
-		//startActivity(new Intent(this, ListAccountActivity.class));
+		startActivity(new Intent(this, BuatPesananActivity.class));
 		
 		username = (EditText) findViewById(R.id.user_name);
 		password = (EditText) findViewById(R.id.password);

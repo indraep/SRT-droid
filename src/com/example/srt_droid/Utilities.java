@@ -7,4 +7,6 @@ public class Utilities {
 	public static User user;
 	public static User oldUser;
 	public static MenuResto oldMenu;
+	
+	public static String URL = "http://192.168.0.102/SRTdroid/";
 }

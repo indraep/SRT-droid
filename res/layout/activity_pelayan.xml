@@ -29,5 +29,11 @@
         android:layout_height="wrap_content"
         android:text="Lihat Pesanan"
         android:onClick="lihatPesanan" />
+    
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Ubah Profile"
+        android:onClick="ubahProfile" />
 
 </LinearLayout>
