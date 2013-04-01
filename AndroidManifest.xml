@@ -70,7 +70,7 @@
             android:label="@string/title_activity_ubah_menu" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.UbahProfileActivity"
+            android:name="com.example.srt_droid.Account.UbahProfileActivity"
             android:label="@string/title_activity_ubah_profile" >
         </activity>
         <activity

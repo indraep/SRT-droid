@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
@@ -48,8 +49,11 @@ public class BuatPesananActivity extends Activity {
 	}
 	
 	public void buatPesanan(View v) {
-		for (int i = 0; i < m_data.size(); i++) {
-			Log.e("DEBUG", "i = " + i + " nama = " + m_data.get(i).getNama());
+		for (int i = 0; i < list.getChildCount(); i++) {
+			View view = list.getChildAt(i);
+			EditText text = (EditText)view.findViewById(R.id.jumlah);
+			String contents = text.getText().toString();
+			Log.e("DEBUG", "i = " + i + " text = " + contents);
 		}
 	}
 

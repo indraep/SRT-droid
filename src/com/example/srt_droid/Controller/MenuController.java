@@ -23,11 +23,90 @@ import org.json.JSONObject;
 import android.util.Log;
 
 import com.example.srt_droid.Utilities;
-import com.example.srt_droid.Account.User;
 import com.example.srt_droid.Menu.KategoriMenu;
 import com.example.srt_droid.Menu.MenuResto;
 
 public class MenuController {
+	
+	public boolean ubah(String namaKategori, String nama, int harga, String deskripsi, String username, MenuResto oldMenu) {
+		InputStream is = null;
+		String result = "";
+		
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost(Utilities.URL + "ubah_menu_kategori_baru.php");
+		try {
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(6);
+			nameValuePairs.add(new BasicNameValuePair("oldId", "" + oldMenu.getId()));
+			nameValuePairs.add(new BasicNameValuePair("namaKategori", "" + namaKategori));
+			nameValuePairs.add(new BasicNameValuePair("nama", nama));
+			nameValuePairs.add(new BasicNameValuePair("harga", "" + harga));
+			nameValuePairs.add(new BasicNameValuePair("deskripsi", deskripsi));
+			nameValuePairs.add(new BasicNameValuePair("username", username));
+			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+		}
+		catch (ClientProtocolException e) {} 
+		catch (IOException e) {}
+		
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			is.close();
+			result=sb.toString();
+		}catch(Exception e){
+			Log.e("log_tag", "Error converting result " + e.toString());
+		}
+		
+		Log.e("Result", " = " + result);
+		
+		return result.charAt(0) == 't' ? true : false;
+	}
+	
+	public boolean ubah(int idKategori, String nama, int harga, String deskripsi, String username, MenuResto oldMenu) {
+		InputStream is = null;
+		String result = "";
+		
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost(Utilities.URL + "ubah_menu.php");
+		try {
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(6);
+			nameValuePairs.add(new BasicNameValuePair("oldId", "" + oldMenu.getId()));
+			nameValuePairs.add(new BasicNameValuePair("idKategori", "" + idKategori));
+			nameValuePairs.add(new BasicNameValuePair("nama", nama));
+			nameValuePairs.add(new BasicNameValuePair("harga", "" + harga));
+			nameValuePairs.add(new BasicNameValuePair("deskripsi", deskripsi));
+			nameValuePairs.add(new BasicNameValuePair("username", username));
+			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+		}
+		catch (ClientProtocolException e) {} 
+		catch (IOException e) {}
+		
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			is.close();
+			result=sb.toString();
+		}catch(Exception e){
+			Log.e("log_tag", "Error converting result " + e.toString());
+		}
+		
+		Log.e("Result", " = " + result);
+		
+		return result.charAt(0) == 't' ? true : false;
+	}
 	
 	public boolean buat(String namaKategori, String nama, int harga, String deskripsi, String username) {
 		InputStream is = null;
