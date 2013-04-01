@@ -37,7 +37,7 @@ public class PemilikRestoranActivity extends Activity {
 		startActivity(new Intent(getApplicationContext(), ListAccountActivity.class));
 	}
 	
-	public void ubahProile(View v) {
+	public void ubahProfile(View v) {
 		startActivity(new Intent(getApplicationContext(), UbahProfileActivity.class));
 	}
 	

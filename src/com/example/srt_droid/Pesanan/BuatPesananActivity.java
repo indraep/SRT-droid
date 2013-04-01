@@ -6,6 +6,8 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -14,6 +16,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import android.widget.Toast;
 
 import com.example.srt_droid.R;
 import com.example.srt_droid.Controller.MenuController;
@@ -44,7 +48,9 @@ public class BuatPesananActivity extends Activity {
 	}
 	
 	public void buatPesanan(View v) {
-		
+		for (int i = 0; i < m_data.size(); i++) {
+			Log.e("DEBUG", "i = " + i + " nama = " + m_data.get(i).getNama());
+		}
 	}
 
 	@Override

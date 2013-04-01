@@ -1,5 +1,7 @@
 package com.example.srt_droid;
 
+import com.example.srt_droid.Pesanan.BuatPesananActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +27,7 @@ public class PelayanActivity extends Activity {
 	}
 	
 	public void buatPesanan(View v) {
-		Toast.makeText(getBaseContext(), "Buat Pesanan", Toast.LENGTH_LONG).show();
+		startActivity(new Intent(getApplicationContext(), BuatPesananActivity.class));
 	}
 	
 	public void lihatPesanan(View v) {

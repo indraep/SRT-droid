@@ -49,6 +49,41 @@
             android:inputType="textMultiLine"
             android:id="@+id/deskripsi" />
         
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Kategori:" />
+        <RadioGroup
+            android:id="@+id/kategoriGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+            <RadioButton
+                android:id="@+id/kategoriLama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih kategori tersedia" />
+            <Spinner
+                android:id="@+id/kategori"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp" />
+            <RadioButton
+                android:id="@+id/buatKategori"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buat kategori baru" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="Nama kategori baru:" />
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:id="@+id/kategoriBaru" />
+        </RadioGroup>
+        
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

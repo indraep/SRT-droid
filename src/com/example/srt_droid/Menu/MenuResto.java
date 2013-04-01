@@ -7,6 +7,7 @@ public class MenuResto {
 	private int harga;
 	private String deskripsi;
 	private String username;
+	private int jumlah = 0;
 	
 	public MenuResto() {
 		
@@ -45,6 +46,9 @@ public class MenuResto {
 		return username;
 	}
 	
+	public int getJumlah() {
+		return jumlah;
+	}
 	
 	public void setIdKategori(int x) {
 		id_kategori = x;
@@ -68,5 +72,9 @@ public class MenuResto {
 	
 	public void setUsername(String x) {
 		username = x;
+	}
+	
+	public void setJumlah(int x) {
+		jumlah = x;
 	}
 }

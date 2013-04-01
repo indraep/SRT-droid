@@ -189,6 +189,7 @@ public class AccountController {
 				ret.setNama(json_data.getString("nama"));
 				ret.setUsername(json_data.getString("username"));
 				ret.setPassword(json_data.getString("password"));
+				ret.setAlamat(json_data.getString("alamat"));
 				ret.setPeran(Integer.parseInt(json_data.getString("peran")));
 			}
 
@@ -207,7 +208,7 @@ public class AccountController {
 		String result = "";
 
 		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost("http://192.168.0.101/SRTdroid/list_account.php");
+		HttpPost httppost = new HttpPost(Utilities.URL + "list_account.php");
 		try {
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();

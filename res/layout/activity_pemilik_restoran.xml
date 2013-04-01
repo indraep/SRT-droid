@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 	android:orientation="vertical"
-    tools:context=".PemilikRestoranActivity" >
+    tools:context=".PemilikRestoranActivity"
+    android:background="@drawable/background" >
 
     <LinearLayout
         android:orientation="vertical"
@@ -20,8 +21,8 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Lihat Sejarah Penjualan"
-        android:onClick="lihatSejarahPenjualan" />
+        android:onClick="lihatSejarahPenjualan"
+        android:text="Lihat Sejarah Penjualan" />
     
     <Button
         android:layout_width="fill_parent"
