@@ -33,6 +33,9 @@ public class LoginActivity extends Activity {
 		password = (EditText) findViewById(R.id.password);
 	}
 
+	private boolean validate() {
+		return username.getText().length() > 0 && password.getText().length() > 0;
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -42,6 +45,11 @@ public class LoginActivity extends Activity {
 	}
 
 	public void login(View v) {
+		if (!validate()) {
+			Toast.makeText(getApplicationContext(), "Silahkan lengkapi username dan password anda!", Toast.LENGTH_LONG).show();
+			return;
+		}
+		
 		new LoginAsync(getApplicationContext()).execute();
 	}
 	

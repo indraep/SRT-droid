@@ -53,7 +53,6 @@ public class BuatPesananActivity extends Activity {
 			View view = list.getChildAt(i);
 			EditText text = (EditText)view.findViewById(R.id.jumlah);
 			String contents = text.getText().toString();
-			Log.e("DEBUG", "i = " + i + " text = " + contents);
 		}
 	}
 

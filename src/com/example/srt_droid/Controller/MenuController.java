@@ -28,7 +28,7 @@ import com.example.srt_droid.Menu.MenuResto;
 
 public class MenuController {
 	
-	public boolean ubah(String namaKategori, String nama, int harga, String deskripsi, String username, MenuResto oldMenu) {
+	public boolean ubah(String namaKategori, String nama, int hargaModal, int harga, String deskripsi, MenuResto oldMenu) {
 		InputStream is = null;
 		String result = "";
 		
@@ -39,9 +39,9 @@ public class MenuController {
 			nameValuePairs.add(new BasicNameValuePair("oldId", "" + oldMenu.getId()));
 			nameValuePairs.add(new BasicNameValuePair("namaKategori", "" + namaKategori));
 			nameValuePairs.add(new BasicNameValuePair("nama", nama));
+			nameValuePairs.add(new BasicNameValuePair("hargaModal", "" + hargaModal));
 			nameValuePairs.add(new BasicNameValuePair("harga", "" + harga));
 			nameValuePairs.add(new BasicNameValuePair("deskripsi", deskripsi));
-			nameValuePairs.add(new BasicNameValuePair("username", username));
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
@@ -63,12 +63,12 @@ public class MenuController {
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
 		
-		Log.e("Result", " = " + result);
+		Log.e("Result", "Result = " + result);
 		
 		return result.charAt(0) == 't' ? true : false;
 	}
 	
-	public boolean ubah(int idKategori, String nama, int harga, String deskripsi, String username, MenuResto oldMenu) {
+	public boolean ubah(int id_kategori, String nama, int hargaModal, int harga, String deskripsi, MenuResto oldMenu) {
 		InputStream is = null;
 		String result = "";
 		
@@ -77,11 +77,11 @@ public class MenuController {
 		try {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(6);
 			nameValuePairs.add(new BasicNameValuePair("oldId", "" + oldMenu.getId()));
-			nameValuePairs.add(new BasicNameValuePair("idKategori", "" + idKategori));
+			nameValuePairs.add(new BasicNameValuePair("idKategori", "" + id_kategori));
 			nameValuePairs.add(new BasicNameValuePair("nama", nama));
+			nameValuePairs.add(new BasicNameValuePair("hargaModal", "" + hargaModal));
 			nameValuePairs.add(new BasicNameValuePair("harga", "" + harga));
 			nameValuePairs.add(new BasicNameValuePair("deskripsi", deskripsi));
-			nameValuePairs.add(new BasicNameValuePair("username", username));
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
@@ -103,12 +103,12 @@ public class MenuController {
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
 		
-		Log.e("Result", " = " + result);
+		Log.e("Result", "Result = " + result);
 		
 		return result.charAt(0) == 't' ? true : false;
 	}
 	
-	public boolean buat(String namaKategori, String nama, int harga, String deskripsi, String username) {
+	public boolean buat(String namaKategori, String nama, int hargaModal, int harga, String deskripsi) {
 		InputStream is = null;
 		String result = "";
 
@@ -118,9 +118,9 @@ public class MenuController {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(5);
 			nameValuePairs.add(new BasicNameValuePair("namaKategori", "" + namaKategori));
 			nameValuePairs.add(new BasicNameValuePair("nama", nama));
+			nameValuePairs.add(new BasicNameValuePair("hargaModal", "" + hargaModal));
 			nameValuePairs.add(new BasicNameValuePair("harga", "" + harga));
 			nameValuePairs.add(new BasicNameValuePair("deskripsi", deskripsi));
-			nameValuePairs.add(new BasicNameValuePair("username", username));
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
@@ -142,12 +142,10 @@ public class MenuController {
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
 		
-		Log.e("Result", " = " + result);
-		
 		return result.charAt(0) == 't' ? true : false;
 	}
 	
-	public boolean buat(int id_kategori, String nama, int harga, String deskripsi, String username) {
+	public boolean buat(int id_kategori, String nama, int hargaModal, int harga, String deskripsi) {
 		InputStream is = null;
 		String result = "";
 
@@ -157,9 +155,9 @@ public class MenuController {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(5);
 			nameValuePairs.add(new BasicNameValuePair("id_kategori", "" + id_kategori));
 			nameValuePairs.add(new BasicNameValuePair("nama", nama));
+			nameValuePairs.add(new BasicNameValuePair("hargaModal", "" + hargaModal));
 			nameValuePairs.add(new BasicNameValuePair("harga", "" + harga));
 			nameValuePairs.add(new BasicNameValuePair("deskripsi", deskripsi));
-			nameValuePairs.add(new BasicNameValuePair("username", username));
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
@@ -253,12 +251,16 @@ public class MenuController {
 			JSONArray jArray = new JSONArray(result);
 			for(int i=0;i<jArray.length();i++){
 				JSONObject json_data = jArray.getJSONObject(i);
+				boolean tersedia = json_data.getString("harga_modal").equals("true") ? true : false;
+				
 				MenuResto menu = new MenuResto(Integer.parseInt(json_data.getString("id_kategori")), 
 						Integer.parseInt(json_data.getString("id")),
 						json_data.getString("nama"),
+						Integer.parseInt(json_data.getString("harga_modal")),
 						Integer.parseInt(json_data.getString("harga")),
+						tersedia,
 						json_data.getString("deskripsi"),
-						json_data.getString("username"));
+						Integer.parseInt(json_data.getString("jumlah_jual")));
 				ret.add(menu);
 			}
 

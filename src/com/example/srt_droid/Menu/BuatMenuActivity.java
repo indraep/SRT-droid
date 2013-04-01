@@ -21,7 +21,7 @@ public class BuatMenuActivity extends Activity {
 	
 	MenuController menuController = new MenuController();
 	
-	EditText nama, harga, deskripsi, kategoriBaru;
+	EditText nama, harga, hargaModal, deskripsi, kategoriBaru;
 	Spinner kategori;
 	RadioGroup kategoriGroup;
 	KategoriMenu [] listKategori;
@@ -38,6 +38,7 @@ public class BuatMenuActivity extends Activity {
 	
 	void init() {		
 		nama = (EditText) findViewById(R.id.nama);
+		hargaModal = (EditText) findViewById(R.id.hargaModal);
 		harga = (EditText) findViewById(R.id.harga);
 		deskripsi = (EditText) findViewById(R.id.deskripsi);
 		kategoriBaru = (EditText) findViewById(R.id.kategoriBaru);
@@ -63,11 +64,27 @@ public class BuatMenuActivity extends Activity {
 		kategori.setAdapter(spinnerArrayAdapter);
 	}
 	
+	private boolean validate() {
+		return nama.getText().length() > 0 && hargaModal.getText().length() > 0 && harga.getText().length() > 0 
+				&& deskripsi.getText().length() > 0;
+	}
+	
 	public void buat(View v) {
+		if (!validate()) {
+			Toast.makeText(getApplicationContext(), "Silahkan lengkapi form di atas!", Toast.LENGTH_LONG).show();
+			return;
+		}
+		
 		// use available category
 		if (kategoriChoice == 1) {
-			if (menuController.buat(listKategori[kategori.getSelectedItemPosition()].getId(), nama.getText().toString(), 
-					Integer.parseInt(harga.getText().toString()), deskripsi.getText().toString(), Utilities.user.getUsername())) {
+			if (listKategori.length == 0) {
+				Toast.makeText(getApplicationContext(), "Harap membuat kategori menu yang baru!", Toast.LENGTH_LONG).show();
+				return;
+			}
+			
+			if (menuController.buat(listKategori[kategori.getSelectedItemPosition()].getId(), nama.getText().toString(),
+					Integer.parseInt(hargaModal.getText().toString()), Integer.parseInt(harga.getText().toString()),
+					deskripsi.getText().toString())) {
 				Toast.makeText(getApplicationContext(), "Menu berhasil dibuat!", Toast.LENGTH_LONG).show();
 				startActivity(new Intent(getApplicationContext(), ListMenuActivity.class));
 				finish();
@@ -85,8 +102,14 @@ public class BuatMenuActivity extends Activity {
 				}
 			}
 			
-			if (menuController.buat(kategoriBaru.getText().toString(), nama.getText().toString(), 
-					Integer.parseInt(harga.getText().toString()), deskripsi.getText().toString(), Utilities.user.getUsername())) {
+			if (kategoriBaru.getText().length() == 0) {
+				Toast.makeText(getApplicationContext(), "Harap isi nama kategori menu yang baru!", Toast.LENGTH_LONG).show();
+				return;
+			}
+			
+			if (menuController.buat(kategoriBaru.getText().toString(), nama.getText().toString(),
+					Integer.parseInt(hargaModal.getText().toString()), Integer.parseInt(harga.getText().toString()),
+					deskripsi.getText().toString())) {
 				Toast.makeText(getApplicationContext(), "Menu berhasil dibuat!", Toast.LENGTH_LONG).show();
 				startActivity(new Intent(getApplicationContext(), ListMenuActivity.class));
 				finish();

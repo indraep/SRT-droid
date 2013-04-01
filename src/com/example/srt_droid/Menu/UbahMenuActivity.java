@@ -21,7 +21,7 @@ public class UbahMenuActivity extends Activity {
 	
 	MenuController menuController = new MenuController();
 	
-	EditText nama, harga, deskripsi, kategoriBaru;
+	EditText nama, harga, hargaModal, deskripsi, kategoriBaru;
 	RadioGroup kategoriGroup;
 	RadioButton kategoriLama, buatKategori;
 	Spinner kategori;
@@ -44,6 +44,9 @@ public class UbahMenuActivity extends Activity {
 		
 		harga = (EditText) findViewById(R.id.harga);
 		harga.setText("" + Utilities.oldMenu.getHarga());
+		
+		hargaModal = (EditText) findViewById(R.id.hargaModal);
+		hargaModal.setText("" + Utilities.oldMenu.getHargaModal());
 		
 		deskripsi = (EditText) findViewById(R.id.deskripsi);
 		deskripsi.setText(Utilities.oldMenu.getDeskripsi());
@@ -83,12 +86,22 @@ public class UbahMenuActivity extends Activity {
 		kategori.setSelection(cnt);
 	}
 	
+	private boolean validate() {
+		return nama.getText().length() > 0 && hargaModal.getText().length() > 0 && harga.getText().length() > 0 
+				&& deskripsi.getText().length() > 0;
+	}
+	
 	public void ubah(View v) {
+		if (!validate()) {
+			Toast.makeText(getApplicationContext(), "Silahkan lengkapi form di atas!", Toast.LENGTH_LONG).show();
+			return;
+		}
+		
 		// use available category
 		if (kategoriChoice == 1) {
-			if (menuController.ubah(listKategori[kategori.getSelectedItemPosition()].getId(), nama.getText().toString(), 
-					Integer.parseInt(harga.getText().toString()), deskripsi.getText().toString(), 
-					Utilities.user.getUsername(), 
+			if (menuController.ubah(listKategori[kategori.getSelectedItemPosition()].getId(), nama.getText().toString(),
+					Integer.parseInt(hargaModal.getText().toString()), Integer.parseInt(harga.getText().toString()),
+					deskripsi.getText().toString(), 
 					Utilities.oldMenu)) {
 				Toast.makeText(getApplicationContext(), "Menu berhasil diubah!", Toast.LENGTH_LONG).show();
 				startActivity(new Intent(getApplicationContext(), ListMenuActivity.class));
@@ -107,9 +120,14 @@ public class UbahMenuActivity extends Activity {
 				}
 			}
 			
-			if (menuController.ubah(kategoriBaru.getText().toString(), nama.getText().toString(), 
-					Integer.parseInt(harga.getText().toString()), deskripsi.getText().toString(), 
-					Utilities.user.getUsername(), 
+			if (kategoriBaru.getText().length() == 0) {
+				Toast.makeText(getApplicationContext(), "Harap isi nama kategori menu yang baru!", Toast.LENGTH_LONG).show();
+				return;
+			}
+			
+			if (menuController.ubah(kategoriBaru.getText().toString(), nama.getText().toString(),
+					Integer.parseInt(hargaModal.getText().toString()), Integer.parseInt(harga.getText().toString()),
+					deskripsi.getText().toString(), 
 					Utilities.oldMenu)) {
 				Toast.makeText(getApplicationContext(), "Menu berhasil diubah!", Toast.LENGTH_LONG).show();
 				startActivity(new Intent(getApplicationContext(), ListMenuActivity.class));

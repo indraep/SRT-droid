@@ -7,6 +7,7 @@ public class User {
 	private String alamat;
 	private int peran;
 	
+	
 	public User() {
 		
 	}

@@ -49,7 +49,7 @@ public class BuatAccountActivity extends Activity {
 		}
 		
 		if (nama.getText().length() == 0 || username.getText().length() == 0 || password.getText().length() == 0
-				|| konfirmasiPassword.getText().length() == 0) {
+				|| konfirmasiPassword.getText().length() == 0 || alamat.getText().length() == 0) {
 			Toast.makeText(this, "Harap lengkapi form!", Toast.LENGTH_LONG).show();
 			return;
 		}
