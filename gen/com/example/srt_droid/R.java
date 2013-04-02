@@ -31,13 +31,14 @@ public final class R {
         public static final int login1=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f09001a;
+        public static final int action_settings=0x7f09001b;
         public static final int alamat=0x7f090005;
         public static final int buatKategori=0x7f090010;
         public static final int deskripsi=0x7f09000c;
+        public static final int detail=0x7f090019;
         public static final int harga=0x7f09000a;
         public static final int hargaModal=0x7f09000b;
-        public static final int jumlah=0x7f090019;
+        public static final int jumlah=0x7f09001a;
         public static final int kasir=0x7f090009;
         public static final int kategori=0x7f09000f;
         public static final int kategoriBaru=0x7f090011;

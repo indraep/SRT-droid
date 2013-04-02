@@ -7,18 +7,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import android.widget.Toast;
 
 import com.example.srt_droid.R;
 import com.example.srt_droid.Controller.MenuController;
@@ -48,11 +46,29 @@ public class BuatPesananActivity extends Activity {
 		list.setAdapter(m_adapter);
 	}
 	
-	public void buatPesanan(View v) {
+	
+	public void detail(View v) {
+		Log.e("e", "count = " + list.getChildCount());
+		
+		for (int i = 0; i < list.getChildCount(); i++) {
+			View view = list.getChildAt(i);
+			Button detail = (Button)view.findViewById(R.id.detail);
+			final int cnt=i;
+			detail.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Log.e("detai", "nama = " + m_data.get(cnt).getNama());
+				}
+			});
+		}
+	}
+	
+	public void buatPesanan(View v) {		
 		for (int i = 0; i < list.getChildCount(); i++) {
 			View view = list.getChildAt(i);
 			EditText text = (EditText)view.findViewById(R.id.jumlah);
 			String contents = text.getText().toString();
+			Log.e("jumlah", "jumlah = " + contents);
 		}
 	}
 

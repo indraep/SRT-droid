@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:padding="15dp"
-    android:baselineAligned="false" >
+    android:padding="15dp" >
 
 
         <LinearLayout
@@ -24,6 +23,13 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="detail"
+            android:onClick="detail"
+            android:id="@+id/detail" />
+        
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
