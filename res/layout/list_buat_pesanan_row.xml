@@ -5,43 +5,37 @@
     android:orientation="horizontal"
     android:padding="15dp" >
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/harga"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="vertical" >
+            android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/harga"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/nama"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/nama"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+    
 
-        <Button
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="4"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/jumlah"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="detail"
-            android:onClick="detail"
-            android:id="@+id/detail" />
-        
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="4"
-            android:orientation="vertical" >
-
-            <EditText
-                android:id="@+id/jumlah"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:gravity="center" />
-        </LinearLayout>
+            android:gravity="center"
+            android:inputType="number" />
+    </LinearLayout>
 
 </LinearLayout>

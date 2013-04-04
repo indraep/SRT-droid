@@ -8,5 +8,5 @@ public class Utilities {
 	public static User oldUser;
 	public static MenuResto oldMenu;
 	
-	public static String URL = "http://192.168.0.100/SRTdroid/";//"http://192.168.0.102/SRTdroid/";
+	public static String URL = "http://10.0.2.2/SRTdroid/";//"http://192.168.0.102/SRTdroid/";
 }

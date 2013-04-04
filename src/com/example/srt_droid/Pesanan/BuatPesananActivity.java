@@ -9,11 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,46 +24,38 @@ import com.example.srt_droid.Controller.MenuController;
 import com.example.srt_droid.Menu.MenuResto;
 
 public class BuatPesananActivity extends Activity {
-	
+
 	ListView list;
 	List<String> model=new ArrayList<String>();
 	ArrayList<MenuResto> m_data = null;
 	BuatPesananAdapter m_adapter;
-	
+
 	MenuController menuController = new MenuController();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_buat_pesananan);
-		
+
 		init();
 	}
-	
+
 	void init() {
 		list = (ListView)findViewById(R.id.listview);
 		m_data = menuController.getListOfMenu();
 		m_adapter = new BuatPesananAdapter(BuatPesananActivity.this, R.layout.list_buat_pesanan_row, m_data);
 		list.setAdapter(m_adapter);
+
+		list.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
+					long arg3) {
+				// TODO Auto-generated method stub
+				Log.e("debug", "pos = " + pos);
+			}
+		});
 	}
-	
-	
-	public void detail(View v) {
-		Log.e("e", "count = " + list.getChildCount());
-		
-		for (int i = 0; i < list.getChildCount(); i++) {
-			View view = list.getChildAt(i);
-			Button detail = (Button)view.findViewById(R.id.detail);
-			final int cnt=i;
-			detail.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					Log.e("detai", "nama = " + m_data.get(cnt).getNama());
-				}
-			});
-		}
-	}
-	
+
 	public void buatPesanan(View v) {		
 		for (int i = 0; i < list.getChildCount(); i++) {
 			View view = list.getChildAt(i);
@@ -82,39 +75,73 @@ public class BuatPesananActivity extends Activity {
 }
 
 class BuatPesananAdapter extends ArrayAdapter<MenuResto> {
+	private LayoutInflater inflater;
 
-	private ArrayList <MenuResto> items;
+	// Untuk trik pakai onTouchListener
+	private final View.OnTouchListener listener = new View.OnTouchListener() {
+		@Override
+		public boolean onTouch(View v, MotionEvent event) {
+			if (v instanceof EditText) {
+				final EditText et = (EditText) v;
+				et.setFocusable(true);
+				et.setFocusableInTouchMode(true);
+			} else {
+				final ViewHolder holder = (ViewHolder) v.getTag();
+				holder.jumlah.setFocusable(false);
+				holder.jumlah.setFocusableInTouchMode(false);
+			}
 
-	public BuatPesananAdapter(Context context, int textViewResourceId, ArrayList<MenuResto> objects) {
+			return false; // false agar tidak diterusin di superclass
+		}
+	};
+
+	public BuatPesananAdapter(Context context, int textViewResourceId,
+			ArrayList<MenuResto> objects) {
 		super(context, textViewResourceId, objects);
-		items = objects;
+
+		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
-	public View getView(int position, View convertView, ViewGroup pattern) {
-		View v = convertView;
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		View view = convertView;
+		ViewHolder holder;
+		if (view == null) {
+			view = inflater.inflate(R.layout.list_buat_pesanan_row, parent, false);
+			holder = new ViewHolder();
+			holder.nama = (TextView) view.findViewById(R.id.nama);
+			holder.harga = (TextView) view.findViewById(R.id.harga);
+			holder.jumlah = (EditText) view.findViewById(R.id.jumlah);
 
-		if (v == null) {
-			LayoutInflater vi = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = vi.inflate(R.layout.list_buat_pesanan_row, null);
+			view.setTag(holder);
+		} else {
+			holder = (ViewHolder) view.getTag();
 		}
-		MenuResto o = items.get(position);
+
+		MenuResto o = getItem(position);
 		if (o != null) {
-			TextView tt = (TextView) v.findViewById(R.id.nama);
-			if (tt != null) {
-				tt.setText("Name: " + o.getNama());
-			}
-
-			tt = (TextView)v.findViewById(R.id.harga);
-			if (tt != null) {
-				tt.setText("Harga: " + o.getHarga());
-			}
-			
-			EditText et = (EditText) v.findViewById(R.id.jumlah);
-			if (et != null) {
-				et.setText("0");
-			}
+			holder.nama.setText("Nama: " + o.getNama());
+			holder.harga.setText("Harga: " + o.getHarga());
+			holder.jumlah.setText("0");
 		}
-		return v;
+
+		// setOnTouchListener untuk EditText dan untuk View semua
+		holder.jumlah.setOnTouchListener(listener);
+		view.setOnTouchListener(listener);
+
+		return view;
+	}
+
+
+
+	static class ViewHolder {
+
+		TextView nama;
+
+		TextView harga;
+
+		EditText jumlah;
+
 	}
 
 }
