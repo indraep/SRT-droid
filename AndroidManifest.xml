@@ -82,6 +82,14 @@
             android:label="@string/title_activity_buat_pesananan"
             android:windowSoftInputMode="adjustPan" >
         </activity>
+        <activity
+            android:name="com.example.srt_droid.Pesanan.ListPesananActivity"
+            android:label="@string/title_activity_list_pesanan" >
+        </activity>
+        <activity
+            android:name="com.example.srt_droid.Pesanan.ListDetailPesananActivity"
+            android:label="@string/title_activity_list_detail_pesanan" >
+        </activity>
     </application>
 
 </manifest>

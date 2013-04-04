@@ -27,5 +27,7 @@
     <string name="title_activity_ubah_profile">UbahProfileActivity</string>
     <string name="title_activity_lihat_sejarah_penjualan">LihatSejarahPenjualanActivity</string>
     <string name="title_activity_buat_pesananan">BuatPesanananActivity</string>
+    <string name="title_activity_list_pesanan">ListPesananActivity</string>
+    <string name="title_activity_list_detail_pesanan">ListDetailPesananActivity</string>
 
 </resources>

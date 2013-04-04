@@ -2,6 +2,7 @@ package com.example.srt_droid;
 
 import com.example.srt_droid.Account.UbahProfileActivity;
 import com.example.srt_droid.Pesanan.BuatPesananActivity;
+import com.example.srt_droid.Pesanan.ListPesananActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -32,7 +33,7 @@ public class PelayanActivity extends Activity {
 	}
 	
 	public void lihatPesanan(View v) {
-		Toast.makeText(getBaseContext(), "Lihat Pesanan", Toast.LENGTH_LONG).show();
+		startActivity(new Intent(getApplicationContext(), ListPesananActivity.class));
 	}
 	
 	public void ubahProfile(View v) {
