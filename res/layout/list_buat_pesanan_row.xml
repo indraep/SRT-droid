@@ -14,12 +14,14 @@
         <TextView
             android:id="@+id/harga"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Nama" />
 
         <TextView
             android:id="@+id/nama"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="harga" />
     </LinearLayout>
 
     

@@ -15,6 +15,17 @@ public class MenuResto {
 		
 	}
 	
+	public MenuResto(MenuResto x) {
+		this.id_kategori = x.id_kategori;
+		this.id = x.id;
+		this.nama = x.nama;
+		this.hargaModal = x.hargaModal;
+		this.harga = x.harga;
+		this.tersedia = x.tersedia;
+		this.deskripsi = x.deskripsi;
+		this.jumlahJual = x.jumlahJual;
+	}
+	
 	public MenuResto(int id_kategori, int id, String nama, int hargaModal, int harga, boolean tersedia, String deskripsi, int jumlahJual) {
 		this.id_kategori = id_kategori;
 		this.id = id;

@@ -18,9 +18,11 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.srt_droid.R;
 import com.example.srt_droid.Controller.MenuController;
+import com.example.srt_droid.Controller.PesananController;
 import com.example.srt_droid.Menu.MenuResto;
 
 public class BuatPesananActivity extends Activity {
@@ -31,7 +33,8 @@ public class BuatPesananActivity extends Activity {
 	BuatPesananAdapter m_adapter;
 
 	MenuController menuController = new MenuController();
-
+	PesananController pesananController = new PesananController();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,11 +60,29 @@ public class BuatPesananActivity extends Activity {
 	}
 
 	public void buatPesanan(View v) {		
+		ArrayList<MenuResto> pesanan = new ArrayList<MenuResto>();
+		
 		for (int i = 0; i < list.getChildCount(); i++) {
 			View view = list.getChildAt(i);
 			EditText text = (EditText)view.findViewById(R.id.jumlah);
 			String contents = text.getText().toString();
-			Log.e("jumlah", "jumlah = " + contents);
+			
+			try {
+				int jumlah = Integer.parseInt(contents);
+				if (jumlah > 0) {
+					MenuResto temp = new MenuResto(m_data.get(i));
+					temp.setJumlah(jumlah);
+					pesanan.add(temp);
+				}
+			}
+			catch(NumberFormatException e) {}
+		}
+		
+		if (pesananController.buat(pesanan)) {
+			Toast.makeText(getApplicationContext(), "Pesanan berhasil dibuat!", Toast.LENGTH_LONG).show();
+		}
+		else {
+			Toast.makeText(getApplicationContext(), "Pesanan gagal dibuat!", Toast.LENGTH_LONG).show();
 		}
 	}
 
@@ -132,16 +153,9 @@ class BuatPesananAdapter extends ArrayAdapter<MenuResto> {
 		return view;
 	}
 
-
-
 	static class ViewHolder {
-
 		TextView nama;
-
 		TextView harga;
-
 		EditText jumlah;
-
 	}
-
 }
