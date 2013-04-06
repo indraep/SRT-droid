@@ -7,63 +7,52 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.example.srt_droid.R;
 import com.example.srt_droid.Utilities;
-import com.example.srt_droid.Controller.MenuController;
 import com.example.srt_droid.Controller.PesananController;
 import com.example.srt_droid.Menu.DeskripsiMenuActivity;
 import com.example.srt_droid.Menu.MenuResto;
 
-public class BuatPesananActivity extends Activity {
+public class UbahPesananActivity extends Activity {
 
+	EditText noMeja;
+	
+	PesananController pesananController = new PesananController();
+	
 	ListView list;
 	List<String> model=new ArrayList<String>();
 	ArrayList<MenuResto> m_data = null;
-	BuatPesananAdapter m_adapter;
-	
-	EditText noMeja;
-
-	MenuController menuController = new MenuController();
-	PesananController pesananController = new PesananController();
+	UbahPesananAdapter m_adapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_buat_pesananan);
-
+		setContentView(R.layout.activity_ubah_pesanan);
+	
 		init();
 	}
-
-	void init() {
+	
+	private void init() {
 		noMeja = (EditText) findViewById(R.id.noMeja);
-		
+		noMeja.setText(Utilities.oldPesanan.getNoMeja() + "");
+	
 		list = (ListView)findViewById(R.id.listview);
-		m_data = menuController.getListOfMenu();
-		m_adapter = new BuatPesananAdapter(BuatPesananActivity.this, R.layout.list_buat_pesanan_row, m_data);
+		m_data = pesananController.getListOfDetailPesanan(Utilities.oldPesanan);
+		m_adapter = new UbahPesananAdapter(UbahPesananActivity.this, R.layout.list_buat_pesanan_row, m_data);
 		list.setAdapter(m_adapter);
-
-		list.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
-					long arg3) {
-				// TODO Auto-generated method stub
-				Log.e("debug", "pos = " + pos);
-			}
-		});
 		
 		list.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -74,8 +63,8 @@ public class BuatPesananActivity extends Activity {
 			}
 		});
 	}
-
-	public void buatPesanan(View v) {
+	
+	public void ubahPesanan(View v) {
 		if (noMeja.getText().length() == 0) {
 			Toast.makeText(getApplicationContext(), "Masukkan nomor meja!", Toast.LENGTH_LONG).show();
 			return;
@@ -100,27 +89,27 @@ public class BuatPesananActivity extends Activity {
 		}
 		
 		if (pesanan.size() == 0) {
-			Toast.makeText(getApplicationContext(), "Pastikan pesanan yang anda buat tidak kosong!", Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(), "Pastikan pesanan yang anda ubah tidak kosong!", Toast.LENGTH_LONG).show();
 		}
-		else if (pesananController.buat(pesanan, noMeja.getText().toString())) {
-			Toast.makeText(getApplicationContext(), "Pesanan berhasil dibuat!", Toast.LENGTH_LONG).show();
+		else if (pesananController.ubah(pesanan, noMeja.getText().toString(), Utilities.oldPesanan)) {
+			Toast.makeText(getApplicationContext(), "Pesanan berhasil diubah!", Toast.LENGTH_LONG).show();
 			startActivity(new Intent(getApplicationContext(), ListPesananActivity.class));
 		}
 		else {
-			Toast.makeText(getApplicationContext(), "Pesanan gagal dibuat!", Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(), "Pesanan gagal diubah!", Toast.LENGTH_LONG).show();
 		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.buat_pesananan, menu);
+		getMenuInflater().inflate(R.menu.ubah_pesanan, menu);
 		return true;
 	}
 
 }
 
-class BuatPesananAdapter extends ArrayAdapter<MenuResto> {
+class UbahPesananAdapter extends ArrayAdapter<MenuResto> {
 	private LayoutInflater inflater;
 
 	// Untuk trik pakai onTouchListener
@@ -141,7 +130,7 @@ class BuatPesananAdapter extends ArrayAdapter<MenuResto> {
 		}
 	};
 
-	public BuatPesananAdapter(Context context, int textViewResourceId,
+	public UbahPesananAdapter(Context context, int textViewResourceId,
 			ArrayList<MenuResto> objects) {
 		super(context, textViewResourceId, objects);
 
@@ -168,7 +157,7 @@ class BuatPesananAdapter extends ArrayAdapter<MenuResto> {
 		if (o != null) {
 			holder.nama.setText("Nama: " + o.getNama());
 			holder.harga.setText("Harga: " + o.getHarga());
-			holder.jumlah.setText("0");
+			holder.jumlah.setText(o.getJumlah() + "");
 		}
 
 		// setOnTouchListener untuk EditText dan untuk View semua

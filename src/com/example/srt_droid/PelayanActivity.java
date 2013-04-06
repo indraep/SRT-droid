@@ -39,6 +39,10 @@ public class PelayanActivity extends Activity {
 	public void ubahProfile(View v) {
 		startActivity(new Intent(getApplicationContext(), UbahProfileActivity.class));
 	}
+	
+	public void keluar(View v) {
+		startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

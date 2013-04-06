@@ -42,6 +42,10 @@ public class PemilikRestoranActivity extends Activity {
 		startActivity(new Intent(getApplicationContext(), UbahProfileActivity.class));
 	}
 	
+	public void keluar(View v) {
+		startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

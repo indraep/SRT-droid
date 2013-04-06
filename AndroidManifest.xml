@@ -90,6 +90,14 @@
             android:name="com.example.srt_droid.Pesanan.ListDetailPesananActivity"
             android:label="@string/title_activity_list_detail_pesanan" >
         </activity>
+        <activity
+            android:name="com.example.srt_droid.Pesanan.UbahPesananActivity"
+            android:label="@string/title_activity_ubah_pesanan" >
+        </activity>
+        <activity
+            android:name="com.example.srt_droid.Menu.DeskripsiMenuActivity"
+            android:label="@string/title_activity_deskripsi_menu" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,0 +1,40 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        android:orientation="vertical"
+        android:padding="5dp"
+        tools:context=".DeskripsiMenuActivity" >
+
+        <TextView
+            android:id="@+id/namaMenu"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:textColor="#FFF"
+            android:textSize="26dp" />
+
+        <TextView
+            android:id="@+id/deskripsiMenu"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textColor="#FFF" />
+
+        <TextView
+            android:id="@+id/hargaMenu"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="right"
+            android:textColor="#FFF"
+            android:textSize="26dp" />
+    </LinearLayout>
+
+</ScrollView>

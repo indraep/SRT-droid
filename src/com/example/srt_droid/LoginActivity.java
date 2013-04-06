@@ -110,4 +110,7 @@ public class LoginActivity extends Activity {
 		}
 
 	}
+	
+	public void onBackPressed() {
+	}
 }

@@ -1,6 +1,7 @@
 package com.example.srt_droid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -25,6 +26,10 @@ public class KasirActivity extends Activity {
 	
 	public void lihatPesanan(View v) {
 		
+	}
+	
+	public void keluar(View v) {
+		startActivity(new Intent(getApplicationContext(), LoginActivity.class));
 	}
 	
 	@Override

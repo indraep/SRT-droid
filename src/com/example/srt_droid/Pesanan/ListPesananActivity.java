@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,18 +17,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.srt_droid.R;
 import com.example.srt_droid.Utilities;
+import com.example.srt_droid.Account.ListAccountActivity;
+import com.example.srt_droid.Account.User;
 import com.example.srt_droid.Controller.PesananController;
 
 public class ListPesananActivity extends Activity {
 
 	PesananController pesananController = new PesananController();
-	String prevDate = "";
 	
 	ListView list;
 	List<String> model=new ArrayList<String>();
@@ -54,6 +60,55 @@ public class ListPesananActivity extends Activity {
 			}
 		});
 		
+		list.setOnItemLongClickListener(new OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+					int pos, long arg3) {
+				showDialog(ListPesananActivity.this, "", "Apa yang ingin anda lakukan terhadap pesanan ini?", m_data.get(pos));
+				return true;
+			}
+		});
+		
+	}
+	
+	public void showDialog(Activity activity, String title, CharSequence message, final Pesanan pesanan) {
+	    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+	    if (title != null)
+	        builder.setTitle(title);
+	    builder.setMessage(message);
+	    builder.setPositiveButton("Hapus", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				showConfirmDialog(ListPesananActivity.this, "", "Apakah anda yakin?", pesanan);
+			}
+		});
+	    builder.setNegativeButton("Ubah", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Utilities.oldPesanan = pesanan;
+				startActivity(new Intent(getApplicationContext(), UbahPesananActivity.class));
+			}
+		});
+	    builder.show();
+	}
+	
+	public void showConfirmDialog(Activity activity, String title, CharSequence message, final Pesanan pesanan) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+	    if (title != null)
+	        builder.setTitle(title);
+	    builder.setMessage(message);
+	    builder.setPositiveButton("Ya", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				if (pesananController.hapus(pesanan)) {
+					Toast.makeText(getApplicationContext(), "Pesanan berhasil dihapus!", Toast.LENGTH_LONG).show();
+					startActivity(new Intent(getApplicationContext(), ListPesananActivity.class));
+					finish();
+				}
+			}
+		});
+	    builder.setNegativeButton("Tidak", null);
+	    builder.show();
 	}
 	
 	@Override
@@ -62,43 +117,44 @@ public class ListPesananActivity extends Activity {
 		getMenuInflater().inflate(R.menu.list_pesanan, menu);
 		return true;
 	}
+	
+	class PesananAdapter extends ArrayAdapter<Pesanan> {
 
-}
+		private ArrayList <Pesanan> items;
 
-class PesananAdapter extends ArrayAdapter<Pesanan> {
-
-	private ArrayList <Pesanan> items;
-
-	public PesananAdapter(Context context, int textViewResourceId, ArrayList<Pesanan> objects) {
-		super(context, textViewResourceId, objects);
-		items = objects;
-	}
-
-	public View getView(int position, View convertView, ViewGroup pattern) {
-		View v = convertView;
-
-		if (v == null) {
-			LayoutInflater vi = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = vi.inflate(R.layout.list_pesanan_row, null);
+		public PesananAdapter(Context context, int textViewResourceId, ArrayList<Pesanan> objects) {
+			super(context, textViewResourceId, objects);
+			items = objects;
 		}
-		Pesanan o = items.get(position);
-		if (o != null) {
-			TextView tt = (TextView) v.findViewById(R.id.noMeja);
-			if (tt != null) {
-				tt.setText("No Meja: " + o.getNoMeja());
-			}
 
-			tt = (TextView)v.findViewById(R.id.tanggal);
-			if (tt != null) {
-				tt.setText("Tanggal: " + o.getTanggal());
+		public View getView(int position, View convertView, ViewGroup pattern) {
+			View v = convertView;
+
+			if (v == null) {
+				LayoutInflater vi = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				v = vi.inflate(R.layout.list_pesanan_row, null);
 			}
+			Pesanan o = items.get(position);
 			
-			tt = (TextView)v.findViewById(R.id.totalHarga);
-			if (tt != null) {
-				tt.setText("Total Biaya: " + o.getTotalHarga());
-			}
-		}
-		return v;
-	}
+			
+			if (o != null) {
+				TextView tt = (TextView) v.findViewById(R.id.noMeja);
+				if (tt != null) {
+					tt.setText("No Meja: " + o.getNoMeja());
+				}
 
+				tt = (TextView)v.findViewById(R.id.tanggal);
+				if (tt != null) {
+					tt.setText("Tanggal: " + o.getTanggal());
+				}
+				
+				tt = (TextView)v.findViewById(R.id.totalHarga);
+				if (tt != null) {
+					tt.setText("Total Biaya: " + o.getTotalHarga());
+				}
+			}
+			return v;
+		}
+
+	}
 }

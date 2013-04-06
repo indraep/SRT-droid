@@ -28,6 +28,7 @@ import com.example.srt_droid.Menu.MenuResto;
 
 public class MenuController {
 	
+	
 	public boolean ubah(String namaKategori, String nama, int hargaModal, int harga, String deskripsi, MenuResto oldMenu) {
 		InputStream is = null;
 		String result = "";
@@ -251,7 +252,7 @@ public class MenuController {
 			JSONArray jArray = new JSONArray(result);
 			for(int i=0;i<jArray.length();i++){
 				JSONObject json_data = jArray.getJSONObject(i);
-				boolean tersedia = json_data.getString("harga_modal").equals("true") ? true : false;
+				boolean tersedia = json_data.getString("tersedia").equals("true") ? true : false;
 				
 				MenuResto menu = new MenuResto(Integer.parseInt(json_data.getString("id_kategori")), 
 						Integer.parseInt(json_data.getString("id")),

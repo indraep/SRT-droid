@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -54,6 +55,15 @@ public class ListMenuActivity extends Activity {
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
 				showDialog(ListMenuActivity.this, "", "Apa yang ingin anda lakukan terhadap menu ini?", m_data.get(pos));
 				return true;
+			}
+		});
+		
+		list.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
+					long arg3) {
+				Utilities.menu = m_data.get(pos);
+				startActivity(new Intent(getApplicationContext(), DeskripsiMenuActivity.class));
 			}
 		});
 		new ListMenuAsync(getApplicationContext()).execute();		

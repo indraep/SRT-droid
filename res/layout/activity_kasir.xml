@@ -25,5 +25,11 @@
         android:layout_height="wrap_content"
         android:onClick="lihatPesanan"
         android:text="Lihat Pesanan" />
+    
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Keluar"
+        android:onClick="keluar" />
 
 </LinearLayout>
