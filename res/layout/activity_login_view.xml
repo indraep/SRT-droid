@@ -7,7 +7,8 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="username:" />
+        android:text="username:"
+    	android:textColor="#FFFFFF" />
 
     <EditText
         android:id="@+id/user_name"
@@ -17,7 +18,8 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="password:" />
+        android:text="password:"
+    	android:textColor="#FFFFFF" />
 
     <EditText
         android:id="@+id/password"
@@ -27,8 +29,8 @@
 
     <Button
         android:layout_width="fill_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_margin="30dp"
-        android:background="@drawable/login"
+        android:text="Masuk"
         android:onClick="login" />
 </LinearLayout>

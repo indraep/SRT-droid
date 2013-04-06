@@ -1,7 +1,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollView1"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="@drawable/background" >
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -15,7 +16,9 @@
             <TextView 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ubah Account" />
+                android:text="Ubah Account"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 		</LinearLayout>
         
         <TextView
@@ -30,7 +33,8 @@
         <TextView
             android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-            android:text="Username:" />
+            android:text="Username:"
+            android:textColor="#FFFFFF" />
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -39,7 +43,8 @@
         <TextView
             android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-            android:text="Password Baru:" />
+            android:text="Password Baru:"
+            android:textColor="#FFFFFF" />
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -49,7 +54,8 @@
         <TextView
             android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-            android:text="Konfirmasi Password:" />
+            android:text="Konfirmasi Password:"
+            android:textColor="#FFFFFF" />
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -58,7 +64,8 @@
         <TextView
             android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-            android:text="Alamat:" />
+            android:text="Alamat:"
+            android:textColor="#FFFFFF" />
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -68,27 +75,32 @@
         <TextView
             android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-            android:text="Peran:" />
+            android:text="Peran:"
+            android:textColor="#FFFFFF" />
         <CheckBox
             android:id="@+id/pemilikRestoran"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pemilik Restoran" />
+            android:text="Pemilik Restoran"
+            android:textColor="#FFFFFF" />
 		<CheckBox
             android:id="@+id/pelayan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pelayan" />
+            android:text="Pelayan"
+            android:textColor="#FFFFFF" />
 		<CheckBox
             android:id="@+id/koki"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Koki" />
+            android:text="Koki"
+            android:textColor="#FFFFFF" />
         <CheckBox
             android:id="@+id/kasir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kasir" />
+            android:text="Kasir"
+            android:textColor="#FFFFFF" />
         
         <LinearLayout
             android:layout_width="fill_parent"

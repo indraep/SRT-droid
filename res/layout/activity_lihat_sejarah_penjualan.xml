@@ -1,17 +1,32 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollView1"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="@drawable/background" >
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical" >
+	    
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center" >
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lihat Sejarah Penjualan"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+		</LinearLayout>
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="Tanggal Awal:" />
+            android:text="Tanggal Awal:"
+            android:textColor="#FFFFFF" />
         
         <LinearLayout
             android:layout_width="fill_parent"
@@ -28,7 +43,8 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="Tanggal Akhir:" />
+            android:text="Tanggal Akhir:"
+            android:textColor="#FFFFFF" />
         
         <LinearLayout
             android:layout_width="fill_parent"

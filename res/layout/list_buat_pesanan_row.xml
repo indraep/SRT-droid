@@ -15,13 +15,15 @@
             android:id="@+id/harga"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Nama" />
+            android:text="Nama"
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/nama"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="harga" />
+            android:text="harga"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
     

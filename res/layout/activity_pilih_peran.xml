@@ -3,12 +3,28 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".PilihPeranActivity" >
 
+    <LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center"
+	    android:orientation="vertical" >
+	
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Pilih Peran"
+	        android:textColor="#FFFFFF"
+	        android:textStyle="bold" />
+	</LinearLayout>
+    
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Masuk sebagai:" />
+        android:text="Masuk sebagai:" 
+        android:textColor="#FFFFFF" />
     
     <Spinner 
         android:layout_width="fill_parent"

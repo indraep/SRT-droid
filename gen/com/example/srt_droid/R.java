@@ -29,6 +29,7 @@ public final class R {
         public static final int lihat_sejarah_penjualan=0x7f020002;
         public static final int login=0x7f020003;
         public static final int login1=0x7f020004;
+        public static final int user=0x7f020005;
     }
     public static final class id {
         public static final int action_settings=0x7f09001d;

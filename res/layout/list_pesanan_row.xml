@@ -8,21 +8,19 @@
     <TextView
         android:id="@+id/noMeja"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF" />
     
     <TextView
         android:id="@+id/tanggal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF" />
 	
     <TextView
         android:id="@+id/totalHarga"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-    
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:background="#0FF420" />
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF" />
     
 </LinearLayout>

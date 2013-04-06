@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -92,6 +93,7 @@ public class BuatPesananActivity extends Activity {
 		}
 		else if (pesananController.buat(pesanan, noMeja.getText().toString())) {
 			Toast.makeText(getApplicationContext(), "Pesanan berhasil dibuat!", Toast.LENGTH_LONG).show();
+			startActivity(new Intent(getApplicationContext(), ListPesananActivity.class));
 		}
 		else {
 			Toast.makeText(getApplicationContext(), "Pesanan gagal dibuat!", Toast.LENGTH_LONG).show();

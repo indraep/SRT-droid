@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -24,6 +25,7 @@ import com.example.srt_droid.Controller.PesananController;
 public class ListPesananActivity extends Activity {
 
 	PesananController pesananController = new PesananController();
+	String prevDate = "";
 	
 	ListView list;
 	List<String> model=new ArrayList<String>();
@@ -51,6 +53,7 @@ public class ListPesananActivity extends Activity {
 				startActivity(new Intent(getApplicationContext(), ListDetailPesananActivity.class));
 			}
 		});
+		
 	}
 	
 	@Override
