@@ -6,7 +6,7 @@
 		mysql_connect("127.0.0.1","root","");
 		mysql_select_db("SRT-droid");
 		
-		$query  = "SELECT A.id, A.no_meja, A.tanggal, sum(C.harga * B.jumlah) as total_harga
+		$query  = "SELECT A.id, A.status, A.no_meja, A.tanggal, sum(C.harga * B.jumlah) as total_harga
 					FROM pesanan AS A, detail_pesanan AS B, menu AS C
 					WHERE A.id = B.id_pesanan
 					AND C.id = B.id_menu
