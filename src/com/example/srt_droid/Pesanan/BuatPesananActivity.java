@@ -31,6 +31,8 @@ public class BuatPesananActivity extends Activity {
 	List<String> model=new ArrayList<String>();
 	ArrayList<MenuResto> m_data = null;
 	BuatPesananAdapter m_adapter;
+	
+	EditText noMeja;
 
 	MenuController menuController = new MenuController();
 	PesananController pesananController = new PesananController();
@@ -44,6 +46,8 @@ public class BuatPesananActivity extends Activity {
 	}
 
 	void init() {
+		noMeja = (EditText) findViewById(R.id.noMeja);
+		
 		list = (ListView)findViewById(R.id.listview);
 		m_data = menuController.getListOfMenu();
 		m_adapter = new BuatPesananAdapter(BuatPesananActivity.this, R.layout.list_buat_pesanan_row, m_data);
@@ -59,7 +63,12 @@ public class BuatPesananActivity extends Activity {
 		});
 	}
 
-	public void buatPesanan(View v) {		
+	public void buatPesanan(View v) {
+		if (noMeja.getText().length() == 0) {
+			Toast.makeText(getApplicationContext(), "Masukkan nomor meja!", Toast.LENGTH_LONG).show();
+			return;
+		}
+		
 		ArrayList<MenuResto> pesanan = new ArrayList<MenuResto>();
 		
 		for (int i = 0; i < list.getChildCount(); i++) {
@@ -78,7 +87,10 @@ public class BuatPesananActivity extends Activity {
 			catch(NumberFormatException e) {}
 		}
 		
-		if (pesananController.buat(pesanan)) {
+		if (pesanan.size() == 0) {
+			Toast.makeText(getApplicationContext(), "Pastikan pesanan yang anda buat tidak kosong!", Toast.LENGTH_LONG).show();
+		}
+		else if (pesananController.buat(pesanan, noMeja.getText().toString())) {
 			Toast.makeText(getApplicationContext(), "Pesanan berhasil dibuat!", Toast.LENGTH_LONG).show();
 		}
 		else {

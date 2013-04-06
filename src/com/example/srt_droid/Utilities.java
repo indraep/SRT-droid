@@ -10,5 +10,6 @@ public class Utilities {
 	public static MenuResto oldMenu;
 	public static Pesanan pesanan;
 	
-	public static String URL = "http://10.0.2.2/SRTdroid/";//"http://192.168.0.102/SRTdroid/";
+	//public static String URL = "http://10.0.2.2/SRTdroid/";
+	public static String URL = "http://10.5.135.87/SRTdroid/";
 }

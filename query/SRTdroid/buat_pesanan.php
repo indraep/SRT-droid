@@ -13,10 +13,12 @@
 	if ($_POST) {
 		mysql_connect("127.0.0.1","root","");
 		mysql_select_db("SRT-droid");
+
+		$no_meja = $_POST["noMeja"];
 		
-		$q = mysql_query("insert into PESANAN(status, no_meja, tanggal, username_koki, username_kasir) values (0, 1, CURDATE(), NULL, NULL)");
+		$q = mysql_query("insert into PESANAN(status, no_meja, tanggal, username_koki, username_kasir) values (0, $no_meja, CURDATE(), NULL, NULL)");
 		
-		$q = mysql_query("select max(id) as id from PESANAN where no_meja=1 AND tanggal=CURDATE()");
+		$q = mysql_query("select max(id) as id from PESANAN where no_meja=$no_meja AND tanggal=CURDATE()");
 		$row = mysql_fetch_array($q);
 		$id_pesanan = $row["id"];
 

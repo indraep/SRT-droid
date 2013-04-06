@@ -23,13 +23,14 @@ import org.json.JSONObject;
 import android.util.Log;
 
 import com.example.srt_droid.Utilities;
-import com.example.srt_droid.Account.User;
 import com.example.srt_droid.Menu.MenuResto;
 import com.example.srt_droid.Pesanan.DetailPesanan;
 import com.example.srt_droid.Pesanan.Pesanan;
 
 public class PesananController {
-	public boolean buat(ArrayList <MenuResto> pesanan) {
+	public boolean buat(ArrayList <MenuResto> pesanan, String noMeja) {
+		Log.e("debug", "no meja = " + noMeja);
+		
 		InputStream is = null;
 		String result = "";
 		
@@ -48,7 +49,8 @@ public class PesananController {
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(Utilities.URL + "buat_pesanan.php");
 		try {
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+			nameValuePairs.add(new BasicNameValuePair("noMeja", noMeja));
 			nameValuePairs.add(new BasicNameValuePair("str_query", "" + strQuery));
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = httpclient.execute(httppost);

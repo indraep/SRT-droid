@@ -178,7 +178,7 @@ public class AccountController {
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
 
-
+		Log.e("debug", "result = " + result);
 		User ret = new User();
 
 		//parse json data
