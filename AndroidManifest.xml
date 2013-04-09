@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.srt_droid"
+    package="com.srt_droid"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -10,6 +10,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" >
     </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -17,7 +18,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.srt_droid.LoginActivity"
+            android:name="com.srt_droid.LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,76 +27,76 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.srt_droid.PilihPeranActivity"
+            android:name="com.srt_droid.PilihPeranActivity"
             android:label="@string/title_activity_pilih_peran" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.PemilikRestoranActivity"
+            android:name="com.srt_droid.PemilikRestoranActivity"
             android:label="@string/title_activity_pemilik_restoran" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.PelayanActivity"
+            android:name="com.srt_droid.PelayanActivity"
             android:label="@string/title_activity_pelayan" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.KokiActivity"
+            android:name="com.srt_droid.KokiActivity"
             android:label="@string/title_activity_koki" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.KasirActivity"
+            android:name="com.srt_droid.KasirActivity"
             android:label="@string/title_activity_kasir" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.Account.ListAccountActivity"
+            android:name="com.srt_droid.Account.ListAccountActivity"
             android:label="@string/title_activity_list_account" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.Menu.ListMenuActivity"
+            android:name="com.srt_droid.Menu.ListMenuActivity"
             android:label="@string/title_activity_list_menu" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.Account.BuatAccountActivity"
+            android:name="com.srt_droid.Account.BuatAccountActivity"
             android:label="@string/title_activity_buat_account" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.Account.UbahAccountActivity"
+            android:name="com.srt_droid.Account.UbahAccountActivity"
             android:label="@string/title_activity_ubah_account" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.Menu.BuatMenuActivity"
+            android:name="com.srt_droid.Menu.BuatMenuActivity"
             android:label="@string/title_activity_buat_menu" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.Menu.UbahMenuActivity"
+            android:name="com.srt_droid.Menu.UbahMenuActivity"
             android:label="@string/title_activity_ubah_menu" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.Account.UbahProfileActivity"
+            android:name="com.srt_droid.Account.UbahProfileActivity"
             android:label="@string/title_activity_ubah_profile" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.LihatSejarahPenjualanActivity"
+            android:name="com.srt_droid.LihatSejarahPenjualanActivity"
             android:label="@string/title_activity_lihat_sejarah_penjualan" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.Pesanan.BuatPesananActivity"
+            android:name="com.srt_droid.Pesanan.BuatPesananActivity"
             android:label="@string/title_activity_buat_pesananan"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.Pesanan.ListPesananActivity"
+            android:name="com.srt_droid.Pesanan.ListPesananActivity"
             android:label="@string/title_activity_list_pesanan" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.Pesanan.ListDetailPesananActivity"
+            android:name="com.srt_droid.Pesanan.ListDetailPesananActivity"
             android:label="@string/title_activity_list_detail_pesanan" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.Pesanan.UbahPesananActivity"
+            android:name="com.srt_droid.Pesanan.UbahPesananActivity"
             android:label="@string/title_activity_ubah_pesanan" >
         </activity>
         <activity
-            android:name="com.example.srt_droid.Menu.DeskripsiMenuActivity"
+            android:name="com.srt_droid.Menu.DeskripsiMenuActivity"
             android:label="@string/title_activity_deskripsi_menu" >
         </activity>
     </application>
