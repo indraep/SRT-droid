@@ -33,7 +33,11 @@ public class LoginActivity extends Activity {
 		username = (EditText) findViewById(R.id.user_name);
 		password = (EditText) findViewById(R.id.password);
 	}
-
+	
+	/**
+	 * Mengecek apakah form isian username dan password telah terisi.
+	 * @return true jika ada isinya.
+	 */
 	private boolean validate() {
 		return username.getText().length() > 0 && password.getText().length() > 0;
 	}
@@ -44,7 +48,14 @@ public class LoginActivity extends Activity {
 		getMenuInflater().inflate(R.menu.login_view, menu);
 		return true;
 	}
-
+	
+	/**
+	 * Fungsi login yang dipanggil ketika tombol  masuk ditekan
+	 * Jika form terisi, akan melakukan login.
+	 * Jika username dan password sesuai, ke pilihan peran jika banyak peran, ke peran masing-masing
+	 * jika cuma satu peran. 
+	 * @param v 
+	 */
 	public void login(View v) {
 		if (!validate()) {
 			Toast.makeText(getApplicationContext(), "Silahkan lengkapi username dan password anda!", Toast.LENGTH_LONG).show();
@@ -54,6 +65,11 @@ public class LoginActivity extends Activity {
 		new LoginAsync(getApplicationContext()).execute();
 	}
 	
+	/**
+	 * Class untuk melakukan verifikasi login ke server secara async.
+	 * @author indraep
+	 *
+	 */
 	public class LoginAsync extends AsyncTask<String, Integer, String> {
 		private ProgressDialog Dialog = new ProgressDialog(LoginActivity.this);
 		private Context mContext;
@@ -79,7 +95,7 @@ public class LoginActivity extends Activity {
 		@Override
 		protected void onProgressUpdate(Integer... values) {
 			Dialog.dismiss();
-			
+			/*
 			if (Utilities.user.getPeran() == 1) {
 				Intent intent = new Intent(LoginActivity.this, PemilikRestoranActivity.class);
 				startActivity(intent);
@@ -96,7 +112,7 @@ public class LoginActivity extends Activity {
 				Intent intent = new Intent(LoginActivity.this, KasirActivity.class);
 				startActivity(intent);
 			}
-			else if (Utilities.user.getPeran() > 0) {
+			else*/ if (Utilities.user.getPeran() > 0) {
 				Intent intent = new Intent(LoginActivity.this, PilihPeranActivity.class);
 				startActivity(intent);
 			}

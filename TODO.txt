@@ -1,3 +1,4 @@
 Issue:
 - Jika koneksi tidak ada, pesannya adalah Tidak ada username atau password. Sebaiknya diganti menjadi tidak ada koneksi.
 - Tidak ada feedback jika aplikasi tidak menerima data karena jaringan mati. :(
+- 

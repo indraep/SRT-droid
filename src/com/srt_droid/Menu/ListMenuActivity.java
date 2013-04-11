@@ -110,6 +110,7 @@ public class ListMenuActivity extends Activity {
 	}
 
 	public void tambahMenu(View v) {
+		Log.d("jalur", "mulai buat menu");
 		startActivity(new Intent(this, BuatMenuActivity.class));
 	}
 

@@ -64,6 +64,12 @@ public class BuatMenuActivity extends Activity {
 		kategori.setAdapter(spinnerArrayAdapter);
 	}
 	
+	/**
+	 * Memvalidasi apakah form terisi lengkap.
+	 * 
+	 * @return true jika form terisi lengkap, false jika tidak
+	 * 
+	 */
 	private boolean validate() {
 		return nama.getText().length() > 0 && hargaModal.getText().length() > 0 && harga.getText().length() > 0 
 				&& deskripsi.getText().length() > 0;
