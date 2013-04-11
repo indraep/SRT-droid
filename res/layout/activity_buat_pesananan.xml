@@ -30,18 +30,19 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="number" />
-    </LinearLayout>
 
-    <ListView
-        android:id="@+id/listview"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:descendantFocusability="beforeDescendants" />
+    </LinearLayout>
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="buatPesanan"
         android:text="Buat Pesanan" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="beforeDescendants" />
 
 </LinearLayout>

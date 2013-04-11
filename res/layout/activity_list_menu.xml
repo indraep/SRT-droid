@@ -18,21 +18,21 @@
                android:textStyle="bold"
                android:textColor="#FFFFFF" />
 	</LinearLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dip"
+        android:layout_marginLeft="30dip"
+        android:layout_marginRight="30dip"
+        android:layout_marginTop="10dip"
+        android:onClick="tambahMenu"
+        android:text="Tambah Menu" />
     
     <ListView 
         android:id="@+id/listview"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF" />
-    
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Tambah Menu"
-        android:layout_marginLeft="30dip"
-        android:layout_marginRight="30dip"
-        android:layout_marginTop="10dip"
-        android:layout_marginBottom="10dip"
-        android:onClick="tambahMenu" />
     
 </LinearLayout>
