@@ -13,5 +13,6 @@ public class Utilities {
 	public static Pesanan oldPesanan;
 	
 	//public static String URL = "http://10.0.2.2/SRTdroid/";
-	public static String URL = "http://10.5.135.87/SRTdroid/";
+	//public static String URL = "http://10.5.135.87/SRTdroid/";
+	public static String URL = "http://192.168.0.100/SRTdroid/";
 }

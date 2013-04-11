@@ -18,13 +18,7 @@
                android:textStyle="bold"
                android:textColor="#FFFFFF" />
 	</LinearLayout>
-    
-    <ListView 
-        android:id="@+id/listview"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#FFFFFF" />
-    
+	
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -34,5 +28,11 @@
         android:layout_marginTop="10dip"
         android:layout_marginBottom="10dip"
         android:onClick="tambahMenu" />
+    
+    <ListView 
+        android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF" />
     
 </LinearLayout>
