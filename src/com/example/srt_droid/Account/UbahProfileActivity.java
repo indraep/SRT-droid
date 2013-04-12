@@ -3,6 +3,7 @@ package com.example.srt_droid.Account;
 import com.example.srt_droid.R;
 import com.example.srt_droid.Utilities;
 import com.example.srt_droid.Controller.AccountController;
+import com.example.srt_droid.LoginActivity;
 import com.example.srt_droid.R.id;
 import com.example.srt_droid.R.layout;
 import com.example.srt_droid.R.menu;
@@ -64,7 +65,8 @@ public class UbahProfileActivity extends Activity {
 		}
 		else {
 			Toast.makeText(this, "Profile berhasil diubah!", Toast.LENGTH_LONG).show();
-			startActivity(new Intent(this, ListAccountActivity.class));
+			Utilities.user = new User(nama.getText().toString(), username.getText().toString(), passwordBaru.getText().length() == 0 ? Utilities.user.getPassword() : passwordBaru.getText().toString(), 
+					alamat.getText().toString(), Utilities.user.getPeran());
 			finish();
 		}
 	}

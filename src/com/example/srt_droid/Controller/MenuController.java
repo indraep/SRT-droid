@@ -64,8 +64,6 @@ public class MenuController {
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
 		
-		Log.e("Result", "Result = " + result);
-		
 		return result.charAt(0) == 't' ? true : false;
 	}
 	
@@ -103,8 +101,6 @@ public class MenuController {
 		}catch(Exception e){
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
-		
-		Log.e("Result", "Result = " + result);
 		
 		return result.charAt(0) == 't' ? true : false;
 	}
@@ -213,7 +209,7 @@ public class MenuController {
 		}catch(Exception e){
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
-		Log.e("Result", "result = " + result);
+
 		return result.charAt(0) == 't' ? true : false;
 	}
 	

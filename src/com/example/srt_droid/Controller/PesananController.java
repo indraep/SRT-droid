@@ -97,7 +97,6 @@ public class PesananController {
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
 
-		Log.e("ubah pesanan", "result = " + result);
 		//parse json data
 		try{
 			JSONArray jArray = new JSONArray(result);
@@ -257,7 +256,6 @@ public class PesananController {
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
 
-		Log.e("debug", "result = " + result);
 		//parse json data
 		try{
 			JSONArray jArray = new JSONArray(result);
@@ -308,7 +306,6 @@ public class PesananController {
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
 
-		Log.e("debug", "result = " + result);
 		//parse json data
 		try{
 			JSONArray jArray = new JSONArray(result);

@@ -62,7 +62,7 @@ public class AccountController {
 		}catch(Exception e){
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
-
+		
 		if (result.charAt(0) == '0')
 			return "Username baru yang anda masukkan sudah terpakai sebelumnya!";
 		
@@ -178,7 +178,6 @@ public class AccountController {
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
 
-		Log.e("debug", "result = " + result);
 		User ret = new User();
 
 		//parse json data

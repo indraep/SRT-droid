@@ -3,7 +3,7 @@
 	// this is the data coming from the Android app
 
 	if ($_POST) {
-		$usernameLama = $_POST["username"];
+		$usernameLama = $_POST["usernameLama"];
 	
 		$nama = $_POST['nama'];
 		$username = $_POST["username"];

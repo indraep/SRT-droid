@@ -34,6 +34,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        android:cacheColorHint="#000000" />
+        android:cacheColorHint="@android:color/transparent" />
     
 </LinearLayout>
