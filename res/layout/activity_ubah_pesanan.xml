@@ -7,10 +7,11 @@
     tools:context=".ListMenuActivity" >
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Ubah Pesanan"
         android:textColor="#FFFFFF"
+        android:gravity="center_horizontal"
         android:textStyle="bold" />
 
     <Button
