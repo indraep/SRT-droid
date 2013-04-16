@@ -30,18 +30,22 @@ public class PelayanActivity extends Activity {
 	
 	public void buatPesanan(View v) {
 		startActivity(new Intent(getApplicationContext(), BuatPesananActivity.class));
+		finish();
 	}
 	
 	public void lihatPesanan(View v) {
 		startActivity(new Intent(getApplicationContext(), ListPesananActivity.class));
+		finish();
 	}
 	
 	public void ubahProfile(View v) {
 		startActivity(new Intent(getApplicationContext(), UbahProfileActivity.class));
+		//finish();
 	}
 	
 	public void keluar(View v) {
 		startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+		finish();
 	}
 
 	@Override

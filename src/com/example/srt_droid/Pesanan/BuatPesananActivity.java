@@ -8,10 +8,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -21,6 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.srt_droid.PelayanActivity;
 import com.example.srt_droid.R;
 import com.example.srt_droid.Utilities;
 import com.example.srt_droid.Controller.MenuController;
@@ -71,6 +74,7 @@ public class BuatPesananActivity extends Activity {
 					long arg3) {
 				Utilities.menu = m_data.get(pos);
 				startActivity(new Intent(getApplicationContext(), DeskripsiMenuActivity.class));
+				//finish();
 			}
 		});
 	}
@@ -105,6 +109,7 @@ public class BuatPesananActivity extends Activity {
 		else if (pesananController.buat(pesanan, noMeja.getText().toString())) {
 			Toast.makeText(getApplicationContext(), "Pesanan berhasil dibuat!", Toast.LENGTH_LONG).show();
 			startActivity(new Intent(getApplicationContext(), ListPesananActivity.class));
+			finish();
 		}
 		else {
 			Toast.makeText(getApplicationContext(), "Pesanan gagal dibuat!", Toast.LENGTH_LONG).show();
@@ -116,6 +121,11 @@ public class BuatPesananActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.buat_pesananan, menu);
 		return true;
+	}
+	
+	public void onBackPressed() {
+		startActivity(new Intent(getApplicationContext(), PelayanActivity.class));
+		finish();
 	}
 
 }
@@ -159,6 +169,15 @@ class BuatPesananAdapter extends ArrayAdapter<MenuResto> {
 			holder.harga = (TextView) view.findViewById(R.id.harga);
 			holder.jumlah = (EditText) view.findViewById(R.id.jumlah);
 
+			holder.jumlah.setOnKeyListener(new OnKeyListener() {
+				@Override
+				public boolean onKey(View v, int keyCode, KeyEvent event) {
+					// TODO Auto-generated method stub
+					
+					return false;
+				}
+			});
+			
 			view.setTag(holder);
 		} else {
 			holder = (ViewHolder) view.getTag();
@@ -166,6 +185,7 @@ class BuatPesananAdapter extends ArrayAdapter<MenuResto> {
 
 		MenuResto o = getItem(position);
 		if (o != null) {
+			Log.e("debug", "nama = " + o.getNama());
 			holder.nama.setText("Nama: " + o.getNama());
 			holder.harga.setText("Harga: " + o.getHarga());
 			holder.jumlah.setText("0");

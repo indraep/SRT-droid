@@ -28,22 +28,27 @@ public class PemilikRestoranActivity extends Activity {
 
 	public void lihatSejarahPenjualan(View v) {
 		startActivity(new Intent(getApplicationContext(), LihatSejarahPenjualanActivity.class));
+		finish();
 	}
 	
 	public void lihatDaftarMenu(View v) {
 		startActivity(new Intent(getApplicationContext(), ListMenuActivity.class));
+		finish();
 	}
 	
 	public void lihatDaftarAccount(View v) {
 		startActivity(new Intent(getApplicationContext(), ListAccountActivity.class));
+		finish();
 	}
 	
 	public void ubahProfile(View v) {
 		startActivity(new Intent(getApplicationContext(), UbahProfileActivity.class));
+		//finish();
 	}
 	
 	public void keluar(View v) {
 		startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+		finish();
 	}
 	
 	@Override

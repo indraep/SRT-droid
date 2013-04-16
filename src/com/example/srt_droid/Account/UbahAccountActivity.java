@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.srt_droid.PemilikRestoranActivity;
 import com.example.srt_droid.R;
 import com.example.srt_droid.Utilities;
 import com.example.srt_droid.Controller.AccountController;
@@ -29,6 +30,11 @@ public class UbahAccountActivity extends Activity {
 		setContentView(R.layout.activity_ubah_account);
 	
 		init();
+	}
+	
+	public void onBackPressed() {
+		startActivity(new Intent(getApplicationContext(), ListAccountActivity.class));
+		finish();
 	}
 	
 	void init() {

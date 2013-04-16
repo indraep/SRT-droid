@@ -13,6 +13,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.srt_droid.PemilikRestoranActivity;
 import com.example.srt_droid.R;
 import com.example.srt_droid.Utilities;
 import com.example.srt_droid.Controller.MenuController;
@@ -34,6 +35,11 @@ public class BuatMenuActivity extends Activity {
 		setContentView(R.layout.activity_buat_menu);
 		
 		init();
+	}
+	
+	public void onBackPressed() {
+		startActivity(new Intent(getApplicationContext(), ListMenuActivity.class));
+		finish();
 	}
 	
 	void init() {		

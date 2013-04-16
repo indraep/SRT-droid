@@ -23,6 +23,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.srt_droid.PelayanActivity;
+import com.example.srt_droid.PemilikRestoranActivity;
 import com.example.srt_droid.R;
 import com.example.srt_droid.Utilities;
 import com.example.srt_droid.Controller.AccountController;
@@ -44,6 +46,11 @@ public class ListAccountActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list_account);
 		init();
+	}
+	
+	public void onBackPressed() {
+		startActivity(new Intent(getApplicationContext(), PemilikRestoranActivity.class));
+		finish();
 	}
 
 	void init() {
@@ -73,6 +80,7 @@ public class ListAccountActivity extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				Utilities.oldUser = user;
 				startActivity(new Intent(ListAccountActivity.this, UbahAccountActivity.class));
+				finish();
 			}
 		});
 	    builder.show();
@@ -99,6 +107,7 @@ public class ListAccountActivity extends Activity {
 
 	public void tambahAccount(View v) {
 		startActivity(new Intent(this, BuatAccountActivity.class));
+		finish();
 	}
 
 	@Override

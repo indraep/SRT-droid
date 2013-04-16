@@ -1,11 +1,13 @@
 package com.example.srt_droid.Menu;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.TextView;
 
+import com.example.srt_droid.PemilikRestoranActivity;
 import com.example.srt_droid.R;
 import com.example.srt_droid.Utilities;
 
@@ -20,6 +22,12 @@ public class DeskripsiMenuActivity extends Activity {
 	
 		init();
 	}
+	
+	/*public void onBackPressed() {
+		startActivity(new Intent(getApplicationContext(), ListMenuActivity.class));
+		finish();
+	}*/
+	
 	
 	private void init() {
 		nama = (TextView) findViewById(R.id.namaMenu);

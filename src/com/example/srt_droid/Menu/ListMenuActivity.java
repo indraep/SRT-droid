@@ -25,6 +25,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.srt_droid.PelayanActivity;
+import com.example.srt_droid.PemilikRestoranActivity;
 import com.example.srt_droid.R;
 import com.example.srt_droid.Utilities;
 import com.example.srt_droid.Controller.MenuController;
@@ -47,6 +49,11 @@ public class ListMenuActivity extends Activity {
 		setContentView(R.layout.activity_list_menu);
 		init();
 	}
+	
+	public void onBackPressed() {
+		startActivity(new Intent(getApplicationContext(), PemilikRestoranActivity.class));
+		finish();
+	}
 
 	void init() {
 		list = (ListView)findViewById(R.id.listview);
@@ -64,6 +71,7 @@ public class ListMenuActivity extends Activity {
 					long arg3) {
 				Utilities.menu = m_data.get(pos);
 				startActivity(new Intent(getApplicationContext(), DeskripsiMenuActivity.class));
+				//finish();
 			}
 		});
 		new ListMenuAsync(getApplicationContext()).execute();		
@@ -85,6 +93,7 @@ public class ListMenuActivity extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				Utilities.oldMenu = menu;
 				startActivity(new Intent(ListMenuActivity.this, UbahMenuActivity.class));
+				finish();
 			}
 		});
 		builder.show();
@@ -111,6 +120,7 @@ public class ListMenuActivity extends Activity {
 
 	public void tambahMenu(View v) {
 		startActivity(new Intent(this, BuatMenuActivity.class));
+		finish();
 	}
 
 	@Override

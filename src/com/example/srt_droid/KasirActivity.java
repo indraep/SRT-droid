@@ -30,6 +30,7 @@ public class KasirActivity extends Activity {
 	
 	public void keluar(View v) {
 		startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+		finish();
 	}
 	
 	@Override

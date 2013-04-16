@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
+import com.example.srt_droid.PelayanActivity;
+import com.example.srt_droid.PemilikRestoranActivity;
 import com.example.srt_droid.R;
 import com.example.srt_droid.Utilities;
 import com.example.srt_droid.Controller.PesananController;
@@ -45,6 +47,11 @@ public class UbahPesananActivity extends Activity {
 		init();
 	}
 	
+	public void onBackPressed() {
+		startActivity(new Intent(getApplicationContext(), ListPesananActivity.class));
+		finish();
+	}
+	
 	private void init() {
 		noMeja = (EditText) findViewById(R.id.noMeja);
 		noMeja.setText(Utilities.oldPesanan.getNoMeja() + "");
@@ -60,6 +67,7 @@ public class UbahPesananActivity extends Activity {
 					long arg3) {
 				Utilities.menu = m_data.get(pos);
 				startActivity(new Intent(getApplicationContext(), DeskripsiMenuActivity.class));
+				//finish();
 			}
 		});
 	}
@@ -76,6 +84,8 @@ public class UbahPesananActivity extends Activity {
 			View view = list.getChildAt(i);
 			EditText text = (EditText)view.findViewById(R.id.jumlah);
 			String contents = text.getText().toString();
+			
+			//Log.e("");
 			
 			try {
 				int jumlah = Integer.parseInt(contents);
@@ -94,6 +104,7 @@ public class UbahPesananActivity extends Activity {
 		else if (pesananController.ubah(pesanan, noMeja.getText().toString(), Utilities.oldPesanan)) {
 			Toast.makeText(getApplicationContext(), "Pesanan berhasil diubah!", Toast.LENGTH_LONG).show();
 			startActivity(new Intent(getApplicationContext(), ListPesananActivity.class));
+			finish();
 		}
 		else {
 			Toast.makeText(getApplicationContext(), "Pesanan gagal diubah!", Toast.LENGTH_LONG).show();

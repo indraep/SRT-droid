@@ -1,5 +1,6 @@
 package com.example.srt_droid.Account;
 
+import com.example.srt_droid.PemilikRestoranActivity;
 import com.example.srt_droid.R;
 import com.example.srt_droid.Utilities;
 import com.example.srt_droid.Controller.AccountController;
@@ -29,6 +30,8 @@ public class UbahProfileActivity extends Activity {
 		
 		init();
 	}
+	
+	
 	
 	void init() {
 		nama = (EditText) findViewById(R.id.nama);

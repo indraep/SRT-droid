@@ -1,5 +1,6 @@
 package com.example.srt_droid.Account;
 
+import com.example.srt_droid.PemilikRestoranActivity;
 import com.example.srt_droid.R;
 import com.example.srt_droid.Controller.AccountController;
 import com.example.srt_droid.R.id;
@@ -29,6 +30,11 @@ public class BuatAccountActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_buat_account);
 		init();
+	}
+	
+	public void onBackPressed() {
+		startActivity(new Intent(getApplicationContext(), ListAccountActivity.class));
+		finish();
 	}
 	
 	void init() {

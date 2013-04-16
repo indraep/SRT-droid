@@ -3,6 +3,8 @@ package com.example.srt_droid.Pesanan;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.srt_droid.PelayanActivity;
+import com.example.srt_droid.PemilikRestoranActivity;
 import com.example.srt_droid.R;
 import com.example.srt_droid.Utilities;
 import com.example.srt_droid.Controller.PesananController;
@@ -12,6 +14,7 @@ import com.example.srt_droid.R.menu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -50,7 +53,11 @@ public class ListDetailPesananActivity extends Activity {
 		getMenuInflater().inflate(R.menu.list_detail_pesanan, menu);
 		return true;
 	}
-
+	
+	public void onBackPressed() {
+		startActivity(new Intent(getApplicationContext(), ListPesananActivity.class));
+		finish();
+	}
 }
 
 class DetailPesananAdapter extends ArrayAdapter<DetailPesanan> {

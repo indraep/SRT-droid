@@ -23,6 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.srt_droid.PelayanActivity;
 import com.example.srt_droid.R;
 import com.example.srt_droid.Utilities;
 import com.example.srt_droid.Account.ListAccountActivity;
@@ -57,6 +58,7 @@ public class ListPesananActivity extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
 				Utilities.pesanan = m_data.get(pos);
 				startActivity(new Intent(getApplicationContext(), ListDetailPesananActivity.class));
+				finish();
 			}
 		});
 		
@@ -87,6 +89,7 @@ public class ListPesananActivity extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				Utilities.oldPesanan = pesanan;
 				startActivity(new Intent(getApplicationContext(), UbahPesananActivity.class));
+				finish();
 			}
 		});
 	    builder.show();
@@ -116,6 +119,11 @@ public class ListPesananActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.list_pesanan, menu);
 		return true;
+	}
+	
+	public void onBackPressed() {
+		startActivity(new Intent(getApplicationContext(), PelayanActivity.class));
+		finish();
 	}
 	
 	class PesananAdapter extends ArrayAdapter<Pesanan> {
