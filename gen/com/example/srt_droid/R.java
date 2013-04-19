@@ -32,20 +32,22 @@ public final class R {
         public static final int user=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f090021;
+        public static final int action_settings=0x7f090026;
         public static final int alamat=0x7f090005;
         public static final int buatKategori=0x7f090010;
         public static final int deskripsi=0x7f09000c;
         public static final int deskripsiMenu=0x7f090015;
+        public static final int hapus=0x7f09001f;
         public static final int harga=0x7f09000a;
         public static final int hargaMenu=0x7f090016;
         public static final int hargaModal=0x7f09000b;
-        public static final int jumlah=0x7f09001e;
+        public static final int jumlah=0x7f090023;
         public static final int kasir=0x7f090009;
         public static final int kategori=0x7f09000f;
         public static final int kategoriBaru=0x7f090011;
         public static final int kategoriGroup=0x7f09000d;
         public static final int kategoriLama=0x7f09000e;
+        public static final int kirim=0x7f090020;
         public static final int koki=0x7f090008;
         public static final int konfirmasiPassword=0x7f090004;
         public static final int listMenuLayout=0x7f090013;
@@ -59,13 +61,16 @@ public final class R {
         public static final int pemilikRestoran=0x7f090006;
         public static final int peran=0x7f09001c;
         public static final int scrollView1=0x7f090000;
-        public static final int tanggal=0x7f09001f;
+        public static final int tanggal=0x7f090024;
         public static final int tanggalAkhir=0x7f090019;
         public static final int tanggalAwal=0x7f090018;
+        public static final int tidak=0x7f090022;
         public static final int title=0x7f090017;
-        public static final int totalHarga=0x7f090020;
+        public static final int totalHarga=0x7f090025;
+        public static final int ubah=0x7f09001e;
         public static final int user_name=0x7f09001b;
         public static final int username=0x7f090002;
+        public static final int ya=0x7f090021;
     }
     public static final class layout {
         public static final int activity_buat_account=0x7f030000;
@@ -87,11 +92,13 @@ public final class R {
         public static final int activity_ubah_menu=0x7f030010;
         public static final int activity_ubah_pesanan=0x7f030011;
         public static final int activity_ubah_profile=0x7f030012;
-        public static final int list_account_row=0x7f030013;
-        public static final int list_buat_pesanan_row=0x7f030014;
-        public static final int list_detail_pesanan_row=0x7f030015;
-        public static final int list_menu_row=0x7f030016;
-        public static final int list_pesanan_row=0x7f030017;
+        public static final int dialog_ubah_hapus_kirim=0x7f030013;
+        public static final int dialog_ya_tidak=0x7f030014;
+        public static final int list_account_row=0x7f030015;
+        public static final int list_buat_pesanan_row=0x7f030016;
+        public static final int list_detail_pesanan_row=0x7f030017;
+        public static final int list_menu_row=0x7f030018;
+        public static final int list_pesanan_row=0x7f030019;
     }
     public static final class menu {
         public static final int buat_account=0x7f080000;

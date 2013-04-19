@@ -2,6 +2,7 @@ package com.example.srt_droid.Menu;
 
 public class MenuResto {
 	private int id_kategori;
+	private String namaKategori;
 	private int id;
 	private String nama;
 	private int hargaModal;
@@ -26,8 +27,9 @@ public class MenuResto {
 		this.jumlahJual = x.jumlahJual;
 	}
 	
-	public MenuResto(int id_kategori, int id, String nama, int hargaModal, int harga, boolean tersedia, String deskripsi, int jumlahJual) {
+	public MenuResto(int id_kategori, String namaKategori, int id, String nama, int hargaModal, int harga, boolean tersedia, String deskripsi, int jumlahJual) {
 		this.id_kategori = id_kategori;
+		this.namaKategori = namaKategori;
 		this.id = id;
 		this.nama = nama;
 		this.hargaModal = hargaModal;
@@ -39,6 +41,10 @@ public class MenuResto {
 	
 	public int getIdKategori() {
 		return id_kategori;
+	}
+	
+	public String getNamaKategori() {
+		return namaKategori;
 	}
 	
 	public int getId() {

@@ -53,8 +53,17 @@ public class BuatPesananActivity extends Activity {
 			jumlah.add(0);
 
 		LinearLayout listMenuLayout = (LinearLayout)findViewById(R.id.listMenuLayout);
-
+		
+		String prevKategori = "";
+		
 		for (int i = 0; i < m_data.size(); i++) {
+			if (!prevKategori.equals(m_data.get(i).getNamaKategori())) {
+				prevKategori = "" + m_data.get(i).getNamaKategori();
+				TextView tv = new TextView(this);
+				tv.setText(prevKategori);
+				listMenuLayout.addView(tv);
+			}
+			
 			final int pos = i;
 			
 			LayoutInflater inflater;

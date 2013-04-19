@@ -4,21 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,8 +25,6 @@ import android.widget.Toast;
 import com.example.srt_droid.PelayanActivity;
 import com.example.srt_droid.R;
 import com.example.srt_droid.Utilities;
-import com.example.srt_droid.Account.ListAccountActivity;
-import com.example.srt_droid.Account.User;
 import com.example.srt_droid.Controller.PesananController;
 
 public class ListPesananActivity extends Activity {
@@ -66,52 +63,76 @@ public class ListPesananActivity extends Activity {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 					int pos, long arg3) {
-				showDialog(ListPesananActivity.this, "", "Apa yang ingin anda lakukan terhadap pesanan ini?", m_data.get(pos));
+				//showDialog(ListPesananActivity.this, "", "Apa yang ingin anda lakukan terhadap pesanan ini?", m_data.get(pos));
+				showDialog(m_data.get(pos));
 				return true;
 			}
 		});
 		
 	}
 	
-	public void showDialog(Activity activity, String title, CharSequence message, final Pesanan pesanan) {
-	    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-	    if (title != null)
-	        builder.setTitle(title);
-	    builder.setMessage(message);
-	    builder.setPositiveButton("Hapus", new OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				showConfirmDialog(ListPesananActivity.this, "", "Apakah anda yakin?", pesanan);
-			}
-		});
-	    builder.setNegativeButton("Ubah", new OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
+	private void showDialog(final Pesanan pesanan) {
+		final Dialog dialog = new Dialog(this);
+		dialog.setContentView(R.layout.dialog_ubah_hapus_kirim);
+		dialog.setTitle("Pilihan anda?");
+		
+		Button ubah = (Button) dialog.findViewById(R.id.ubah);
+		ubah.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
 				Utilities.oldPesanan = pesanan;
 				startActivity(new Intent(getApplicationContext(), UbahPesananActivity.class));
+				dialog.cancel();
 				finish();
 			}
 		});
-	    builder.show();
+		
+		Button hapus = (Button) dialog.findViewById(R.id.hapus);
+		hapus.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				showConfirmDialog(pesanan);
+				dialog.cancel();				
+			}
+		});
+		
+		
+		Button kirim = (Button) dialog.findViewById(R.id.kirim);
+		kirim.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				dialog.cancel();
+			}
+		});
+		
+		dialog.show();
 	}
 	
-	public void showConfirmDialog(Activity activity, String title, CharSequence message, final Pesanan pesanan) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-	    if (title != null)
-	        builder.setTitle(title);
-	    builder.setMessage(message);
-	    builder.setPositiveButton("Ya", new OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
+	private void showConfirmDialog(final Pesanan pesanan) {
+		final Dialog dialog = new Dialog(this);
+		dialog.setContentView(R.layout.dialog_ya_tidak);
+		dialog.setTitle("Apakah anda yakin?");
+	
+		Button ya = (Button) dialog.findViewById(R.id.ya);
+		ya.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
 				if (pesananController.hapus(pesanan)) {
 					Toast.makeText(getApplicationContext(), "Pesanan berhasil dihapus!", Toast.LENGTH_LONG).show();
 					startActivity(new Intent(getApplicationContext(), ListPesananActivity.class));
 					finish();
 				}
+				else {
+					Toast.makeText(getApplicationContext(), "Gagal menghapus pesanan!", Toast.LENGTH_LONG).show();
+				}
+				dialog.cancel();
 			}
 		});
-	    builder.setNegativeButton("Tidak", null);
-	    builder.show();
+		
+		Button tidak = (Button) dialog.findViewById(R.id.tidak);
+		tidak.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				dialog.cancel();
+			}
+		});
+		
+		dialog.show();
 	}
 	
 	@Override
@@ -127,7 +148,6 @@ public class ListPesananActivity extends Activity {
 	}
 	
 	class PesananAdapter extends ArrayAdapter<Pesanan> {
-
 		private ArrayList <Pesanan> items;
 
 		public PesananAdapter(Context context, int textViewResourceId, ArrayList<Pesanan> objects) {

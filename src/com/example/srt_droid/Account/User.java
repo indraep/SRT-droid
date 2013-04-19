@@ -52,7 +52,7 @@ public class User {
 		int id = 0;
 		for (int i = 0; i < 4; i++) {
 			if ((peran & (1 << i)) > 0)
-				ret[id] = allPeran[id++];
+				ret[id++] = allPeran[i];
 		}
 		
 		return ret;

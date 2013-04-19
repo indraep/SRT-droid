@@ -58,5 +58,8 @@ public class PilihPeranActivity extends Activity {
 		getMenuInflater().inflate(R.menu.pilih_peran, menu);
 		return true;
 	}
+	
+	public void onBackPressed() {
+	}
 
 }

@@ -250,7 +250,8 @@ public class MenuController {
 				JSONObject json_data = jArray.getJSONObject(i);
 				boolean tersedia = json_data.getString("tersedia").equals("true") ? true : false;
 				
-				MenuResto menu = new MenuResto(Integer.parseInt(json_data.getString("id_kategori")), 
+				MenuResto menu = new MenuResto(Integer.parseInt(json_data.getString("id_kategori")),
+						json_data.getString("nama_kategori"),
 						Integer.parseInt(json_data.getString("id")),
 						json_data.getString("nama"),
 						Integer.parseInt(json_data.getString("harga_modal")),

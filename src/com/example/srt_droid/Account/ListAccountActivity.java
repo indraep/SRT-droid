@@ -94,6 +94,10 @@ public class ListAccountActivity extends Activity {
 	    builder.setPositiveButton("Ya", new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
+				if (Utilities.user.getUsername().equals(user.getUsername())) {
+					Toast.makeText(ListAccountActivity.this, "Tidak dapat menghapus account sendiri!", Toast.LENGTH_LONG).show();
+					return;
+				}
 				if (accountController.hapus(user)) {
 					Toast.makeText(ListAccountActivity.this, "Account berhasil dihapus!", Toast.LENGTH_LONG).show();
 					startActivity(new Intent(ListAccountActivity.this, ListAccountActivity.class));
@@ -174,12 +178,23 @@ class UserAdapter extends ArrayAdapter<User> {
 		if (o != null) {
 			TextView tt = (TextView) v.findViewById(R.id.nama);
 			if (tt != null) {
-				tt.setText("Name: " + o.getNama());
+				tt.setText("Nama: " + o.getNama());
 			}
 
 			tt = (TextView)v.findViewById(R.id.username);
 			if (tt != null) {
 				tt.setText("Username: " + o.getUsername());
+			}
+			
+			tt = (TextView)v.findViewById(R.id.peran);
+			if (tt != null) {
+				String [] peran = o.getListOfPeran();
+				String temp = peran[0];
+				for (int i = 1; i < peran.length; i++) {
+					temp += "\n" + peran[i];
+				}
+				
+				tt.setText(temp);
 			}
 		}
 		return v;

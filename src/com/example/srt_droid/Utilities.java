@@ -12,8 +12,8 @@ public class Utilities {
 	public static Pesanan pesanan;
 	public static Pesanan oldPesanan;
 	
-	public static String URL = "http://10.0.2.2/SRTdroid/";
-	//public static String URL = "http://192.168.43.254/SRTdroid/";
+	//public static String URL = "http://10.0.2.2/SRTdroid/";
+	public static String URL = "http://192.168.43.254/SRTdroid/";
 	//public static String URL = "http://192.168.0.101/SRTdroid/";
 	//public static String URL = "http://10.5.135.173/SRTdroid/";
 }
