@@ -18,64 +18,77 @@
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         <activity
             android:name="com.example.srt_droid.LoginActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.example.srt_droid.PilihPeranActivity"
-            android:label="@string/title_activity_pilih_peran" >
+            android:label="@string/title_activity_pilih_peran"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.PemilikRestoranActivity"
-            android:label="@string/title_activity_pemilik_restoran" >
+            android:label="@string/title_activity_pemilik_restoran"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.PelayanActivity"
-            android:label="@string/title_activity_pelayan" >
+            android:label="@string/title_activity_pelayan"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.KokiActivity"
-            android:label="@string/title_activity_koki" >
+            android:label="@string/title_activity_koki"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.KasirActivity"
-            android:label="@string/title_activity_kasir" >
+            android:label="@string/title_activity_kasir"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.Account.ListAccountActivity"
-            android:label="@string/title_activity_list_account" >
+            android:label="@string/title_activity_list_account"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.Menu.ListMenuActivity"
-            android:label="@string/title_activity_list_menu" >
+            android:label="@string/title_activity_list_menu"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.Account.BuatAccountActivity"
-            android:label="@string/title_activity_buat_account" >
+            android:label="@string/title_activity_buat_account"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.Account.UbahAccountActivity"
-            android:label="@string/title_activity_ubah_account" >
+            android:label="@string/title_activity_ubah_account"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.Menu.BuatMenuActivity"
-            android:label="@string/title_activity_buat_menu" >
+            android:label="@string/title_activity_buat_menu"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.Menu.UbahMenuActivity"
-            android:label="@string/title_activity_ubah_menu" >
+            android:label="@string/title_activity_ubah_menu"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.Account.UbahProfileActivity"
-            android:label="@string/title_activity_ubah_profile" >
+            android:label="@string/title_activity_ubah_profile"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.LihatSejarahPenjualanActivity"
-            android:label="@string/title_activity_lihat_sejarah_penjualan" >
+            android:label="@string/title_activity_lihat_sejarah_penjualan"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.Pesanan.BuatPesananActivity"
@@ -84,19 +97,23 @@
         </activity>
         <activity
             android:name="com.example.srt_droid.Pesanan.ListPesananActivity"
-            android:label="@string/title_activity_list_pesanan" >
+            android:label="@string/title_activity_list_pesanan"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.Pesanan.ListDetailPesananActivity"
-            android:label="@string/title_activity_list_detail_pesanan" >
+            android:label="@string/title_activity_list_detail_pesanan"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.Pesanan.UbahPesananActivity"
-            android:label="@string/title_activity_ubah_pesanan" >
+            android:label="@string/title_activity_ubah_pesanan"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.example.srt_droid.Menu.DeskripsiMenuActivity"
-            android:label="@string/title_activity_deskripsi_menu" >
+            android:label="@string/title_activity_deskripsi_menu"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
     </application>
 

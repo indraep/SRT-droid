@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -48,10 +50,7 @@ public class UbahPesananActivity extends Activity {
 		init();
 	}
 
-	public void onBackPressed() {
-		startActivity(new Intent(getApplicationContext(), ListPesananActivity.class));
-		finish();
-	}
+	
 
 	private void init() {
 		noMeja = (EditText) findViewById(R.id.noMeja);
@@ -155,6 +154,25 @@ public class UbahPesananActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.ubah_pesanan, menu);
 		return true;
+	}
+	
+	public void onBackPressed() {
+		showConfirmDialog(UbahPesananActivity.this, "", "Perubahan pesanan akan hilang. Apakah anda tetap akan keluar?");
+	}
+	
+	public void showConfirmDialog(Activity activity, String title, CharSequence message) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+		if (title != null)
+			builder.setTitle(title);
+		builder.setMessage(message);
+		builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				startActivity(new Intent(getApplicationContext(), ListPesananActivity.class));
+				finish();
+			}
+		});
+		builder.setNegativeButton("Tidak", null);
+		builder.show();
 	}
 
 }

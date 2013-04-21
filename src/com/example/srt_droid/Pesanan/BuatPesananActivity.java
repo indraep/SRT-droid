@@ -3,7 +3,10 @@ package com.example.srt_droid.Pesanan;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,7 +15,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,6 +23,7 @@ import android.widget.Toast;
 import com.example.srt_droid.PelayanActivity;
 import com.example.srt_droid.R;
 import com.example.srt_droid.Utilities;
+import com.example.srt_droid.Account.User;
 import com.example.srt_droid.Controller.MenuController;
 import com.example.srt_droid.Controller.PesananController;
 import com.example.srt_droid.Menu.DeskripsiMenuActivity;
@@ -53,9 +56,9 @@ public class BuatPesananActivity extends Activity {
 			jumlah.add(0);
 
 		LinearLayout listMenuLayout = (LinearLayout)findViewById(R.id.listMenuLayout);
-		
+
 		String prevKategori = "";
-		
+
 		for (int i = 0; i < m_data.size(); i++) {
 			if (!prevKategori.equals(m_data.get(i).getNamaKategori())) {
 				prevKategori = "" + m_data.get(i).getNamaKategori();
@@ -63,14 +66,15 @@ public class BuatPesananActivity extends Activity {
 				tv.setText(prevKategori);
 				listMenuLayout.addView(tv);
 			}
-			
+
 			final int pos = i;
-			
+
 			LayoutInflater inflater;
 			inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.list_buat_pesanan_row, null);
 
-			layout.setOnClickListener(new OnClickListener() {
+			layout.setOnClickListener(new View.OnClickListener() {
+
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
@@ -78,7 +82,7 @@ public class BuatPesananActivity extends Activity {
 					startActivity(new Intent(getApplicationContext(), DeskripsiMenuActivity.class));
 				}
 			});
-			
+
 			LinearLayout ll = (LinearLayout)layout.getChildAt(0);
 			ll = (LinearLayout)ll.getChildAt(0);
 
@@ -89,7 +93,7 @@ public class BuatPesananActivity extends Activity {
 			ll = (LinearLayout)ll.getChildAt(1);
 
 			EditText et = (EditText)ll.getChildAt(0);
-			
+
 			et.addTextChangedListener(new TextWatcher() {
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -123,7 +127,7 @@ public class BuatPesananActivity extends Activity {
 
 		for (int i = 0; i < jumlah.size(); i++) {
 			Log.e("debug", "nama = " + m_data.get(i).getNama() + " jumlah = " + m_data.get(i).getJumlah());
-			
+
 			if (jumlah.get(i) > 0) {
 				MenuResto temp = new MenuResto(m_data.get(i));
 				temp.setJumlah(jumlah.get(i));
@@ -152,8 +156,42 @@ public class BuatPesananActivity extends Activity {
 	}
 
 	public void onBackPressed() {
-		startActivity(new Intent(getApplicationContext(), PelayanActivity.class));
-		finish();
+		if (!isEmpty()) {
+			showConfirmDialog(BuatPesananActivity.this, "", "Data pesanan akan hilang. Apakah anda tetap akan keluar?");
+		}
+		else {
+			startActivity(new Intent(getApplicationContext(), PelayanActivity.class));
+			finish();
+		}
+	}
+
+	public void showConfirmDialog(Activity activity, String title, CharSequence message) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+		if (title != null)
+			builder.setTitle(title);
+		builder.setMessage(message);
+		builder.setPositiveButton("Ya", new OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				startActivity(new Intent(getApplicationContext(), PelayanActivity.class));
+				finish();
+			}
+		});
+		builder.setNegativeButton("Tidak", null);
+		builder.show();
+	}
+
+	private boolean isEmpty() {
+		if (noMeja.getText().length() > 0) {
+			return false;
+		}
+
+		for (int i = 0; i < jumlah.size(); i++) {	
+			if (jumlah.get(i) > 0) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 }
