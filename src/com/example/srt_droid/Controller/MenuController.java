@@ -243,6 +243,8 @@ public class MenuController {
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
 
+		Log.e("debug", "menu result = " + result);
+		
 		//parse json data
 		try{
 			JSONArray jArray = new JSONArray(result);

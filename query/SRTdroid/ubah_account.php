@@ -21,10 +21,10 @@
 		}
 		else {
 			if ($password == md5("")) {
-				$q = mysql_query("UPDATE USER SET nama='$nama', username='$username', alamat='$alamat', peran=$peran where username='$usernameLama'");
+				$q = mysql_query("UPDATE user SET nama='$nama', username='$username', alamat='$alamat', peran=$peran where username='$usernameLama'");
 			}
 			else {
-				$q = mysql_query("UPDATE USER SET nama='$nama', username='$username', password='$password', alamat='$alamat', peran=$peran where username='$usernameLama'");	
+				$q = mysql_query("UPDATE user SET nama='$nama', username='$username', password='$password', alamat='$alamat', peran=$peran where username='$usernameLama'");	
 			}
 			print(json_encode($q));
 		}

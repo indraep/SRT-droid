@@ -6,7 +6,7 @@
 		require("DB/connect_to_db.php");
 		
 		$q = mysql_query("select *, A.nama as nama_kategori
-			from KATEGORI_MENU A, MENU B where A.id = B.id_kategori order by A.nama, B.Nama;");
+			from kategori_menu A, menu B where A.id = B.id_kategori order by A.nama, B.Nama;");
 		while($e = mysql_fetch_assoc($q)) {
 			$output[]=$e;
 		}

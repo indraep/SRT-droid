@@ -7,7 +7,7 @@
 		
 		$username = $_POST["username"];
 		
-		$q = mysql_query("delete from USER where username='".$username."'");
+		$q = mysql_query("delete from user where username='".$username."'");
 		print(json_encode($q));
 		mysql_close();
 	}

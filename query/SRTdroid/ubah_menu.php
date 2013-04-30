@@ -12,7 +12,7 @@
 		$harga = $_POST["harga"];
 		$deskripsi = $_POST["deskripsi"];
 		
-		$q = mysql_query("UPDATE MENU SET id_kategori='$id_kategori', nama='$nama', harga_modal='$hargaModal', harga='$harga', deskripsi='$deskripsi' where id='$oldId'");
+		$q = mysql_query("UPDATE menu SET id_kategori='$id_kategori', nama='$nama', harga_modal='$hargaModal', harga='$harga', deskripsi='$deskripsi' where id='$oldId'");
 		print(json_encode($q));
 		mysql_close();
 	}

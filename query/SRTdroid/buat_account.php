@@ -16,7 +16,7 @@
 			echo "0";
 		}
 		else {
-			$q = mysql_query("insert into USER(username, password, nama, alamat, peran) values ('$username', '$password', '$nama', '$alamat', $peran)");
+			$q = mysql_query("insert into user(username, password, nama, alamat, peran) values ('$username', '$password', '$nama', '$alamat', $peran)");
 			print(json_encode($q));
 		}
 		mysql_close();

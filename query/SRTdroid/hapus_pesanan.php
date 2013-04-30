@@ -14,7 +14,7 @@
 		require("DB/connect_to_db.php");
 
 		$id_pesanan = $_POST["idPesanan"];
-		$q = mysql_query("delete from PESANAN where id = $id_pesanan");
+		$q = mysql_query("delete from pesanan where id = $id_pesanan");
 
 		print(json_encode($q));
 		mysql_close();

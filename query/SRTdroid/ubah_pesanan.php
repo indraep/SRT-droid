@@ -17,10 +17,10 @@
 
 		$q = mysql_query("select A.id_kategori, A.nama_kategori, A.id, A.nama, A.harga_modal, A.harga, A.tersedia, A.deskripsi, A.jumlah_jual, B.jumlah
 							from	(select P.id_kategori, P.id, P.nama, P.harga_modal, P.harga, P.tersedia, P.deskripsi, P.jumlah_jual, Q.nama as nama_kategori
-									from MENU P, KATEGORI_MENU Q
+									from menu P, kategori_menu Q
 									where Q.id = P.id_kategori) AS A LEFT JOIN
 									(select *
-									from DETAIL_PESANAN AS M
+									from detail_pesanan AS M
 									where M.id_pesanan = $id_pesanan)
 									AS B ON (A.id_kategori = B.id_kategori AND A.id = B.id_menu)
 							group by A.nama_kategori, A.nama");

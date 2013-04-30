@@ -14,13 +14,13 @@
 		require("DB/connect_to_db.php");
 		
 		$id_pesanan = $_POST["idPesanan"];
-		$q = mysql_query("delete from PESANAN where id = $id_pesanan");
+		$q = mysql_query("delete from pesanan where id = $id_pesanan");
 
 		$no_meja = $_POST["noMeja"];
 		
-		$q = mysql_query("insert into PESANAN(status, no_meja, tanggal, username_koki, username_kasir) values (0, $no_meja, CURDATE(), NULL, NULL)");
+		$q = mysql_query("insert into pesanan(status, no_meja, tanggal, username_koki, username_kasir) values (0, $no_meja, CURDATE(), NULL, NULL)");
 		
-		$q = mysql_query("select max(id) as id from PESANAN where no_meja=$no_meja AND tanggal=CURDATE()");
+		$q = mysql_query("select max(id) as id from pesanan where no_meja=$no_meja AND tanggal=CURDATE()");
 		$row = mysql_fetch_array($q);
 		$id_pesanan = $row["id"];
 
@@ -28,7 +28,7 @@
 		$ar_query = explode('-', $str_query);
 
 		foreach ($ar_query as $value) {
-			$q = mysql_query("insert into DETAIL_PESANAN(id_pesanan, no, jumlah, id_kategori, id_menu) values ($id_pesanan, ".$value.")");		
+			$q = mysql_query("insert into detail_pesanan(id_pesanan, no, jumlah, id_kategori, id_menu) values ($id_pesanan, ".$value.")");		
 		}
 		
 		echo "true";

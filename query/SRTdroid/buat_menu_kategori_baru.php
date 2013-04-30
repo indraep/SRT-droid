@@ -7,9 +7,9 @@
 		
 		$namaKategori = $_POST["namaKategori"];
 
-		$q = mysql_query("insert into KATEGORI_MENU(nama) values ('$namaKategori')");
+		$q = mysql_query("insert into kategori_menu(nama) values ('$namaKategori')");
 
-		$q = mysql_query("select id from KATEGORI_MENU where nama='$namaKategori'");
+		$q = mysql_query("select id from kategori_menu where nama='$namaKategori'");
 		$row = mysql_fetch_array($q);
 		$id_kategori = $row["id"];
 
@@ -18,7 +18,7 @@
 		$harga = $_POST["harga"];
 		$deskripsi = $_POST["deskripsi"];
 			
-		$q = mysql_query("insert into MENU(id_kategori, nama, harga_modal, harga, tersedia, deskripsi, jumlah_jual)".
+		$q = mysql_query("insert into menu(id_kategori, nama, harga_modal, harga, tersedia, deskripsi, jumlah_jual)".
 			" values ('$id_kategori', '$nama', '$harga_modal', '$harga', 'true', '$deskripsi', '0')");
 		print(json_encode($q));
 		

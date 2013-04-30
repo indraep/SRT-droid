@@ -6,18 +6,10 @@ CREATE TABLE USER (
 	peran int
 );
 
-insert into USER(username, password, nama, alamat, peran) values ('indra.eka', md5('admin'), 'Indra Eka Prasetya', 'Depok', 1);
-insert into USER(username, password, nama, alamat, peran) values ('berty.chrismartin', md5('admin'), 'Berty Chrismartin Lumban Tobing', 'Depok', 2);
-insert into USER(username, password, nama, alamat, peran) values ('ismail.hassan', md5('admin'), 'Ismail Hassan', 'Depok', 4);
-insert into USER(username, password, nama, alamat, peran) values ('m.rasyid', md5('admin'), 'M Rasyid Ridho', 'Depok', 8);
-
 CREATE TABLE KATEGORI_MENU (
 	id int(5) primary key auto_increment,
 	nama varchar(20) not null
 );
-
-insert into KATEGORI_MENU(nama) values ('Makanan');
-insert into KATEGORI_MENU(nama) values ('Minuman');
 
 CREATE TABLE MENU (
 	id_kategori int(5) not null,
@@ -57,45 +49,30 @@ CREATE TABLE DETAIL_PESANAN(
 	foreign key(id_kategori, id_menu) references MENU(id_kategori, id) on update cascade on delete cascade
 );
 
-select		*
-from		KATEGORI_MENU A, MENU B
-where		A.id = B.id_kategori
-order by 	A.nama, B.Nama;
+
+INSERT INTO `user` (`username`, `password`, `nama`, `alamat`, `peran`) VALUES
+('aa', '4124bc0a9335c27f086f24ba207a4912', 'aa', 'aa', 8),
+('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'Jakarta', 15),
+('bb', '21ad0bd836b90d08f4cf640b4c298e7c', 'bb', 'bb', 8);
 
 
-// login
-select	peran
-from	USER
-where	username = 'username' AND password = 'password'; 
+INSERT INTO `kategori_menu` (`id`, `nama`) VALUES
+(1, 'makanan'),
+(2, 'minuman'),
+(3, 'snack'),
+(4, 'cuci mulut');
 
 
-// list account
-select	nama, username
-from	USER;
-
-// list pesanan
-select	*
-from	PESANAN
-where	username_pelayan = 'username';
-
-// list account
-select	*
-from	USER;
-
-// detail_pesanan
-SELECT A.no, B.nama, B.harga, A.jumlah
-FROM detail_pesanan AS A, menu AS B
-WHERE id_pesanan = 1 AND B.id = A.id_menu
-AND B.id_kategori = A.id_kategori
-order by A.no;
-
-// list pesanan
-SELECT A.id, A.no_meja, A.tanggal, C.nama, sum(C.harga* B.jumlah) as total_harga
-FROM pesanan AS A, detail_pesanan AS B, menu AS C
-WHERE A.id = B.id_pesanan
-AND C.id = B.id_menu
-AND C.id_kategori = B.id_kategori
-group by A.id;
-
-
-		
+INSERT INTO `menu` (`id_kategori`, `id`, `nama`, `harga_modal`, `harga`, `tersedia`, `deskripsi`, `jumlah_jual`) VALUES
+(1, 4, 'Ayam goreng mentega', 80000, 10000, 0, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.', 0),
+(1, 5, 'Ayam Goreng', 8000, 10000, 0, 'Ayam Goreng', 0),
+(1, 6, 'Pecel Lele', 7000, 9000, 0, 'Pecel Lele', 0),
+(1, 7, 'Nasi Goreng', 8000, 10000, 0, 'Nasi Goreng', 0),
+(1, 8, 'Bebek Goreng', 14000, 17000, 0, 'Bebek Goreng', 0),
+(1, 9, 'Soto Ayam', 8000, 10000, 0, 'Soto Ayam', 0),
+(1, 19, 'ayam goreng', 7500, 15000, 0, 'top', 0),
+(2, 13, 'Es Teh Manis', 1500, 2500, 0, 'Es Teh Manis', 0),
+(2, 14, 'Es Jeruk', 2500, 3500, 0, 'Es Jeruk', 0),
+(2, 15, 'Tuak Nias', 2500, 5000, 0, 'Tuak asli dari Nias Timur', 0),
+(2, 17, 'Es Teler', 5000, 7500, 0, 'enak', 0),
+(4, 20, 'es krim', 3000, 5000, 0, 'jakaja', 0);

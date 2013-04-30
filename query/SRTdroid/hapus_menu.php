@@ -4,11 +4,8 @@
 	
 	if ($_POST) {
 		require("DB/connect_to_db.php");
-
-		mysql_connect("127.0.0.1","root","");
-		mysql_select_db("SRT-droid");
 		
-		$q = mysql_query("delete from MENU where id_kategori='$id_kategori' AND id='$id'");
+		$q = mysql_query("delete from menu where id_kategori='$id_kategori' AND id='$id'");
 		print(json_encode($q));
 		mysql_close();
 	}

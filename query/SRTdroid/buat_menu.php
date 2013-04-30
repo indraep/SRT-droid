@@ -11,7 +11,7 @@
 		$harga = $_POST["harga"];
 		$deskripsi = $_POST["deskripsi"];
 		
-		$q = mysql_query("insert into MENU(id_kategori, nama, harga_modal, harga, tersedia, deskripsi, jumlah_jual)".
+		$q = mysql_query("insert into menu(id_kategori, nama, harga_modal, harga, tersedia, deskripsi, jumlah_jual)".
 			" values ('$id_kategori', '$nama', '$harga_modal', '$harga', 'true', '$deskripsi', '0')");
 		print(json_encode($q));
 		mysql_close();

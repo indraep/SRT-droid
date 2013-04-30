@@ -5,7 +5,7 @@
 	//if ($_POST) {
 		require("DB/connect_to_db.php");
 		
-		$q = mysql_query("select * from KATEGORI_MENU");
+		$q = mysql_query("select * from kategori_menu");
 		while($e = mysql_fetch_assoc($q)) {
 			$output[]=$e;
 		}
