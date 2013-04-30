@@ -3,8 +3,7 @@
 	// this is the data coming from the Android app
 	
 	if ($_POST) {
-		$id_kategori = $_POST["id_kategori"];
-		$id = $_POST["id"];
+		require("DB/connect_to_db.php");
 
 		mysql_connect("127.0.0.1","root","");
 		mysql_select_db("SRT-droid");

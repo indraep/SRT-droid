@@ -230,6 +230,7 @@ public class AccountController {
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
 
+		Log.e("result", "result = " + result);
 		//parse json data
 		try{
 			JSONArray jArray = new JSONArray(result);
@@ -240,7 +241,6 @@ public class AccountController {
 						Integer.parseInt(json_data.getString("peran")));
 				ret.add(user);
 			}
-
 
 		}catch(JSONException e) {
 			Log.e("log_tag", "Error parsing data " + e.toString());

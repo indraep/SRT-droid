@@ -3,8 +3,7 @@
 	// this is the data coming from the Android app
 	
 	//if ($_POST) {
-		mysql_connect("127.0.0.1","root","");
-		mysql_select_db("SRT-droid");
+		require("DB/connect_to_db.php");
 		
 		$q = mysql_query("select *, A.nama as nama_kategori
 			from KATEGORI_MENU A, MENU B where A.id = B.id_kategori order by A.nama, B.Nama;");

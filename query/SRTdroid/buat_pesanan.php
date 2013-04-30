@@ -11,8 +11,7 @@
     */
 
 	if ($_POST) {
-		mysql_connect("127.0.0.1","root","");
-		mysql_select_db("SRT-droid");
+		require("DB/connect_to_db.php");
 
 		$no_meja = $_POST["noMeja"];
 		

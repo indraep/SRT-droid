@@ -3,8 +3,7 @@
 	// this is the data coming from the Android app
 	
 	//if ($_POST) {
-		mysql_connect("127.0.0.1","root","");
-		mysql_select_db("SRT-droid");
+		require("DB/connect_to_db.php");
 		
 		$query  = "SELECT A.id, A.status, A.no_meja, A.tanggal, sum(C.harga * B.jumlah) as total_harga
 					FROM pesanan AS A, detail_pesanan AS B, menu AS C

@@ -3,14 +3,13 @@
 	// this is the data coming from the Android app
 	
 	if ($_POST) {
+		require("DB/connect_to_db.php");
+		
 		$nama = $_POST['nama'];
 		$username = $_POST["username"];
 		$password = md5($_POST['password']);
 		$alamat = $_POST['alamat'];
 		$peran = $_POST['peran'];
-
-		mysql_connect("127.0.0.1","root","");
-		mysql_select_db("SRT-droid");
 		
 		$q = mysql_query("select * from user where username = '$username'");
 		if (mysql_num_rows($q) == 1) {

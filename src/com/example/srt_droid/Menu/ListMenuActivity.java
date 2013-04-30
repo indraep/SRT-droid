@@ -187,7 +187,7 @@ class MenuAdapter extends ArrayAdapter<MenuResto> {
 		if (o != null) {
 			TextView tt = (TextView) v.findViewById(R.id.nama);
 			if (tt != null) {
-				tt.setText("Name: " + o.getNama());
+				tt.setText("Nama: " + o.getNama());
 			}
 
 			tt = (TextView)v.findViewById(R.id.harga);

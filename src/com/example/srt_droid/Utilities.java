@@ -14,6 +14,7 @@ public class Utilities {
 	
 	//public static String URL = "http://10.0.2.2/SRTdroid/";
 	//public static String URL = "http://192.168.43.254/SRTdroid/";
-	public static String URL = "http://192.168.0.100/SRTdroid/";
+	//public static String URL = "http://192.168.0.100/SRTdroid/";
 	//public static String URL = "http://10.5.135.173/SRTdroid/";
+	public static String URL = "http://srtdroid.netii.net/";
 }
