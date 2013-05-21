@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.srt_droid.Menu.ListMenuKokiActivity;
+import com.example.srt_droid.Pesanan.ListPesananKokiActivity;
+
 public class KokiActivity extends Activity {
 	
 	TextView title;
@@ -24,8 +27,14 @@ public class KokiActivity extends Activity {
 		title.setText("Koki, " + Utilities.user.getNama());
 	}
 	
+	public void lihatMenu(View v) {
+		startActivity(new Intent(getApplicationContext(), ListMenuKokiActivity.class));
+		finish();
+	}
+	
 	public void lihatPesanan(View v) {
-		
+		startActivity(new Intent(getApplicationContext(), ListPesananKokiActivity.class));
+		finish();
 	}
 	
 	public void keluar(View v) {

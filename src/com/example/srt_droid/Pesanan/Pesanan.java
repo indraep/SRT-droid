@@ -58,6 +58,24 @@ public class Pesanan implements Comparable<Pesanan>{
 	public int getStatus() {
 		return status;
 	}
+	
+	public String getStatusPesanan() {
+		if (status == 0) { // baru buat
+			return "Pesanan Baru";
+		}
+		else if (status == 1) { // antrian
+			return "Menunggu Dibuat";
+		}
+		else if (status == 2) { // sedang dimasak
+			return "Sedang Dibuat";
+		}
+		else if (status == 3) { // sudah matang
+			return "Siap Diantar";
+		}
+		else { // sudah lunas
+			return "Lunas";
+		}
+	}
 
 	@Override
 	public int compareTo(Pesanan a) {

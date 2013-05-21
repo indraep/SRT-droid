@@ -16,11 +16,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,10 +36,7 @@ import com.example.srt_droid.R.menu;
 
 public class ListMenuActivity extends Activity {
 
-	ListView list;
-	List<String> model=new ArrayList<String>();
 	ArrayList<MenuResto> m_data = null;
-	MenuAdapter m_adapter;
 
 	MenuController menuController = new MenuController();
 
@@ -56,7 +53,51 @@ public class ListMenuActivity extends Activity {
 	}
 
 	void init() {
-		list = (ListView)findViewById(R.id.listview);
+		m_data = menuController.getListOfMenu();
+		
+		LinearLayout listMenuLayout = (LinearLayout)findViewById(R.id.listMenuLayout);
+		String prevCategory = "";
+		
+		for (int i = 0; i < m_data.size(); i++) {
+			LayoutInflater inflater;
+			inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.list_menu_row, null);
+			
+			if (!m_data.get(i).getNamaKategori().equals(prevCategory)) {
+				prevCategory = m_data.get(i).getNamaKategori();
+				TextView cat = new TextView(getApplicationContext());
+				cat.setText(prevCategory);
+				listMenuLayout.addView(cat);
+			}
+			
+			final int pos = i;
+			
+			layout.setOnLongClickListener(new OnLongClickListener() {
+				@Override
+				public boolean onLongClick(View v) {
+					showDialog(ListMenuActivity.this, "", "Apa yang ingin anda lakukan terhadap menu ini?", m_data.get(pos));
+					return false;
+				}
+			});
+			
+			layout.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Utilities.menu = m_data.get(pos);
+					startActivity(new Intent(getApplicationContext(), DeskripsiMenuActivity.class));
+				}
+			});
+			
+			TextView nama = (TextView)layout.getChildAt(0);
+			nama.setText(m_data.get(i).getNama());
+			
+			TextView harga = (TextView)layout.getChildAt(1);
+			harga.setText("" + m_data.get(i).getHarga());
+			
+			listMenuLayout.addView(layout);
+		}
+		
+		/*list = (ListView)findViewById(R.id.listview);
 		list.setOnItemLongClickListener(new OnItemLongClickListener() {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
@@ -74,7 +115,7 @@ public class ListMenuActivity extends Activity {
 				//finish();
 			}
 		});
-		new ListMenuAsync(getApplicationContext()).execute();		
+		new ListMenuAsync(getApplicationContext()).execute();*/		
 	}
 
 	public void showDialog(Activity activity, String title, CharSequence message, final MenuResto menu) {
@@ -129,73 +170,4 @@ public class ListMenuActivity extends Activity {
 		getMenuInflater().inflate(R.menu.list_menu, menu);
 		return true;
 	}
-
-	public class ListMenuAsync extends AsyncTask<String, Integer, String> {
-		private ProgressDialog Dialog = new ProgressDialog(ListMenuActivity.this);
-		private Context mContext;
-
-		public ListMenuAsync(Context context) {
-			mContext = context;
-		}
-
-		@Override
-		protected void onPreExecute() {
-			Dialog.setTitle("Harap tunggu...");
-			Dialog.show();
-		}
-
-		@Override
-		protected String doInBackground(String... params) {
-			m_data = menuController.getListOfMenu();
-			publishProgress();
-			return "";
-		}
-
-		@Override
-		protected void onProgressUpdate(Integer... values) {
-			Dialog.dismiss();
-
-			m_adapter = new MenuAdapter(ListMenuActivity.this, R.layout.list_menu_row, m_data);
-			list.setAdapter(m_adapter);
-		}
-
-		@Override
-		protected void onPostExecute(String result) {
-		}
-
-	}
-
-}
-
-class MenuAdapter extends ArrayAdapter<MenuResto> {
-
-	private ArrayList <MenuResto> items;
-
-	public MenuAdapter(Context context, int textViewResourceId, ArrayList<MenuResto> objects) {
-		super(context, textViewResourceId, objects);
-		items = objects;
-	}
-
-	public View getView(int position, View convertView, ViewGroup pattern) {
-		View v = convertView;
-
-		if (v == null) {
-			LayoutInflater vi = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = vi.inflate(R.layout.list_menu_row, null);
-		}
-		MenuResto o = items.get(position);
-		if (o != null) {
-			TextView tt = (TextView) v.findViewById(R.id.nama);
-			if (tt != null) {
-				tt.setText("Nama: " + o.getNama());
-			}
-
-			tt = (TextView)v.findViewById(R.id.harga);
-			if (tt != null) {
-				tt.setText("Harga: " + o.getHarga());
-			}
-		}
-		return v;
-	}
-
 }

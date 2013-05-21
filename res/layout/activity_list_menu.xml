@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".ListMenuActivity" >
+    tools:context=".ListMenuActivity"
+    android:id="@+id/mainLayout" >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -20,12 +21,17 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
-        <ListView
-            android:id="@+id/listview"
+        <ScrollView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:cacheColorHint="@android:color/transparent"
-            android:textColor="#FFFFFF" />
+            android:layout_height="fill_parent" >
+            <LinearLayout
+                android:id="@+id/listMenuLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+                
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
     <Button

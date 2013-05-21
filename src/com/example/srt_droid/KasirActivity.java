@@ -1,5 +1,8 @@
 package com.example.srt_droid;
 
+import com.example.srt_droid.Pesanan.ListPesananActivity;
+import com.example.srt_droid.Pesanan.ListPesananKasirActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +28,8 @@ public class KasirActivity extends Activity {
 	}
 	
 	public void lihatPesanan(View v) {
-		
+		startActivity(new Intent(getApplicationContext(), ListPesananKasirActivity.class));
+		finish();
 	}
 	
 	public void keluar(View v) {

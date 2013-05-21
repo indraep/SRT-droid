@@ -78,17 +78,12 @@ class DetailPesananAdapter extends ArrayAdapter<DetailPesanan> {
 		}
 		DetailPesanan o = items.get(position);
 		if (o != null) {
-			TextView tt = (TextView) v.findViewById(R.id.noMeja);
+			TextView tt = (TextView)v.findViewById(R.id.nama);
 			if (tt != null) {
-				tt.setText("No: " + o.getNo());
-			}
-
-			tt = (TextView)v.findViewById(R.id.tanggal);
-			if (tt != null) {
-				tt.setText("Nama: " + o.getNama());
+				tt.setText(o.getNo() + ". " + o.getNama());
 			}
 			
-			tt = (TextView)v.findViewById(R.id.totalHarga);
+			tt = (TextView)v.findViewById(R.id.total);
 			if (tt != null) {
 				tt.setText("Jumlah: " + o.getJumlah());
 			}

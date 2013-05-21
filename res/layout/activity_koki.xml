@@ -2,34 +2,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".PelayanActivity"
-    android:background="@drawable/background" >
+    tools:context=".PelayanActivity" >
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:orientation="vertical"
-        android:gravity="right" >
+        android:gravity="right"
+        android:orientation="vertical" >
 
         <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/title"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
-    <Button
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Lihat Pesanan"
-        android:onClick="lihatPesanan" />
-    
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Keluar"
-        android:onClick="keluar" />
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center" >
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="lihatMenu"
+            android:text="Lihat Menu" />
+        
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="lihatPesanan"
+            android:text="Lihat Pesanan" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="keluar"
+            android:text="Keluar" />
+    </LinearLayout>
 
 </LinearLayout>

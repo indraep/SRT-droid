@@ -30,6 +30,42 @@ import com.example.srt_droid.Pesanan.DetailPesanan;
 import com.example.srt_droid.Pesanan.Pesanan;
 
 public class PesananController {
+	
+	public boolean ubahStatus(Pesanan pesanan, int newStatus) {
+
+		InputStream is = null;
+		String result = "";
+
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost(Utilities.URL + "ubah_status_pesanan.php");
+		try {
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
+			nameValuePairs.add(new BasicNameValuePair("idPesanan", "" + pesanan.getId()));
+			nameValuePairs.add(new BasicNameValuePair("newStatus", "" + newStatus));
+			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+		}
+		catch (ClientProtocolException e) {} 
+		catch (IOException e) {}
+
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			is.close();
+			result=sb.toString();
+		}catch(Exception e){
+			Log.e("log_tag", "Error converting result " + e.toString());
+		}
+
+		return result.length() > 4 && result.substring(0, 4).equals("true");
+	}
+	
 	public boolean hapus(Pesanan pesanan) {
 		InputStream is = null;
 		String result = "";
@@ -285,6 +321,114 @@ public class PesananController {
 
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(Utilities.URL + "list_pesanan.php");
+		try {
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+		}
+		catch (ClientProtocolException e) {} 
+		catch (IOException e) {}
+
+		//convert response to string
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			is.close();
+			result=sb.toString();
+		}catch(Exception e){
+			Log.e("log_tag", "Error converting result " + e.toString());
+		}
+
+		//parse json data
+		try{
+			JSONArray jArray = new JSONArray(result);
+			for(int i=0;i<jArray.length();i++){
+				JSONObject json_data = jArray.getJSONObject(i);
+				Pesanan pesanan = new Pesanan(Integer.parseInt(json_data.getString("id")), 
+						Integer.parseInt(json_data.getString("no_meja")),
+						json_data.getString("tanggal"), 
+						Integer.parseInt(json_data.getString("total_harga")),
+						Integer.parseInt(json_data.getString("status"))
+						);
+				ret.add(pesanan);
+			}
+
+
+		}catch(JSONException e) {
+			Log.e("log_tag", "Error parsing data " + e.toString());
+		}
+		
+		Collections.sort(ret);
+
+		return ret;
+	}
+	
+	public ArrayList<Pesanan> getListOfPesananKoki() {
+		ArrayList <Pesanan> ret = new ArrayList<Pesanan>();
+
+		InputStream is = null;
+		String result = "";
+
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost(Utilities.URL + "list_pesanan_koki.php");
+		try {
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+		}
+		catch (ClientProtocolException e) {} 
+		catch (IOException e) {}
+
+		//convert response to string
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			is.close();
+			result=sb.toString();
+		}catch(Exception e){
+			Log.e("log_tag", "Error converting result " + e.toString());
+		}
+
+		//parse json data
+		try{
+			JSONArray jArray = new JSONArray(result);
+			for(int i=0;i<jArray.length();i++){
+				JSONObject json_data = jArray.getJSONObject(i);
+				Pesanan pesanan = new Pesanan(Integer.parseInt(json_data.getString("id")), 
+						Integer.parseInt(json_data.getString("no_meja")),
+						json_data.getString("tanggal"), 
+						Integer.parseInt(json_data.getString("total_harga")),
+						Integer.parseInt(json_data.getString("status"))
+						);
+				ret.add(pesanan);
+			}
+
+
+		}catch(JSONException e) {
+			Log.e("log_tag", "Error parsing data " + e.toString());
+		}
+		
+		Collections.sort(ret);
+
+		return ret;
+	}
+
+	public ArrayList<Pesanan> getListOfPesananKasir() {
+		ArrayList <Pesanan> ret = new ArrayList<Pesanan>();
+
+		InputStream is = null;
+		String result = "";
+
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost(Utilities.URL + "list_pesanan_kasir.php");
 		try {
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
