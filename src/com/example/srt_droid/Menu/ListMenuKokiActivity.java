@@ -46,14 +46,14 @@ public class ListMenuKokiActivity extends TabActivity {
 		Intent intentAndroid = new Intent().setClass(this, TabMenuTersedia.class);
 		TabSpec tabSpecAndroid = tabHost
 			.newTabSpec("Tersedia")
-			.setIndicator("", ressources.getDrawable(R.drawable.icon_android_config))
+			.setIndicator("", ressources.getDrawable(R.drawable.icon_menu_ok))
 			.setContent(intentAndroid);
 
 		// Apple tab
 		Intent intentApple = new Intent().setClass(this, TabMenuTidakTersedia.class);
 		TabSpec tabSpecApple = tabHost
 			.newTabSpec("Tidak Tersedia")
-			.setIndicator("", ressources.getDrawable(R.drawable.icon_android_config))
+			.setIndicator("", ressources.getDrawable(R.drawable.icon_menu_no))
 			.setContent(intentApple);
 	
 		// add all tabs 

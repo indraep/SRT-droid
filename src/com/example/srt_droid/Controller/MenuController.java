@@ -28,6 +28,40 @@ import com.example.srt_droid.Menu.MenuResto;
 
 public class MenuController {
 	
+	public boolean ubahAktif(MenuResto menu, int aktif) {
+		InputStream is = null;
+		String result = "";
+
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost(Utilities.URL + "ubah_aktif_menu.php");
+		try {
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+			nameValuePairs.add(new BasicNameValuePair("id_menu", "" + menu.getId()));
+			nameValuePairs.add(new BasicNameValuePair("aktif", "" + aktif));
+			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+		}
+		catch (ClientProtocolException e) {} 
+		catch (IOException e) {}
+		
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			is.close();
+			result=sb.toString();
+		}catch(Exception e){
+			Log.e("log_tag", "Error converting result " + e.toString());
+		}
+
+		return result.charAt(0) == 't' ? true : false;
+	}
+	
 	public boolean ubahKetersediaan(MenuResto menu, int tersedia) {
 		InputStream is = null;
 		String result = "";
@@ -246,7 +280,70 @@ public class MenuController {
 		return result.charAt(0) == 't' ? true : false;
 	}
 	
-	public ArrayList<MenuResto> getListOfMenu(int ntersedia) {
+	public ArrayList<MenuResto> getListOfMenuAktifTersedia(int aktif, int ntersedia) {
+		ArrayList <MenuResto> ret = new ArrayList<MenuResto>();
+
+		InputStream is = null;
+		String result = "";
+
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost(Utilities.URL + "list_menu_aktif_tersedia.php");
+		try {
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+			nameValuePairs.add(new BasicNameValuePair("aktif", "" + aktif));
+			nameValuePairs.add(new BasicNameValuePair("tersedia", "" + ntersedia));
+			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+		}
+		catch (ClientProtocolException e) {} 
+		catch (IOException e) {}
+
+		//convert response to string
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			is.close();
+			result=sb.toString();
+		}catch(Exception e){
+			Log.e("log_tag", "Error converting result " + e.toString());
+		}
+
+		Log.e("debug", "menu result = " + result);
+		
+		//parse json data
+		try{
+			JSONArray jArray = new JSONArray(result);
+			for(int i=0;i<jArray.length();i++){
+				JSONObject json_data = jArray.getJSONObject(i);
+				boolean tersedia = json_data.getString("tersedia").equals("true") ? true : false;
+				
+				MenuResto menu = new MenuResto(Integer.parseInt(json_data.getString("id_kategori")),
+						json_data.getString("nama_kategori"),
+						Integer.parseInt(json_data.getString("id")),
+						json_data.getString("nama"),
+						Integer.parseInt(json_data.getString("harga_modal")),
+						Integer.parseInt(json_data.getString("harga")),
+						tersedia,
+						json_data.getString("deskripsi"),
+						Integer.parseInt(json_data.getString("jumlah_jual")));
+				ret.add(menu);
+			}
+
+
+		}catch(JSONException e) {
+			Log.e("log_tag", "Error parsing data " + e.toString());
+		}
+
+		return ret;
+	}
+	
+	public ArrayList<MenuResto> getListOfMenuTersedia(int ntersedia) {
 		ArrayList <MenuResto> ret = new ArrayList<MenuResto>();
 
 		InputStream is = null;
@@ -257,6 +354,68 @@ public class MenuController {
 		try {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 			nameValuePairs.add(new BasicNameValuePair("tersedia", "" + ntersedia));
+			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+		}
+		catch (ClientProtocolException e) {} 
+		catch (IOException e) {}
+
+		//convert response to string
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			is.close();
+			result=sb.toString();
+		}catch(Exception e){
+			Log.e("log_tag", "Error converting result " + e.toString());
+		}
+
+		Log.e("debug", "menu result = " + result);
+		
+		//parse json data
+		try{
+			JSONArray jArray = new JSONArray(result);
+			for(int i=0;i<jArray.length();i++){
+				JSONObject json_data = jArray.getJSONObject(i);
+				boolean tersedia = json_data.getString("tersedia").equals("true") ? true : false;
+				
+				MenuResto menu = new MenuResto(Integer.parseInt(json_data.getString("id_kategori")),
+						json_data.getString("nama_kategori"),
+						Integer.parseInt(json_data.getString("id")),
+						json_data.getString("nama"),
+						Integer.parseInt(json_data.getString("harga_modal")),
+						Integer.parseInt(json_data.getString("harga")),
+						tersedia,
+						json_data.getString("deskripsi"),
+						Integer.parseInt(json_data.getString("jumlah_jual")));
+				ret.add(menu);
+			}
+
+
+		}catch(JSONException e) {
+			Log.e("log_tag", "Error parsing data " + e.toString());
+		}
+
+		return ret;
+	}
+	
+	public ArrayList<MenuResto> getListOfMenuAktif(int aktif) {
+		ArrayList <MenuResto> ret = new ArrayList<MenuResto>();
+
+		InputStream is = null;
+		String result = "";
+
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost(Utilities.URL + "list_menu_aktif.php");
+		try {
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+			nameValuePairs.add(new BasicNameValuePair("aktif", "" + aktif));
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();

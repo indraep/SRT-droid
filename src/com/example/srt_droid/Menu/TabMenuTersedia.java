@@ -40,7 +40,7 @@ public class TabMenuTersedia extends Activity {
 	}
 
 	private void init() {
-		m_data = menuController.getListOfMenu(1);
+		m_data = menuController.getListOfMenuTersedia(1);
 
 		LinearLayout listMenuLayout = (LinearLayout)findViewById(R.id.layout);
 		String prevCategory = "";

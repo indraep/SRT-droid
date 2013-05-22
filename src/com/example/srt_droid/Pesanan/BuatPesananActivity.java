@@ -30,8 +30,6 @@ import com.example.srt_droid.Menu.DeskripsiMenuActivity;
 import com.example.srt_droid.Menu.MenuResto;
 
 public class BuatPesananActivity extends Activity {
-
-
 	ArrayList<MenuResto> m_data = null;
 
 	EditText noMeja;
@@ -51,7 +49,7 @@ public class BuatPesananActivity extends Activity {
 	void init() {	
 		noMeja = (EditText) findViewById(R.id.noMeja);
 
-		m_data = menuController.getListOfMenu();
+		m_data = menuController.getListOfMenuAktifTersedia(1, 1);
 		for (int i = 0; i < m_data.size(); i++)
 			jumlah.add(0);
 

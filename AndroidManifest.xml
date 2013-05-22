@@ -167,6 +167,14 @@
             android:name="com.example.srt_droid.Pesanan.FormPembayaranActivity"
             android:label="@string/title_activity_form_pembayaran" >
         </activity>
+        <activity
+            android:name="com.example.srt_droid.Menu.TabMenuAktif"
+            android:label="@string/title_activity_tab_menu_aktif" >
+        </activity>
+        <activity
+            android:name="com.example.srt_droid.Menu.TabMenuTidakAktif"
+            android:label="@string/title_activity_tab_menu_tidak_aktif" >
+        </activity>
     </application>
 
 </manifest>
