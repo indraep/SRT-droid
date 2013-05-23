@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2013 at 09:12 AM
+-- Generation Time: May 23, 2013 at 05:22 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -36,23 +36,6 @@ CREATE TABLE IF NOT EXISTS `detail_pesanan` (
   KEY `id_kategori` (`id_kategori`,`id_menu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `detail_pesanan`
---
-
-INSERT INTO `detail_pesanan` (`id_pesanan`, `no`, `jumlah`, `id_kategori`, `id_menu`) VALUES
-(24, 1, 3, 4, 20),
-(26, 1, 1, 4, 20),
-(26, 3, 1, 1, 19),
-(26, 4, 1, 1, 4),
-(27, 1, 1, 4, 20),
-(27, 3, 1, 1, 19),
-(27, 4, 1, 1, 4),
-(27, 5, 2, 1, 8),
-(27, 6, 1, 1, 7),
-(28, 1, 2, 4, 20),
-(28, 3, 5, 1, 4);
-
 -- --------------------------------------------------------
 
 --
@@ -63,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `kategori_menu` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `nama` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `kategori_menu`
@@ -72,8 +55,8 @@ CREATE TABLE IF NOT EXISTS `kategori_menu` (
 INSERT INTO `kategori_menu` (`id`, `nama`) VALUES
 (1, 'makanan'),
 (2, 'minuman'),
-(3, 'snack'),
-(4, 'cuci mulut');
+(5, 'hua'),
+(6, 'huaa');
 
 -- --------------------------------------------------------
 
@@ -87,31 +70,14 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `nama` varchar(30) NOT NULL,
   `harga_modal` int(11) NOT NULL,
   `harga` int(11) NOT NULL,
-  `tersedia` tinyint(1) NOT NULL,
+  `tersedia` tinyint(1) NOT NULL DEFAULT '1',
   `deskripsi` text,
   `jumlah_jual` int(11) NOT NULL,
-  `aktif` int(11) NOT NULL DEFAULT '1',
+  `aktif` tinyint(1) NOT NULL DEFAULT '1',
+  `image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_kategori`,`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
-
---
--- Dumping data for table `menu`
---
-
-INSERT INTO `menu` (`id_kategori`, `id`, `nama`, `harga_modal`, `harga`, `tersedia`, `deskripsi`, `jumlah_jual`, `aktif`) VALUES
-(1, 4, 'Ayam goreng mentega', 80000, 10000, 0, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.', 0, 0),
-(1, 6, 'Pecel Lele', 7000, 9000, 0, 'Pecel Lele', 0, 1),
-(1, 7, 'Nasi Goreng', 8000, 10000, 0, 'Nasi Goreng', 0, 1),
-(1, 8, 'Bebek Goreng', 14000, 17000, 0, 'Bebek Goreng', 0, 0),
-(1, 9, 'Soto Ayam', 8000, 10000, 0, 'Soto Ayam', 0, 1),
-(1, 19, 'ayam goreng', 7500, 15000, 0, 'top', 0, 1),
-(2, 13, 'Es Teh Manis', 1500, 2500, 1, 'Es Teh Manis', 0, 1),
-(2, 14, 'Es Jeruk', 2500, 3500, 0, 'Es Jeruk', 0, 1),
-(2, 15, 'Tuak Nias', 2500, 5000, 0, 'Tuak asli dari Nias Timur', 0, 1),
-(2, 17, 'Es Teler', 5000, 7500, 0, 'enak', 0, 1),
-(3, 21, 'Kerupuk Udang', 2000, 3000, 0, 'Kerupuk udang asli', 0, 1),
-(4, 20, 'Es Krim', 3000, 5000, 1, 'jakaja', 0, 1);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 -- --------------------------------------------------------
 
@@ -129,19 +95,14 @@ CREATE TABLE IF NOT EXISTS `pesanan` (
   PRIMARY KEY (`id`),
   KEY `username_koki` (`username_koki`),
   KEY `username_kasir` (`username_kasir`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `pesanan`
 --
 
 INSERT INTO `pesanan` (`id`, `status`, `no_meja`, `tanggal`, `username_koki`, `username_kasir`) VALUES
-(20, 4, 3, '2013-04-17', NULL, NULL),
-(24, 4, 6, '2013-04-21', NULL, NULL),
-(25, 3, 10, '2013-05-20', NULL, NULL),
-(26, 3, 1, '2013-05-21', NULL, NULL),
-(27, 3, 1, '2013-05-21', NULL, NULL),
-(28, 1, 5, '2013-05-21', NULL, NULL);
+(32, 0, 1, '2013-05-23', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -163,8 +124,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `nama`, `alamat`, `peran`) VALUES
-('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'Jakarta', 15),
-('indra', 'e24f6e3ce19ee0728ff1c443e4ff488d', 'indra', 'Depok', 1);
+('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'Jakarta', 15);
 
 --
 -- Constraints for dumped tables

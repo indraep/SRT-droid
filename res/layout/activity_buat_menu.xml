@@ -64,6 +64,19 @@
             android:inputType="textMultiLine"
             android:id="@+id/deskripsi" />
         
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Pilih Gambar Menu"
+            android:onClick="openFileChooser" />
+        
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:id="@+id/pathImage" />
+        
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

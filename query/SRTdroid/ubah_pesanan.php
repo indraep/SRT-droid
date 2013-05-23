@@ -15,8 +15,8 @@
 		
 		$id_pesanan = $_POST["idPesanan"];
 
-		$q = mysql_query("select A.id_kategori, A.nama_kategori, A.id, A.nama, A.harga_modal, A.harga, A.tersedia, A.deskripsi, A.jumlah_jual, B.jumlah
-							from	(select P.id_kategori, P.id, P.nama, P.harga_modal, P.harga, P.tersedia, P.deskripsi, P.jumlah_jual, Q.nama as nama_kategori
+		$q = mysql_query("select A.id_kategori, A.nama_kategori, A.id, A.nama, A.harga_modal, A.harga, A.tersedia, A.deskripsi, A.image, A.jumlah_jual, B.jumlah
+							from	(select P.id_kategori, P.id, P.nama, P.harga_modal, P.harga, P.tersedia, P.deskripsi, P.image, P.jumlah_jual, Q.nama as nama_kategori
 									from menu P, kategori_menu Q
 									where Q.id = P.id_kategori) AS A LEFT JOIN
 									(select *

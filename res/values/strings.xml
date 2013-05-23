@@ -39,5 +39,6 @@
     <string name="title_activity_form_pembayaran">FormPembayaranActivity</string>
     <string name="title_activity_tab_menu_aktif">TabMenuAktif</string>
     <string name="title_activity_tab_menu_tidak_aktif">TabMenuTidakAktif</string>
+    <string name="title_activity_result_sejarah_penjualan">ResultSejarahPenjualanActivity</string>
 
 </resources>
