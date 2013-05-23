@@ -29,7 +29,8 @@
     <Spinner 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/peran" />
+        android:id="@+id/peran"
+        android:layout_margin="@dimen/activity_home_button_margin" />
     
     <Button
         android:layout_width="fill_parent"

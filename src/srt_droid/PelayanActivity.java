@@ -42,7 +42,6 @@ public class PelayanActivity extends Activity {
 	
 	public void ubahProfile(View v) {
 		startActivity(new Intent(getApplicationContext(), UbahProfileActivity.class));
-		//finish();
 	}
 	
 	public void keluar(View v) {

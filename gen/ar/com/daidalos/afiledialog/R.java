@@ -44,12 +44,12 @@ public final class R {
 		public static final int daidalos_file_item = 0x7f03001b;
 	}
 	public static final class drawable {
-		public static final int folder = 0x7f020006;
-		public static final int tick = 0x7f020016;
-		public static final int document = 0x7f020003;
-		public static final int no = 0x7f020010;
-		public static final int ic_launcher = 0x7f020007;
-		public static final int document_gray = 0x7f020004;
+		public static final int folder = 0x7f020022;
+		public static final int tick = 0x7f02003e;
+		public static final int document = 0x7f02001f;
+		public static final int no = 0x7f020033;
+		public static final int ic_launcher = 0x7f020023;
+		public static final int document_gray = 0x7f020020;
 		public static final int add = 0x7f020000;
 	}
 }

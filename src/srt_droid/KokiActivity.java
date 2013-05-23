@@ -1,5 +1,6 @@
 package srt_droid;
 
+import srt_droid.Account.UbahProfileActivity;
 import srt_droid.Menu.ListMenuKokiActivity;
 import srt_droid.Pesanan.ListPesananKokiActivity;
 import android.app.Activity;
@@ -34,6 +35,10 @@ public class KokiActivity extends Activity {
 	
 	public void lihatPesanan(View v) {
 		startActivity(new Intent(getApplicationContext(), ListPesananKokiActivity.class));
+	}
+	
+	public void ubahProfile(View v) {
+		startActivity(new Intent(getApplicationContext(), UbahProfileActivity.class));
 	}
 	
 	public void keluar(View v) {

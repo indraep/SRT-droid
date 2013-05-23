@@ -1,6 +1,7 @@
 package srt_droid;
 
 import srt_droid.Account.ListAccountActivity;
+import srt_droid.Account.UbahProfileActivity;
 import srt_droid.Pesanan.ListPesananActivity;
 import srt_droid.Pesanan.ListPesananKasirActivity;
 
@@ -32,6 +33,10 @@ public class KasirActivity extends Activity {
 	
 	public void lihatPesanan(View v) {
 		startActivity(new Intent(getApplicationContext(), ListPesananKasirActivity.class));
+	}
+	
+	public void ubahProfile(View v) {
+		startActivity(new Intent(getApplicationContext(), UbahProfileActivity.class));
 	}
 	
 	public void keluar(View v) {
