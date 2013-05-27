@@ -44,6 +44,7 @@ public class ListDetailPesananActivity extends Activity {
 	private void init() {
 		list = (ListView)findViewById(R.id.listview);
 		m_data = pesananController.getListOfDetailPesanan(Utilities.pesanan.getId());
+		m_data.add(null);
 		m_adapter = new DetailPesananAdapter(ListDetailPesananActivity.this, R.layout.list_detail_pesanan_row, m_data);
 		list.setAdapter(m_adapter);
 	}
@@ -78,6 +79,7 @@ class DetailPesananAdapter extends ArrayAdapter<DetailPesanan> {
 			v = vi.inflate(R.layout.list_detail_pesanan_row, null);
 		}
 		DetailPesanan o = items.get(position);
+		
 		if (o != null) {
 			TextView tt = (TextView)v.findViewById(R.id.nama);
 			if (tt != null) {
@@ -88,6 +90,13 @@ class DetailPesananAdapter extends ArrayAdapter<DetailPesanan> {
 			if (tt != null) {
 				tt.setText("Jumlah: " + o.getJumlah());
 			}
+		}
+		else {
+			TextView tt = (TextView)v.findViewById(R.id.nama);
+			tt.setText("Tambahan:");
+			
+			tt = (TextView)v.findViewById(R.id.total);
+			tt.setText(Utilities.pesanan.getAddition());
 		}
 		return v;
 	}

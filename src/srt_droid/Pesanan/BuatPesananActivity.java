@@ -92,7 +92,7 @@ public class BuatPesananActivity extends Activity {
 			
 			ll = (LinearLayout)ll.getChildAt(1);
 			
-			URL Url;
+			/*URL Url;
 			try {
 				Url = new URL(Utilities.URL + "image/" + m_data.get(i).getImage());
 				InputStream content = (InputStream)Url.getContent();
@@ -101,7 +101,7 @@ public class BuatPesananActivity extends Activity {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			
 			((TextView)ll.getChildAt(0)).setText(m_data.get(i).getNama());
 			((TextView)ll.getChildAt(1)).setText("Rp. " + m_data.get(i).getHarga());
@@ -151,11 +151,13 @@ public class BuatPesananActivity extends Activity {
 				pesanan.add(temp);
 			}
 		}
+		
+		String addition = ((EditText)findViewById(R.id.addition)).getText().toString();
 
 		if (pesanan.size() == 0) {
 			Toast.makeText(getApplicationContext(), "Pastikan pesanan yang anda buat tidak kosong!", Toast.LENGTH_LONG).show();
 		}
-		else if (pesananController.buat(pesanan, noMeja.getText().toString())) {
+		else if (pesananController.buat(pesanan, noMeja.getText().toString(), addition)) {
 			Toast.makeText(getApplicationContext(), "Pesanan berhasil dibuat!", Toast.LENGTH_LONG).show();
 			startActivity(new Intent(getApplicationContext(), ListPesananActivity.class));
 			finish();

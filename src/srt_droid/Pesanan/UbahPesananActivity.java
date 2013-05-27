@@ -27,6 +27,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -60,6 +61,8 @@ public class UbahPesananActivity extends Activity {
 		m_data = pesananController.getListOfDetailPesanan(Utilities.oldPesanan);
 		for (int i = 0; i < m_data.size(); i++)
 			jumlah.add(m_data.get(i).getJumlah());
+		
+		((EditText)findViewById(R.id.addition)).setText(Utilities.oldPesanan.getAddition());
 
 		LinearLayout listMenuLayout = (LinearLayout)findViewById(R.id.listMenuLayout);
 		String prevKategori = "";
@@ -88,9 +91,23 @@ public class UbahPesananActivity extends Activity {
 
 			LinearLayout ll = (LinearLayout)layout.getChildAt(0);
 			ll = (LinearLayout)ll.getChildAt(0);
+			ImageView image = (ImageView)ll.getChildAt(0);
+			
+			ll = (LinearLayout)ll.getChildAt(1);
+			
+			/*URL Url;
+			try {
+				Url = new URL(Utilities.URL + "image/" + m_data.get(i).getImage());
+				InputStream content = (InputStream)Url.getContent();
+				Drawable d = Drawable.createFromStream(content , "src"); 
+				image.setImageDrawable(d);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
 
-			((TextView)ll.getChildAt(0)).setText("Nama: " + m_data.get(i).getNama());
-			((TextView)ll.getChildAt(1)).setText("Harga: " + m_data.get(i).getHarga());
+			((TextView)ll.getChildAt(0)).setText(m_data.get(i).getNama());
+			((TextView)ll.getChildAt(1)).setText("Rp. " + m_data.get(i).getHarga());
 
 			ll = (LinearLayout)layout.getChildAt(0);
 			ll = (LinearLayout)ll.getChildAt(1);
@@ -137,10 +154,13 @@ public class UbahPesananActivity extends Activity {
 			}
 		}
 
+		
+		String addition = ((EditText)findViewById(R.id.addition)).getText().toString();
+		
 		if (pesanan.size() == 0) {
 			Toast.makeText(getApplicationContext(), "Pastikan pesanan yang anda ubah tidak kosong!", Toast.LENGTH_LONG).show();
 		}
-		else if (pesananController.ubah(pesanan, noMeja.getText().toString(), Utilities.oldPesanan)) {
+		else if (pesananController.ubah(pesanan, noMeja.getText().toString(), addition, Utilities.oldPesanan)) {
 			Toast.makeText(getApplicationContext(), "Pesanan berhasil diubah!", Toast.LENGTH_LONG).show();
 			startActivity(new Intent(getApplicationContext(), ListPesananActivity.class));
 			finish();

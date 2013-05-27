@@ -225,7 +225,7 @@ public class PesananController {
 		return ret;
 	}
 	
-	public boolean ubah(ArrayList <MenuResto> pesanan, String noMeja, Pesanan oldPesanan) {
+	public boolean ubah(ArrayList <MenuResto> pesanan, String noMeja, String addition, Pesanan oldPesanan) {
 		
 		InputStream is = null;
 		String result = "";
@@ -245,9 +245,10 @@ public class PesananController {
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(Utilities.URL + "buat_pesanan_ubah.php");
 		try {
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
 			nameValuePairs.add(new BasicNameValuePair("idPesanan", "" + oldPesanan.getId()));
 			nameValuePairs.add(new BasicNameValuePair("noMeja", noMeja));
+			nameValuePairs.add(new BasicNameValuePair("addition", addition));
 			nameValuePairs.add(new BasicNameValuePair("str_query", "" + strQuery));
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = httpclient.execute(httppost);
@@ -273,7 +274,7 @@ public class PesananController {
 		return result.length() > 4 && result.substring(0, 4).equals("true");
 	}
 	
-	public boolean buat(ArrayList <MenuResto> pesanan, String noMeja) {
+	public boolean buat(ArrayList <MenuResto> pesanan, String noMeja, String addition) {
 		Log.e("debug", "no meja = " + noMeja);
 		
 		InputStream is = null;
@@ -291,12 +292,15 @@ public class PesananController {
 				strQuery = query;
 		}
 		
+		Log.e("debug", "addition = " + addition);
+		
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(Utilities.URL + "buat_pesanan.php");
 		try {
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
 			nameValuePairs.add(new BasicNameValuePair("noMeja", noMeja));
 			nameValuePairs.add(new BasicNameValuePair("str_query", "" + strQuery));
+			nameValuePairs.add(new BasicNameValuePair("addition", addition));
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
@@ -409,11 +413,12 @@ public class PesananController {
 			JSONArray jArray = new JSONArray(result);
 			for(int i=0;i<jArray.length();i++){
 				JSONObject json_data = jArray.getJSONObject(i);
-				Pesanan pesanan = new Pesanan(Integer.parseInt(json_data.getString("id")), 
-						Integer.parseInt(json_data.getString("no_meja")),
+				Pesanan pesanan = new Pesanan(json_data.getInt("id"), 
+						json_data.getInt("no_meja"),
 						json_data.getString("tanggal"), 
-						Integer.parseInt(json_data.getString("total_harga")),
-						Integer.parseInt(json_data.getString("status"))
+						json_data.getInt("total_harga"),
+						json_data.getInt("status"),
+						json_data.getString("addition")
 						);
 				ret.add(pesanan);
 			}
@@ -463,11 +468,13 @@ public class PesananController {
 			JSONArray jArray = new JSONArray(result);
 			for(int i=0;i<jArray.length();i++){
 				JSONObject json_data = jArray.getJSONObject(i);
-				Pesanan pesanan = new Pesanan(Integer.parseInt(json_data.getString("id")), 
-						Integer.parseInt(json_data.getString("no_meja")),
+				Pesanan pesanan = new Pesanan(
+						json_data.getInt("id"), 
+						json_data.getInt("no_meja"),
 						json_data.getString("tanggal"), 
-						Integer.parseInt(json_data.getString("total_harga")),
-						Integer.parseInt(json_data.getString("status"))
+						json_data.getInt("total_harga"),
+						json_data.getInt("status"),
+						json_data.getString("addition")
 						);
 				ret.add(pesanan);
 			}
@@ -517,11 +524,13 @@ public class PesananController {
 			JSONArray jArray = new JSONArray(result);
 			for(int i=0;i<jArray.length();i++){
 				JSONObject json_data = jArray.getJSONObject(i);
-				Pesanan pesanan = new Pesanan(Integer.parseInt(json_data.getString("id")), 
-						Integer.parseInt(json_data.getString("no_meja")),
+				Pesanan pesanan = new Pesanan(
+						json_data.getInt("id"), 
+						json_data.getInt("no_meja"),
 						json_data.getString("tanggal"), 
-						Integer.parseInt(json_data.getString("total_harga")),
-						Integer.parseInt(json_data.getString("status"))
+						json_data.getInt("total_harga"),
+						json_data.getInt("status"),
+						json_data.getString("addition")
 						);
 				ret.add(pesanan);
 			}

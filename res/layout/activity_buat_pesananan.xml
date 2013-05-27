@@ -31,7 +31,7 @@
                 android:layout_marginRight="10dp"
                 android:text="No Meja:"
                 android:textColor="#FFF" />
-
+            
             <EditText
                 android:id="@+id/noMeja"
                 android:layout_width="fill_parent"
@@ -44,10 +44,24 @@
             android:layout_height="fill_parent" >
 
             <LinearLayout
-                android:id="@+id/listMenuLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/listMenuLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+                </LinearLayout>
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tambahan:" />
+                <EditText
+                    android:id="@+id/addition"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

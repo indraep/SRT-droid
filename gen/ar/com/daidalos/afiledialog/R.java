@@ -8,13 +8,13 @@ package ar.com.daidalos.afiledialog;
 
 public final class R {
 	public static final class id {
-		public static final int buttonOk = 0x7f0a0027;
-		public static final int linearLayoutFiles = 0x7f0a0024;
-		public static final int rootLayout = 0x7f0a0023;
-		public static final int imageViewIcon = 0x7f0a0028;
-		public static final int textViewLabel = 0x7f0a0029;
-		public static final int linearLayoutButtons = 0x7f0a0025;
-		public static final int buttonAdd = 0x7f0a0026;
+		public static final int buttonOk = 0x7f0a0028;
+		public static final int linearLayoutFiles = 0x7f0a0025;
+		public static final int rootLayout = 0x7f0a0024;
+		public static final int imageViewIcon = 0x7f0a0029;
+		public static final int textViewLabel = 0x7f0a002a;
+		public static final int linearLayoutButtons = 0x7f0a0026;
+		public static final int buttonAdd = 0x7f0a0027;
 		public static final int scrollView1 = 0x7f0a0000;
 	}
 	public static final class color {

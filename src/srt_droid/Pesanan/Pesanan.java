@@ -6,17 +6,19 @@ public class Pesanan implements Comparable<Pesanan>{
 	private String tanggal;
 	private int totalHarga;
 	private int status;
+	private String addition;
 	
 	public Pesanan() {
 		
 	}
 	
-	public Pesanan(int id, int noMeja, String tanggal, int totalHarga, int status) {
+	public Pesanan(int id, int noMeja, String tanggal, int totalHarga, int status, String addition) {
 		this.id = id;
 		this.noMeja = noMeja;
 		this.tanggal = tanggal;
 		this.totalHarga = totalHarga;
 		this.status = status;
+		this.addition = addition;
 	}
 	
 	public void setId(int x) {
@@ -36,7 +38,11 @@ public class Pesanan implements Comparable<Pesanan>{
 	}
 	
 	public void setStatus(int x) {
-		
+		status = x;
+	}
+	
+	public void setAddition(String x) {
+		addition = x;
 	}
 	
 	public int getId() {
@@ -57,6 +63,10 @@ public class Pesanan implements Comparable<Pesanan>{
 	
 	public int getStatus() {
 		return status;
+	}
+	
+	public String getAddition() {
+		return addition;
 	}
 	
 	public String getStatusPesanan() {
