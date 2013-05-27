@@ -1,65 +1,68 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:orientation="vertical"
-    tools:context=".PemilikRestoranActivity" >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background" >
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:gravity="right"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF" />
+            android:layout_marginBottom="20dp"
+            android:gravity="right"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_home_button_margin"
+                android:onClick="lihatSejarahPenjualan"
+                android:text="Lihat Sejarah Penjualan" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_home_button_margin"
+                android:onClick="lihatDaftarMenu"
+                android:text="Lihat Daftar Menu" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_home_button_margin"
+                android:onClick="lihatDaftarAccount"
+                android:text="Lihat Daftar Account" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_home_button_margin"
+                android:onClick="ubahProfile"
+                android:text="Ubah Profile" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_home_button_margin"
+                android:onClick="keluar"
+                android:text="Keluar" />
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="center"
-        android:orientation="vertical" >
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:onClick="lihatSejarahPenjualan"
-            android:text="Lihat Sejarah Penjualan"
-            android:layout_margin="@dimen/activity_home_button_margin" />
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:onClick="lihatDaftarMenu"
-            android:text="Lihat Daftar Menu"
-            android:layout_margin="@dimen/activity_home_button_margin" />
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:onClick="lihatDaftarAccount"
-            android:text="Lihat Daftar Account"
-            android:layout_margin="@dimen/activity_home_button_margin" />
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:onClick="ubahProfile"
-            android:text="Ubah Profile"
-            android:layout_margin="@dimen/activity_home_button_margin" />
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:onClick="keluar"
-            android:text="Keluar"
-            android:layout_margin="@dimen/activity_home_button_margin" />
-    </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

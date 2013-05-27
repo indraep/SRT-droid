@@ -12,8 +12,8 @@
 		$deskripsi = $_POST["deskripsi"];
 		$imageName = $_POST["imageName"];
 
-		$q = mysql_query("insert into menu(id_kategori, nama, harga_modal, harga, tersedia, deskripsi, jumlah_jual, image)".
-			" values ('$id_kategori', '$nama', '$harga_modal', '$harga', 'true', '$deskripsi', '0', '$imageName')");
+		$q = mysql_query("insert into menu(id_kategori, nama, harga_modal, harga, deskripsi, jumlah_jual, image)".
+			" values ('$id_kategori', '$nama', '$harga_modal', '$harga', '$deskripsi', '0', '$imageName')");
 		print(json_encode($q));
 		mysql_close();
 	}

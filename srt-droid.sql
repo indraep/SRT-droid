@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2013 at 05:22 PM
+-- Generation Time: May 27, 2013 at 04:23 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -36,6 +36,15 @@ CREATE TABLE IF NOT EXISTS `detail_pesanan` (
   KEY `id_kategori` (`id_kategori`,`id_menu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `detail_pesanan`
+--
+
+INSERT INTO `detail_pesanan` (`id_pesanan`, `no`, `jumlah`, `id_kategori`, `id_menu`) VALUES
+(34, 1, 2, 1, 1),
+(35, 1, 2, 7, 2),
+(35, 2, 2, 2, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -46,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `kategori_menu` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `nama` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `kategori_menu`
@@ -56,7 +65,8 @@ INSERT INTO `kategori_menu` (`id`, `nama`) VALUES
 (1, 'makanan'),
 (2, 'minuman'),
 (5, 'hua'),
-(6, 'huaa');
+(6, 'huaa'),
+(7, 'Kuah');
 
 -- --------------------------------------------------------
 
@@ -77,7 +87,16 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_kategori`,`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `menu`
+--
+
+INSERT INTO `menu` (`id_kategori`, `id`, `nama`, `harga_modal`, `harga`, `tersedia`, `deskripsi`, `jumlah_jual`, `aktif`, `image`) VALUES
+(1, 1, 'es', 15000, 20000, 1, 'enak', 0, 1, '2013-05-24_01-12-23.jpg'),
+(2, 3, 'Es Campur', 4000, 12000, 1, 'Nangka Tape', 0, 1, '2013-05-24_01-32-28.jpg'),
+(7, 2, 'Soto Betawi', 5000, 10000, 1, 'Babat  Paru', 0, 1, '2013-05-24_01-28-45.jpg');
 
 -- --------------------------------------------------------
 
@@ -95,14 +114,16 @@ CREATE TABLE IF NOT EXISTS `pesanan` (
   PRIMARY KEY (`id`),
   KEY `username_koki` (`username_koki`),
   KEY `username_kasir` (`username_kasir`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `pesanan`
 --
 
 INSERT INTO `pesanan` (`id`, `status`, `no_meja`, `tanggal`, `username_koki`, `username_kasir`) VALUES
-(32, 0, 1, '2013-05-23', NULL, NULL);
+(32, 0, 1, '2013-05-23', NULL, NULL),
+(34, 4, 1, '2013-05-24', NULL, NULL),
+(35, 4, 90, '2013-05-24', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -124,7 +145,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `nama`, `alamat`, `peran`) VALUES
-('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'Jakarta', 15);
+('abc', '0cc175b9c0f1b6a831c399e269772661', 'abbc', 'a', 1),
+('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'Jakarta', 15),
+('dev', '7815696ecbf1c96e6894b779456d330e', 'dev', 'fff', 10);
 
 --
 -- Constraints for dumped tables

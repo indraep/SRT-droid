@@ -94,13 +94,13 @@ public final class R {
         public static final int user=0x7f02003f;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a003c;
+        public static final int action_settings=0x7f0a003d;
         public static final int aktifkan=0x7f0a002c;
         public static final int alamat=0x7f0a0005;
         public static final int bayar=0x7f0a002a;
         public static final int buatKategori=0x7f0a0011;
         public static final int buttonAdd=0x7f0a0026;
-        public static final int buttonBayar=0x7f0a0037;
+        public static final int buttonBayar=0x7f0a0038;
         public static final int buttonOk=0x7f0a0027;
         public static final int deskripsi=0x7f0a000c;
         public static final int deskripsiMenu=0x7f0a0017;
@@ -110,7 +110,7 @@ public final class R {
         public static final int hargaModal=0x7f0a000b;
         public static final int image=0x7f0a0016;
         public static final int imageViewIcon=0x7f0a0028;
-        public static final int jumlah=0x7f0a0033;
+        public static final int jumlah=0x7f0a0034;
         public static final int kasir=0x7f0a0009;
         public static final int kategori=0x7f0a0010;
         public static final int kategoriBaru=0x7f0a0012;
@@ -126,6 +126,7 @@ public final class R {
         public static final int listMenuLayout=0x7f0a0014;
         public static final int listPesananLayout=0x7f0a001e;
         public static final int listview=0x7f0a001d;
+        public static final int menuImage=0x7f0a0033;
         public static final int nama=0x7f0a0001;
         public static final int namaMenu=0x7f0a0015;
         public static final int noMeja=0x7f0a0013;
@@ -137,18 +138,18 @@ public final class R {
         public static final int peran=0x7f0a0020;
         public static final int rootLayout=0x7f0a0023;
         public static final int scrollView1=0x7f0a0000;
-        public static final int tanggal=0x7f0a0038;
+        public static final int tanggal=0x7f0a0039;
         public static final int tanggalAkhir=0x7f0a001c;
         public static final int tanggalAwal=0x7f0a001b;
         public static final int textViewLabel=0x7f0a0029;
         public static final int tidak=0x7f0a0032;
         public static final int title=0x7f0a001a;
-        public static final int total=0x7f0a0034;
-        public static final int totalHarga=0x7f0a0039;
-        public static final int totalTerjual=0x7f0a003a;
-        public static final int totalUntung=0x7f0a003b;
-        public static final int uangBayar=0x7f0a0035;
-        public static final int uangKembalian=0x7f0a0036;
+        public static final int total=0x7f0a0035;
+        public static final int totalHarga=0x7f0a003a;
+        public static final int totalTerjual=0x7f0a003b;
+        public static final int totalUntung=0x7f0a003c;
+        public static final int uangBayar=0x7f0a0036;
+        public static final int uangKembalian=0x7f0a0037;
         public static final int ubah=0x7f0a002d;
         public static final int ubahKetersediaan=0x7f0a0030;
         public static final int ubahStatus=0x7f0a002b;

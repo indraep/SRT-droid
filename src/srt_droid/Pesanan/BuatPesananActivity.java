@@ -1,5 +1,7 @@
 package srt_droid.Pesanan;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import srt_droid.PelayanActivity;
@@ -16,6 +18,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -24,6 +27,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -84,9 +88,23 @@ public class BuatPesananActivity extends Activity {
 
 			LinearLayout ll = (LinearLayout)layout.getChildAt(0);
 			ll = (LinearLayout)ll.getChildAt(0);
-
-			((TextView)ll.getChildAt(0)).setText("Nama: " + m_data.get(i).getNama());
-			((TextView)ll.getChildAt(1)).setText("Harga: " + m_data.get(i).getHarga());
+			ImageView image = (ImageView)ll.getChildAt(0);
+			
+			ll = (LinearLayout)ll.getChildAt(1);
+			
+			URL Url;
+			try {
+				Url = new URL(Utilities.URL + "image/" + m_data.get(i).getImage());
+				InputStream content = (InputStream)Url.getContent();
+				Drawable d = Drawable.createFromStream(content , "src"); 
+				image.setImageDrawable(d);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			((TextView)ll.getChildAt(0)).setText(m_data.get(i).getNama());
+			((TextView)ll.getChildAt(1)).setText("Rp. " + m_data.get(i).getHarga());
 
 			ll = (LinearLayout)layout.getChildAt(0);
 			ll = (LinearLayout)ll.getChildAt(1);

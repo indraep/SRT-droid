@@ -10,6 +10,7 @@
 					WHERE A.id = B.id_pesanan
 					AND C.id = B.id_menu
 					AND C.id_kategori = B.id_kategori
+					AND A.status < 4
 					group by A.id";
 
 		$q = mysql_query($query);
