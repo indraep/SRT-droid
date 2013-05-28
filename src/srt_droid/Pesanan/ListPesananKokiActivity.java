@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -61,6 +62,9 @@ public class ListPesananKokiActivity extends Activity {
 				prevStatus = m_data.get(i).getStatus();
 				TextView status = new TextView(getApplicationContext());
 				status.setText("" + m_data.get(i).getStatusPesanan());
+				status.setTextColor(Color.parseColor("#33b5e5"));
+				status.setTextSize(17);
+				
 				listPesananLayout.addView(status);
 			}
 
@@ -93,7 +97,7 @@ public class ListPesananKokiActivity extends Activity {
 			tanggal.setText("Tanggal: " + m_data.get(i).getTanggal());
 
 			TextView totalHarga = (TextView)layout.getChildAt(2);
-			totalHarga.setText("Total Harga: " + m_data.get(i).getTotalHarga());
+			totalHarga.setText("Total Harga: Rp. " + m_data.get(i).getTotalHarga());
 
 			listPesananLayout.addView(layout);
 		}
@@ -107,7 +111,7 @@ public class ListPesananKokiActivity extends Activity {
 		Button ubahStatus = (Button) dialog.findViewById(R.id.ubahStatus);
 		ubahStatus.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				if (pesananController.ubahStatus(pesanan, 3)) {
+				if (pesananController.ubahStatus(pesanan, 3, "", Utilities.user.getUsername(), "")) {
 					dialog.cancel();
 					Toast.makeText(getApplicationContext(), "Status pesanan telah diubah!", Toast.LENGTH_LONG).show();
 					startActivity(new Intent(getApplicationContext(), ListPesananKokiActivity.class));
@@ -127,7 +131,7 @@ public class ListPesananKokiActivity extends Activity {
 		Button ubahStatus = (Button) dialog.findViewById(R.id.ubahStatus);
 		ubahStatus.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				if (pesananController.ubahStatus(pesanan, 2)) {
+				if (pesananController.ubahStatus(pesanan, 2, "", Utilities.user.getUsername(), "")) {
 					dialog.cancel();
 					Toast.makeText(getApplicationContext(), "Status pesanan telah diubah!", Toast.LENGTH_LONG).show();
 					startActivity(new Intent(getApplicationContext(), ListPesananKokiActivity.class));

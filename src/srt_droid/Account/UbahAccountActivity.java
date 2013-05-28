@@ -40,6 +40,11 @@ public class UbahAccountActivity extends Activity {
 	void init() {
 		peranId = new int[]{R.id.pemilikRestoran, R.id.pelayan, R.id.koki, R.id.kasir};
 		
+		if (Utilities.oldUser.getUsername().equals(Utilities.user.getUsername())) {
+			CheckBox pRestoran = (CheckBox)findViewById(R.id.pemilikRestoran);
+			pRestoran.setClickable(false);
+		}
+		
 		nama = (EditText) findViewById(R.id.nama);
 		nama.setText(Utilities.oldUser.getNama());
 		
@@ -89,6 +94,11 @@ public class UbahAccountActivity extends Activity {
 		else {
 			Toast.makeText(this, status, Toast.LENGTH_LONG).show();
 			startActivity(new Intent(this, ListAccountActivity.class));
+			
+			if (Utilities.oldUser.getUsername().equals(Utilities.user.getUsername()))
+				Utilities.user = new User(nama.getText().toString(), username.getText().toString(), passwordBaru.getText().toString(), 
+						alamat.getText().toString(), peran);
+			
 			finish();
 		}
 	}

@@ -40,5 +40,6 @@
     <string name="title_activity_tab_menu_aktif">TabMenuAktif</string>
     <string name="title_activity_tab_menu_tidak_aktif">TabMenuTidakAktif</string>
     <string name="title_activity_result_sejarah_penjualan">ResultSejarahPenjualanActivity</string>
+    <string name="title_activity_list_pesanan_sejarah">ListPesananSejarahActivity</string>
 
 </resources>

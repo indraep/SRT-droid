@@ -41,7 +41,9 @@ public class PelayanActivity extends Activity {
 	}
 	
 	public void ubahProfile(View v) {
+		Utilities.prev = new Intent(getApplicationContext(), PelayanActivity.class);
 		startActivity(new Intent(getApplicationContext(), UbahProfileActivity.class));
+		finish();
 	}
 	
 	public void keluar(View v) {

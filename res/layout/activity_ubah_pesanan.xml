@@ -18,6 +18,7 @@
             android:gravity="center_horizontal"
             android:text="Ubah Pesanan"
             android:textColor="#FFFFFF"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -58,7 +59,9 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tambahan:" />
+                    android:text="Catatan:"
+                    android:textColor="#33b5e5"
+                    android:textSize="17dp" />
 
                 <EditText
                     android:id="@+id/addition"

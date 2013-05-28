@@ -18,7 +18,8 @@
             android:gravity="center"
             android:text="Daftar Account"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="20dp" />
 
         <ListView
             android:id="@+id/listview"

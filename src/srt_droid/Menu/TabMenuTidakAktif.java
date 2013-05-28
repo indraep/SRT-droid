@@ -19,6 +19,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -56,7 +57,10 @@ public class TabMenuTidakAktif extends Activity {
 			if (!m_data.get(i).getNamaKategori().equals(prevCategory)) {
 				prevCategory = m_data.get(i).getNamaKategori();
 				TextView cat = new TextView(getApplicationContext());
-				cat.setText(prevCategory);
+				cat.setText(prevCategory.toUpperCase());
+				cat.setTextSize(17);
+				cat.setTextColor(Color.parseColor("#33b5e5"));
+				
 				listMenuLayout.addView(cat);
 			}
 

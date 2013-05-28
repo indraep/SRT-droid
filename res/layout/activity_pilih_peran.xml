@@ -17,7 +17,8 @@
 	        android:layout_height="wrap_content"
 	        android:text="Pilih Peran"
 	        android:textColor="#FFFFFF"
-	        android:textStyle="bold" />
+	        android:textStyle="bold"
+            android:textSize="20dp" />
 	</LinearLayout>
     
     <TextView

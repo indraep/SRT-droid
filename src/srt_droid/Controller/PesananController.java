@@ -91,7 +91,7 @@ public class PesananController {
 		return ret;
 	}
 	
-	public boolean ubahStatus(Pesanan pesanan, int newStatus) {
+	public boolean ubahStatus(Pesanan pesanan, int newStatus, String usernamePelayan, String usernameKoki, String usernameKasir) {
 
 		InputStream is = null;
 		String result = "";
@@ -99,9 +99,12 @@ public class PesananController {
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(Utilities.URL + "ubah_status_pesanan.php");
 		try {
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(5);
 			nameValuePairs.add(new BasicNameValuePair("idPesanan", "" + pesanan.getId()));
 			nameValuePairs.add(new BasicNameValuePair("newStatus", "" + newStatus));
+			nameValuePairs.add(new BasicNameValuePair("username_pelayan", usernamePelayan));
+			nameValuePairs.add(new BasicNameValuePair("username_koki", usernameKoki));
+			nameValuePairs.add(new BasicNameValuePair("username_kasir", usernameKasir));
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
@@ -122,6 +125,8 @@ public class PesananController {
 		}catch(Exception e){
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}
+		
+		
 
 		return result.length() > 4 && result.substring(0, 4).equals("true");
 	}
@@ -532,6 +537,71 @@ public class PesananController {
 						json_data.getInt("status"),
 						json_data.getString("addition")
 						);
+				ret.add(pesanan);
+			}
+
+
+		}catch(JSONException e) {
+			Log.e("log_tag", "Error parsing data " + e.toString());
+		}
+		
+		Collections.sort(ret);
+
+		return ret;
+	}
+	
+	public ArrayList<Pesanan> getListOfPesananLunas(String tanggalAwal, String tanggalAkhir) {
+		ArrayList <Pesanan> ret = new ArrayList<Pesanan>();
+
+		InputStream is = null;
+		String result = "";
+
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost(Utilities.URL + "list_pesanan_lunas.php");
+		try {
+			Log.e("debug", "awal = " + tanggalAwal + " akhir = " + tanggalAkhir);
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+			nameValuePairs.add(new BasicNameValuePair("tanggal_awal", tanggalAwal));
+			nameValuePairs.add(new BasicNameValuePair("tanggal_akhir", tanggalAkhir));
+			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+		}
+		catch (ClientProtocolException e) {} 
+		catch (IOException e) {}
+
+		//convert response to string
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			is.close();
+			result=sb.toString();
+		}catch(Exception e){
+			Log.e("log_tag", "Error converting result " + e.toString());
+		}
+
+		//parse json data
+		try{
+			JSONArray jArray = new JSONArray(result);
+			for(int i=0;i<jArray.length();i++){
+				JSONObject json_data = jArray.getJSONObject(i);
+				Pesanan pesanan = new Pesanan(
+						json_data.getInt("id"), 
+						json_data.getInt("no_meja"),
+						json_data.getString("tanggal"), 
+						json_data.getInt("total_harga"),
+						json_data.getInt("status"),
+						json_data.getString("addition")
+						);
+				
+				pesanan.setUsernamePelayan(json_data.getString("username_pelayan"));
+				pesanan.setUsernameKoki(json_data.getString("username_koki"));
+				pesanan.setUsernameKasir(json_data.getString("username_kasir"));
 				ret.add(pesanan);
 			}
 

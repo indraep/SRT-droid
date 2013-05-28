@@ -44,7 +44,9 @@ public class PemilikRestoranActivity extends Activity {
 	}
 	
 	public void ubahProfile(View v) {
+		Utilities.prev = new Intent(getApplicationContext(), PemilikRestoranActivity.class);
 		startActivity(new Intent(getApplicationContext(), UbahProfileActivity.class));
+		finish();
 	}
 	
 	public void keluar(View v) {

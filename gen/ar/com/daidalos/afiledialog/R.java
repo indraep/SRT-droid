@@ -40,8 +40,8 @@ public final class R {
 		public static final int daidalos_app_name = 0x7f040001;
 	}
 	public static final class layout {
-		public static final int daidalos_file_chooser = 0x7f03001a;
-		public static final int daidalos_file_item = 0x7f03001b;
+		public static final int daidalos_file_chooser = 0x7f03001c;
+		public static final int daidalos_file_item = 0x7f03001d;
 	}
 	public static final class drawable {
 		public static final int folder = 0x7f020022;

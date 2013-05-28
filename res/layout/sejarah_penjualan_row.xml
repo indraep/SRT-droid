@@ -20,5 +20,6 @@
         android:layout_width="0px"
         android:layout_height="wrap_content"
         android:layout_weight="2"
+        android:gravity="right"
         android:id="@+id/totalUntung" />
 </LinearLayout>

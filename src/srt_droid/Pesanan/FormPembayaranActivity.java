@@ -95,7 +95,7 @@ public class FormPembayaranActivity extends Activity {
 				// TODO Auto-generated method stub
 				String temp = uangBayar.getText().toString();
 				if (temp.length() > 0 && Integer.parseInt(temp) >= totalHarga) {
-					pesananController.ubahStatus(Utilities.oldPesanan, Utilities.oldPesanan.getStatus() + 1);
+					pesananController.ubahStatus(Utilities.oldPesanan, Utilities.oldPesanan.getStatus() + 1, "", "", Utilities.user.getUsername());
 					Toast.makeText(getApplicationContext(), "Pembayaran berhasil", Toast.LENGTH_LONG).show();
 					startActivity(new Intent(getApplicationContext(), ListPesananKasirActivity.class));
 					finish();

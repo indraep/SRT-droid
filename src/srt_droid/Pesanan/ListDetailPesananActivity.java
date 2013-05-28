@@ -87,6 +87,7 @@ class DetailPesananAdapter extends ArrayAdapter<DetailPesanan> {
 			}
 			
 			tt = (TextView)v.findViewById(R.id.total);
+			tt.setPadding(10, 0, 0, 0);
 			if (tt != null) {
 				tt.setText("Jumlah: " + o.getJumlah());
 			}
@@ -96,6 +97,7 @@ class DetailPesananAdapter extends ArrayAdapter<DetailPesanan> {
 			tt.setText("Tambahan:");
 			
 			tt = (TextView)v.findViewById(R.id.total);
+			tt.setPadding(10, 0, 0, 0);
 			tt.setText(Utilities.pesanan.getAddition());
 		}
 		return v;

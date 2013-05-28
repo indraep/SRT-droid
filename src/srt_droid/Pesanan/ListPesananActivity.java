@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -60,6 +61,9 @@ public class ListPesananActivity extends Activity {
 				prevStatus = m_data.get(i).getStatus();
 				TextView status = new TextView(getApplicationContext());
 				status.setText("" + m_data.get(i).getStatusPesanan());
+				status.setTextColor(Color.parseColor("#33b5e5"));
+				status.setTextSize(17);
+				
 				listPesananLayout.addView(status);
 			}
 			
@@ -89,7 +93,7 @@ public class ListPesananActivity extends Activity {
 			tanggal.setText("Tanggal: " + m_data.get(i).getTanggal());
 			
 			TextView totalHarga = (TextView)layout.getChildAt(2);
-			totalHarga.setText("Total Harga: " + m_data.get(i).getTotalHarga());
+			totalHarga.setText("Total Harga: Rp. " + m_data.get(i).getTotalHarga());
 			
 			listPesananLayout.addView(layout);
 		}
@@ -122,11 +126,14 @@ public class ListPesananActivity extends Activity {
 		Button kirim = (Button) dialog.findViewById(R.id.kirim);
 		kirim.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				if (pesananController.ubahStatus(pesanan, 1)) {
+				if (pesananController.ubahStatus(pesanan, 1, Utilities.user.getUsername(), "", "")) {
 					dialog.cancel();
 					Toast.makeText(getApplicationContext(), "Pesanan telah dikirim!", Toast.LENGTH_LONG).show();
 					startActivity(new Intent(getApplicationContext(), ListPesananActivity.class));
 					finish();
+				}
+				else {
+					Toast.makeText(getApplicationContext(), "Gagal mengirim pesanan", Toast.LENGTH_LONG).show();
 				}
 			}
 		});

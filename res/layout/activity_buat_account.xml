@@ -18,7 +18,8 @@
                 android:layout_height="wrap_content"
                 android:text="Tambah Account"
                 android:textStyle="bold" 
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textSize="20dp" />
 		</LinearLayout>
         
         <TextView

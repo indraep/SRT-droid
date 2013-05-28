@@ -40,11 +40,6 @@ import com.example.srt_droid.R.layout;
 import com.example.srt_droid.R.menu;
 
 public class ListMenuActivity extends TabActivity {
-
-	ArrayList<MenuResto> m_data = null;
-
-	MenuController menuController = new MenuController();
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

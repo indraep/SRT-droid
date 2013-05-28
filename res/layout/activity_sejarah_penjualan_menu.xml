@@ -2,29 +2,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".FormPembayaranActivity" >
+    tools:context=".SejarahPenjualanMenuActivity" >
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="Form Pembayaran"
+        android:gravity="center"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
-        android:textStyle="bold" />
-
+        android:id="@+id/title" />
+    
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
-
-        <LinearLayout
-            android:id="@+id/listLayout"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical" >
-        </LinearLayout>
-    </ScrollView>
-
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:orientation="vertical"
+	        android:id="@+id/listLayout" >
+	    </LinearLayout>
+	</ScrollView>
 </LinearLayout>

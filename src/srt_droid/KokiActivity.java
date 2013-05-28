@@ -38,7 +38,9 @@ public class KokiActivity extends Activity {
 	}
 	
 	public void ubahProfile(View v) {
+		Utilities.prev = new Intent(getApplicationContext(), KokiActivity.class);
 		startActivity(new Intent(getApplicationContext(), UbahProfileActivity.class));
+		finish();
 	}
 	
 	public void keluar(View v) {

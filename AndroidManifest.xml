@@ -184,6 +184,18 @@
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
+            android:name="srt_droid.SejarahPenjualanMenuActivity"
+            android:label="@string/title_activity_result_sejarah_penjualan"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="srt_droid.ListPesananSejarahActivity"
+            android:label="@string/title_activity_list_pesanan_sejarah"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
             android:name="srt_droid.ResultSejarahPenjualanActivity"
             android:label="@string/title_activity_result_sejarah_penjualan"
             android:screenOrientation="portrait"

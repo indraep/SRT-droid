@@ -1,38 +1,32 @@
 package srt_droid.Pesanan;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
-import srt_droid.PelayanActivity;
-import srt_droid.PemilikRestoranActivity;
 import srt_droid.Utilities;
 import srt_droid.Controller.PesananController;
 import srt_droid.Menu.DeskripsiMenuActivity;
 import srt_droid.Menu.MenuResto;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 import com.example.srt_droid.R;
 
@@ -70,7 +64,10 @@ public class UbahPesananActivity extends Activity {
 			if (!prevKategori.equals(m_data.get(i).getNamaKategori())) {
 				prevKategori = "" + m_data.get(i).getNamaKategori();
 				TextView tv = new TextView(this);
-				tv.setText(prevKategori);
+				tv.setText(prevKategori.toUpperCase());
+				tv.setTextSize(17);
+				tv.setTextColor(Color.parseColor("#33b5e5"));
+				
 				listMenuLayout.addView(tv);
 			}
 			
@@ -95,7 +92,7 @@ public class UbahPesananActivity extends Activity {
 			
 			ll = (LinearLayout)ll.getChildAt(1);
 			
-			/*URL Url;
+			URL Url;
 			try {
 				Url = new URL(Utilities.URL + "image/" + m_data.get(i).getImage());
 				InputStream content = (InputStream)Url.getContent();
@@ -104,7 +101,7 @@ public class UbahPesananActivity extends Activity {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 
 			((TextView)ll.getChildAt(0)).setText(m_data.get(i).getNama());
 			((TextView)ll.getChildAt(1)).setText("Rp. " + m_data.get(i).getHarga());

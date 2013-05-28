@@ -71,8 +71,14 @@ public class UbahProfileActivity extends Activity {
 			Toast.makeText(this, "Profile berhasil diubah!", Toast.LENGTH_LONG).show();
 			Utilities.user = new User(nama.getText().toString(), username.getText().toString(), passwordBaru.getText().length() == 0 ? Utilities.user.getPassword() : passwordBaru.getText().toString(), 
 					alamat.getText().toString(), Utilities.user.getPeran());
+			startActivity(Utilities.prev);
 			finish();
 		}
+	}
+	
+	public void onBackPressed() {
+		startActivity(Utilities.prev);
+		finish();
 	}
 
 	@Override

@@ -18,6 +18,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -66,7 +67,10 @@ public class BuatPesananActivity extends Activity {
 			if (!prevKategori.equals(m_data.get(i).getNamaKategori())) {
 				prevKategori = "" + m_data.get(i).getNamaKategori();
 				TextView tv = new TextView(this);
-				tv.setText(prevKategori);
+				tv.setText(prevKategori.toUpperCase());
+				tv.setTextSize(17);
+				tv.setTextColor(Color.parseColor("#33b5e5"));
+				
 				listMenuLayout.addView(tv);
 			}
 
@@ -92,7 +96,7 @@ public class BuatPesananActivity extends Activity {
 			
 			ll = (LinearLayout)ll.getChildAt(1);
 			
-			/*URL Url;
+			URL Url;
 			try {
 				Url = new URL(Utilities.URL + "image/" + m_data.get(i).getImage());
 				InputStream content = (InputStream)Url.getContent();
@@ -101,7 +105,7 @@ public class BuatPesananActivity extends Activity {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 			
 			((TextView)ll.getChildAt(0)).setText(m_data.get(i).getNama());
 			((TextView)ll.getChildAt(1)).setText("Rp. " + m_data.get(i).getHarga());
