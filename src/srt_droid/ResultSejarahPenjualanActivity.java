@@ -33,15 +33,15 @@ public class ResultSejarahPenjualanActivity extends TabActivity {
 		// Android tab
 		Intent intentAndroid = new Intent().setClass(this, ListPesananSejarahActivity.class);
 		TabSpec tabSpecAndroid = tabHost
-			.newTabSpec("Aktif")
-			.setIndicator("", ressources.getDrawable(R.drawable.icon_menu_ok))
+			.newTabSpec("Detail")
+			.setIndicator("", ressources.getDrawable(R.drawable.icon_menu_detail))
 			.setContent(intentAndroid);
 
 		// Apple tab
 		Intent intentApple = new Intent().setClass(this, SejarahPenjualanMenuActivity.class);
 		TabSpec tabSpecApple = tabHost
-			.newTabSpec("Tidak Aktif")
-			.setIndicator("", ressources.getDrawable(R.drawable.icon_menu_no))
+			.newTabSpec("Rekap")
+			.setIndicator("", ressources.getDrawable(R.drawable.icon_menu_rekap))
 			.setContent(intentApple);
 	
 		// add all tabs 

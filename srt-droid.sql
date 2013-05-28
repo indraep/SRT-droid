@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2013 at 04:23 AM
+-- Generation Time: May 28, 2013 at 06:43 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -41,9 +41,8 @@ CREATE TABLE IF NOT EXISTS `detail_pesanan` (
 --
 
 INSERT INTO `detail_pesanan` (`id_pesanan`, `no`, `jumlah`, `id_kategori`, `id_menu`) VALUES
-(34, 1, 2, 1, 1),
-(35, 1, 2, 7, 2),
-(35, 2, 2, 2, 3);
+(43, 1, 6, 1, 5),
+(43, 2, 1, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -77,7 +76,7 @@ INSERT INTO `kategori_menu` (`id`, `nama`) VALUES
 CREATE TABLE IF NOT EXISTS `menu` (
   `id_kategori` int(5) NOT NULL,
   `id` int(5) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(30) NOT NULL,
+  `nama` varchar(50) NOT NULL,
   `harga_modal` int(11) NOT NULL,
   `harga` int(11) NOT NULL,
   `tersedia` tinyint(1) NOT NULL DEFAULT '1',
@@ -87,16 +86,15 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_kategori`,`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `menu`
 --
 
 INSERT INTO `menu` (`id_kategori`, `id`, `nama`, `harga_modal`, `harga`, `tersedia`, `deskripsi`, `jumlah_jual`, `aktif`, `image`) VALUES
-(1, 1, 'es', 15000, 20000, 1, 'enak', 0, 1, '2013-05-24_01-12-23.jpg'),
-(2, 3, 'Es Campur', 4000, 12000, 1, 'Nangka Tape', 0, 1, '2013-05-24_01-32-28.jpg'),
-(7, 2, 'Soto Betawi', 5000, 10000, 1, 'Babat  Paru', 0, 1, '2013-05-24_01-28-45.jpg');
+(1, 4, 'Soto Ayam', 8000, 10000, 1, 'Soto ayam dengan kuah bening yang segar', 0, 1, '2013-05-27_11-55-54.jpg'),
+(1, 5, 'Nasi Goreng Spesial', 7500, 9000, 1, 'Nasi goreng dengan campuran ayam, telur, dan bakso', 0, 1, '2013-05-28_12-11-55.jpg');
 
 -- --------------------------------------------------------
 
@@ -109,21 +107,21 @@ CREATE TABLE IF NOT EXISTS `pesanan` (
   `status` int(11) NOT NULL,
   `no_meja` int(11) NOT NULL,
   `tanggal` date NOT NULL,
+  `username_pelayan` varchar(30) DEFAULT NULL,
   `username_koki` varchar(30) DEFAULT NULL,
   `username_kasir` varchar(30) DEFAULT NULL,
+  `addition` text,
   PRIMARY KEY (`id`),
   KEY `username_koki` (`username_koki`),
   KEY `username_kasir` (`username_kasir`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
 
 --
 -- Dumping data for table `pesanan`
 --
 
-INSERT INTO `pesanan` (`id`, `status`, `no_meja`, `tanggal`, `username_koki`, `username_kasir`) VALUES
-(32, 0, 1, '2013-05-23', NULL, NULL),
-(34, 4, 1, '2013-05-24', NULL, NULL),
-(35, 4, 90, '2013-05-24', NULL, NULL);
+INSERT INTO `pesanan` (`id`, `status`, `no_meja`, `tanggal`, `username_pelayan`, `username_koki`, `username_kasir`, `addition`) VALUES
+(43, 3, 1, '2013-05-23', 'admin', 'admin', 'admin', 'addition');
 
 -- --------------------------------------------------------
 

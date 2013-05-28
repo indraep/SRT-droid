@@ -5,7 +5,7 @@
 	//if ($_POST) {
 		require("DB/connect_to_db.php");
 		
-		$query  = "SELECT A.id, A.status, A.no_meja, A.tanggal, sum(C.harga * B.jumlah) as total_harga
+		$query  = "SELECT A.id, A.status, A.no_meja, A.tanggal, sum(C.harga * B.jumlah) as total_harga, A.addition
 					FROM pesanan AS A, detail_pesanan AS B, menu AS C
 					WHERE A.id = B.id_pesanan
 					AND C.id = B.id_menu

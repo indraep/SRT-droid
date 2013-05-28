@@ -1,18 +1,18 @@
 package srt_droid;
 
 import srt_droid.Controller.AccountController;
-import srt_droid.Pesanan.BuatPesananActivity;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.srt_droid.R;
@@ -20,6 +20,7 @@ import com.example.srt_droid.R;
 public class LoginActivity extends Activity {
 	Spinner roleSpinner;
 	EditText username, password;
+	TextView title;
 
 	AccountController accountController = new AccountController();
 
@@ -28,8 +29,10 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_view);
 
-		//startActivity(new Intent(this, BuatPesananActivity.class));
-		
+		title = (TextView)findViewById(R.id.title);
+		Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/algerian.ttf");
+		title.setTypeface(tf);
+
 		username = (EditText) findViewById(R.id.user_name);
 		password = (EditText) findViewById(R.id.password);
 	}

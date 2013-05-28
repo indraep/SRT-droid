@@ -77,15 +77,6 @@ public class UbahPesananActivity extends Activity {
 			inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.list_buat_pesanan_row, null);
 
-			layout.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Utilities.menu = m_data.get(pos);
-					startActivity(new Intent(getApplicationContext(), DeskripsiMenuActivity.class));
-				}
-			});
-
 			LinearLayout ll = (LinearLayout)layout.getChildAt(0);
 			ll = (LinearLayout)ll.getChildAt(0);
 			ImageView image = (ImageView)ll.getChildAt(0);
@@ -109,7 +100,7 @@ public class UbahPesananActivity extends Activity {
 			ll = (LinearLayout)layout.getChildAt(0);
 			ll = (LinearLayout)ll.getChildAt(1);
 
-			EditText et = (EditText)ll.getChildAt(0);
+			final EditText et = (EditText)ll.getChildAt(0);
 
 			et.addTextChangedListener(new TextWatcher() {
 				@Override
@@ -130,6 +121,27 @@ public class UbahPesananActivity extends Activity {
 				}
 			});
 			et.setText("" + jumlah.get(pos));
+			
+			layout.setOnLongClickListener(new View.OnLongClickListener() {
+				@Override
+				public boolean onLongClick(View v) {
+					// TODO Auto-generated method stub
+					Utilities.menu = m_data.get(pos);
+					startActivity(new Intent(getApplicationContext(), DeskripsiMenuActivity.class));
+					return false;
+				}
+			});
+			
+			layout.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					String jum = et.getText().toString();
+					int jumlah = jum.length() > 0 ? Integer.parseInt(jum) : 0;
+					et.setText("" + (jumlah + 1));
+				}
+			});
 
 			listMenuLayout.addView(layout);
 		}

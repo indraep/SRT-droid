@@ -3,6 +3,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background" >
+    
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="SRT-Droid"
+        android:textColor="#33b5e5"
+        android:textSize="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="fill_parent"
@@ -34,5 +45,7 @@
         android:layout_height="50dp"
         android:layout_margin="30dp"
         android:text="Masuk"
-        android:onClick="login" />
+        android:onClick="login"
+        android:typeface="sans"
+        android:textSize="20dp" />
 </LinearLayout>

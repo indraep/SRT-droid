@@ -33,35 +33,45 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_home_button_margin"
                 android:onClick="lihatSejarahPenjualan"
-                android:text="Lihat Sejarah Penjualan" />
+                android:text="Lihat Sejarah Penjualan"
+                android:textSize="20dp"
+                android:typeface="sans" />
 
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_home_button_margin"
                 android:onClick="lihatDaftarMenu"
-                android:text="Lihat Daftar Menu" />
+                android:text="Lihat Daftar Menu"
+                android:textSize="20dp"
+                android:typeface="sans" />
 
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_home_button_margin"
                 android:onClick="lihatDaftarAccount"
-                android:text="Lihat Daftar Account" />
+                android:text="Lihat Daftar Account"
+                android:textSize="20dp"
+                android:typeface="sans" />
 
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_home_button_margin"
                 android:onClick="ubahProfile"
-                android:text="Ubah Profile" />
+                android:text="Ubah Profile"
+                android:textSize="20dp"
+                android:typeface="sans" />
 
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_home_button_margin"
                 android:onClick="keluar"
-                android:text="Keluar" />
+                android:text="Keluar"
+                android:textSize="20dp"
+                android:typeface="sans" />
         </LinearLayout>
     </LinearLayout>
 

@@ -33,28 +33,36 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_home_button_margin"
                 android:onClick="lihatMenu"
-                android:text="Lihat Menu" />
+                android:text="Lihat Menu"
+                android:textSize="20dp"
+                android:typeface="sans" />
 
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_home_button_margin"
                 android:onClick="lihatPesanan"
-                android:text="Lihat Pesanan" />
+                android:text="Lihat Pesanan"
+                android:textSize="20dp"
+                android:typeface="sans" />
 
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_home_button_margin"
                 android:onClick="ubahProfile"
-                android:text="Ubah Profile" />
+                android:text="Ubah Profile"
+                android:textSize="20dp"
+                android:typeface="sans" />
 
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_home_button_margin"
                 android:onClick="keluar"
-                android:text="Keluar" />
+                android:text="Keluar"
+                android:textSize="20dp"
+                android:typeface="sans" />
         </LinearLayout>
     </LinearLayout>
 

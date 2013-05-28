@@ -54,18 +54,18 @@ public class SejarahPenjualanMenuActivity extends Activity {
 		
 		TextView tv = (TextView)listLayout.getChildAt(0);
 		tv.setText("Nama Menu");
-		tv.setTextColor(Color.WHITE);
-		tv.setTextSize(17);
+		tv.setTextColor(Color.parseColor("#33b5e5"));
+		tv.setTextSize(20);
 		
 		tv = (TextView)listLayout.getChildAt(1);
 		tv.setText("Terjual");
-		tv.setTextColor(Color.WHITE);
-		tv.setTextSize(17);
+		tv.setTextColor(Color.parseColor("#33b5e5"));
+		tv.setTextSize(20);
 		
 		tv = (TextView)listLayout.getChildAt(2);
 		tv.setText("Keuntungan");
-		tv.setTextColor(Color.WHITE);
-		tv.setTextSize(17);
+		tv.setTextColor(Color.parseColor("#33b5e5"));
+		tv.setTextSize(20);
 		
 		layout.addView(listLayout);
 		
@@ -76,12 +76,15 @@ public class SejarahPenjualanMenuActivity extends Activity {
 			
 			tv = (TextView)listLayout.getChildAt(0);
 			tv.setText(data.get(i).getNama());
+			tv.setTextColor(Color.WHITE);
 			
 			tv = (TextView)listLayout.getChildAt(1);
 			tv.setText("" + data.get(i).getTotalTerjual());
+			tv.setTextColor(Color.WHITE);
 			
 			tv = (TextView)listLayout.getChildAt(2);
 			tv.setText("Rp. " + data.get(i).getTotalUntung());
+			tv.setTextColor(Color.WHITE);
 			total += data.get(i).getTotalUntung();
 			
 			layout.addView(listLayout);
@@ -94,13 +97,13 @@ public class SejarahPenjualanMenuActivity extends Activity {
 		
 		tv = (TextView)listLayout.getChildAt(0);
 		tv.setText("Total Keuntungan:");
-		tv.setTextColor(Color.WHITE);
-		tv.setTextSize(17);
+		tv.setTextColor(Color.parseColor("#33b5e5"));
+		tv.setTextSize(20);
 		
 		tv = (TextView)listLayout.getChildAt(2);
 		tv.setText("Rp. " + total);
-		tv.setTextColor(Color.WHITE);
-		tv.setTextSize(17);
+		tv.setTextColor(Color.parseColor("#33b5e5"));
+		tv.setTextSize(20);
 		
 		layout.addView(listLayout);
 	}

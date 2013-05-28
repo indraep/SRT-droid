@@ -60,4 +60,16 @@ public class PemilikRestoranActivity extends Activity {
 		getMenuInflater().inflate(R.menu.pemilik_restoran, menu);
 		return true;
 	}
+	
+	public void onBackPressed() {
+		int jumlahPeran = 0;
+		for (int i = 0; i < 4; i++)
+			if ((Utilities.user.getPeran() & (1 << 1)) > 0)
+				jumlahPeran++;
+		
+		if (jumlahPeran > 1) {
+			startActivity(new Intent(getApplicationContext(), PilihPeranActivity.class));
+			finish();
+		}
+	}
 }

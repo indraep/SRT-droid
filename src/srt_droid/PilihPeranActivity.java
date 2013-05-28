@@ -52,7 +52,7 @@ public class PilihPeranActivity extends Activity {
 		
 		Utilities.prev = intent;
 		startActivity(intent);
-		//finish();
+		finish();
 	}
 
 	@Override
@@ -64,5 +64,4 @@ public class PilihPeranActivity extends Activity {
 	
 	public void onBackPressed() {
 	}
-
 }

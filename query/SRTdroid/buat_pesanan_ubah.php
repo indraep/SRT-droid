@@ -16,9 +16,10 @@
 		$id_pesanan = $_POST["idPesanan"];
 		$q = mysql_query("delete from pesanan where id = $id_pesanan");
 
+		$addition = $_POST["addition"];
 		$no_meja = $_POST["noMeja"];
 		
-		$q = mysql_query("insert into pesanan(status, no_meja, tanggal, username_koki, username_kasir) values (0, $no_meja, CURDATE(), NULL, NULL)");
+		$q = mysql_query("insert into pesanan(status, no_meja, tanggal, username_koki, username_kasir, addition) values (0, $no_meja, CURDATE(), NULL, NULL, '$addition')");
 		
 		$q = mysql_query("select max(id) as id from pesanan where no_meja=$no_meja AND tanggal=CURDATE()");
 		$row = mysql_fetch_array($q);
