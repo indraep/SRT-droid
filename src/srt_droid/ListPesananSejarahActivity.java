@@ -47,19 +47,11 @@ public class ListPesananSejarahActivity extends Activity {
 		
 		LinearLayout listPesananLayout = (LinearLayout)findViewById(R.id.listPesananLayout);
 		
-		int prevStatus = -1;
 		
 		for (int i = 0; i < m_data.size(); i++) {
 			LayoutInflater inflater;
 			inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.list_pesanan_sejarah_row, null);
-			
-			if (m_data.get(i).getStatus() != prevStatus) {
-				prevStatus = m_data.get(i).getStatus();
-				TextView status = new TextView(getApplicationContext());
-				status.setText("" + m_data.get(i).getStatusPesanan());
-				listPesananLayout.addView(status);
-			}
 			
 			final int pos = i;
 			
